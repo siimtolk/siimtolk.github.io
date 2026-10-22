@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I let an AI agent test local LLMs while I sleep"
+title: "Automated nightly LLM testing: an AI agent benchmarks new local models while I sleep"
 description: "An AI agent tested 18 new open-weight models on my home server overnight. None replaced the Qwen3.8-27B my assistant already runs."
 date: 2026-10-22
 image: /assets/img/llm-testing-overnight/chart.png
