@@ -23,7 +23,7 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 10;
   backdrop-filter: saturate(1.4) blur(8px); background: color-mix(in srgb, var(--bg) 88%, transparent); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 17px; }
+.brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 17px; }
 .logo { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--accent);
   color: #fff; font-size: 13px; letter-spacing: .5px; }
 nav { display: flex; gap: 22px; }
