@@ -17,7 +17,7 @@ I run a personal Hermes assistant on my own hardware. It builds morning briefing
 
 That model answers every request all day. Swapping it changes every reply the assistant sends. A new release can top a public leaderboard and still be useless for me. NVIDIA's new Nemotron 3.5 Bolt 74B-A9B ranks [4th among models under 100B parameters](https://artificialanalysis.ai/articles/nemotron-3-5-super-and-bolt) on Artificial Analysis. The build that fits my cards passed 247 of 291 runs in my suite, against production's 283, and only 16 of 45 in Estonian. A model might not speak Estonian, or it might think for so long that a simple reminder takes a minute. Its chat template might return an empty reply.
 
-No leaderboard answers that, so I built my own test. Then I got tired of tracking releases and running it by hand.
+No leaderboard answers that, so I built my own test. Then I got tired of tracking releases and running it by hand. The overnight part borrows the idea of Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch), where an agent runs training experiments while you sleep. Here the same loop picks a production model instead.
 
 ## The framework: a loop that runs itself
 
@@ -277,7 +277,7 @@ The AWQ build answered the side-by-side llama.cpp vs vLLM question. [twolven's b
 
 ## What this is not
 
-This is a personal acceptance test, not a general benchmark. The cases fit one assistant's work, partly in one specific and often unsupported language, on one pair of GPUs. Three runs per case catch flaky answers, but they are too few for confidence intervals. Only one case uses a really long prompt, and I measure two users at once, not dozens.
+This is a personal acceptance test, not a general benchmark. The cases fit one assistant's work, partly in one specific and often unsupported language, on one pair of GPUs. For a broad look at Estonian, see the [Estonian Native LLM Benchmark](https://arxiv.org/abs/2510.21193) by Lillepalu and Alumäe (LREC 2026), which tests 32 models on native Estonian data; my Estonian cases are fewer and closer to an assistant's daily work. Three runs per case catch flaky answers, but they are too few for confidence intervals. Only one case uses a really long prompt, and I measure two users at once, not dozens.
 
 The idea carries over, though. The test cases live in one file, so you can swap in your own and keep the loop, the code grading and the overnight agent. The benchmark talks to any OpenAI-compatible endpoint, and the serving side is three small commands you can wrap around llama.cpp or vLLM. Code, suite and results: [github.com/siimtolk/local-llm-eval](https://github.com/siimtolk/local-llm-eval).
 
