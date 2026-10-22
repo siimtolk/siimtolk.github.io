@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "I let an AI agent test local LLMs while I sleep"
-description: "An AI agent tested 17 new open-weight models on my home server overnight. None beat the Qwen3.8-27B my assistant already runs."
+description: "An AI agent tested 18 new open-weight models on my home server overnight. None replaced the Qwen3.8-27B my assistant already runs."
 date: 2026-10-22
 image: /assets/img/llm-testing-overnight/chart.png
 tags: [Local LLM, LLM evaluation, AI agents]
@@ -9,7 +9,7 @@ redirect_from:
   - /llm-testing-overnight/
 ---
 
-Every week a dozen new open-weight models claim to beat the last one. I wanted to know which of them could actually replace the model my personal assistant runs on, so I built a pipeline that finds candidates, tests them overnight and sends me a verdict over breakfast. Over the past two weeks it has tested seventeen models, and none has beaten the incumbent, an uncensored build of Qwen3.8-27B. The closest came within one graded run of it and still lost on speed. The code, the test suite and every result are on GitHub: [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
+Every week a dozen new open-weight models claim to beat the last one. I wanted to know which of them could actually replace the model my personal assistant runs on, so I built a pipeline that finds candidates, tests them overnight and sends me a verdict over breakfast. Over the past two weeks it has tested eighteen models, and none has replaced the incumbent, an uncensored build of Qwen3.8-27B. The best one passed a single graded run more, but was 18% slower and refused a harmless request. The code, the test suite and every result are on GitHub: [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
 
 ## Why leaderboards were not enough
 
@@ -169,11 +169,12 @@ When something goes wrong, the agent says so and attempts to work around it with
 
 ## What came out of it
 
-The incumbent is [Qwen3.8-27B Heretic Abliterated "RVN"](https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF) by 0bserverx: Alibaba's dense 27-billion-parameter Qwen3.8 with its refusals removed, run as the 15.5 GB IQ4\_XS file `RVN-IQ4_XS-multilingual-mtp.gguf`. It passes 283 of 291 graded runs and 41 of 45 in Estonian. Over the past two weeks the agent tested seventeen challengers against it. None beat it, two never started and one did not fit.
+The incumbent is [Qwen3.8-27B Heretic Abliterated "RVN"](https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF) by 0bserverx: Alibaba's dense 27-billion-parameter Qwen3.8 with its refusals removed, run as the 15.5 GB IQ4\_XS file `RVN-IQ4_XS-multilingual-mtp.gguf`. It passes 283 of 291 graded runs and 41 of 45 in Estonian. Over the past two weeks the agent tested eighteen challengers against it. None replaced it, two never started and one did not fit.
 
 | Model (links go to the weights) | Type | Graded runs passed (of 291) | Verdict |
 | --- | --- | --- | --- |
 | [Qwen3.8-27B Heretic Abliterated "RVN"](https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF), IQ4\_XS (production) | Dense 27B | 283 | The bar to beat |
+| [Qwen3.8-27B Turbo-Brilliance 50X](https://huggingface.co/DavidAU/Qwen3.8-27B-Turbo-Brilliance-50X-Reasoning-Instruct-NEO-MAX-MTP-GGUF) by DavidAU, IQ4\_XS | Dense 27B | 284 | Rejected: 18% slower (38 tok/s), refused 1 of 11 |
 | [Qwen3.8-27B Uncensored HauhauCS Aggressive](https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF), IQ4\_XS | Dense 27B | 282 | Rejected: a twin, not faster (43 tok/s) |
 | [Same HauhauCS fine-tune as AWQ](https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP), on vLLM | Dense 27B | 272 | Rejected: 10 runs below its GGUF twin, Estonian 34 of 45 |
 | [Huihui Qwen3.8-27B Coder390 EfficientThink abliterated](https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF), IQ3\_S | Dense 27B, coding finetune | 273 | Rejected: weaker Estonian |
@@ -195,9 +196,11 @@ The incumbent is [Qwen3.8-27B Heretic Abliterated "RVN"](https://huggingface.co/
 
 *Figure 1. Quality vs speed. Estonian cases excluded; partial runs and near-duplicates left out.*
 
-The chart leaves out the Estonian cases, so it shows general quality only. The two dense Qwen3.8-27B builds sit at the top at 43–46 tok/s. The three models with 3–4B active parameters run about twice as fast but sit 6 to 14 points lower.
+The chart leaves out the Estonian cases, so it shows general quality only. The three dense Qwen3.8-27B builds sit at the top, at 38–46 tok/s. The three models with 3–4B active parameters run about twice as fast but sit 6 to 14 points lower.
 
-The closest challenger was HauhauCS's Qwen3.8-27B Uncensored Aggressive, another uncensored build of the same base. It passed 282 of 291 graded runs and 40 of 45 in Estonian, one short on each. But it generated 43 tok/s against production's 46, so it was a twin rather than an upgrade, and a twin is not worth a switch.
+The only model to score higher was DavidAU's Qwen3.8-27B Turbo-Brilliance 50X, a reasoning finetune of the same base. It passed 284 graded runs against production's 283, 42 of 45 in Estonian against 41, and 118 of 141 with thinking off against 113. But it generated 38 tok/s against 46, and 53 against 65 on tool-call JSON, and as a build that is not uncensored it refused one of the 11 harmless edgy requests. One graded run is within the noise of three runs per case, so a fifth slower is not worth it.
+
+The closest uncensored challenger was HauhauCS's Qwen3.8-27B Uncensored Aggressive, another uncensored build of the same base. It passed 282 of 291 graded runs and 40 of 45 in Estonian, one short on each. But it generated 43 tok/s against production's 46, so it was a twin rather than an upgrade, and a twin is not worth a switch.
 
 Huihui's Coder390 EfficientThink, a community coding finetune of the same base, passed 273, and more than half of its misses were in Estonian. Its EfficientThink training does what the name promises: it writes shorter reasoning and never ran out of tokens, and its IQ3\_S quant needs 2.5 GB less memory. That does not make up for the quality gap.
 
@@ -269,6 +272,7 @@ The AWQ build answered the side-by-side llama.cpp vs vLLM question. [twolven's b
 - **Two slots beat one big one.** With a single 128k slot, every switch between conversations threw away the cached prompt. The next turn then re-read 8,000 to 22,000 tokens, about 9 seconds of dead time. Two slots let two conversations keep their caches, and a follow-up starts in about 1 second. The cost is sharing: when both slots are busy, each runs at about 38 tok/s instead of 47, or 69 tok/s together.
 - **Quantize the cache before the context.** A 4-bit KV cache is what makes 2 × 128k fit. Shrinking the context is a worse trade, because Hermes needs at least 128k tokens and uses them.
 - **The built-in draft head is free speed.** Multi-token prediction (MTP) took the 27B from 25 to 41 tok/s on one card, about 1.65 times faster, for 1.2 GB of extra memory. Adding n-gram drafting on top made it 15 to 20% slower: MTP already guessed nearly all the repetitive JSON, so the extra guesses only cost verification time.
+- **Long context slows decoding.** With the same 400-word answer, production generated 45 tok/s after a short prompt, 39 tok/s after 30,000 tokens of context and 26.5 tok/s after 90,000. MTP acceptance barely moved (56%, 56%, 51%). Reading a fresh 90,000-token prompt takes about 95 seconds, which is one more reason to keep each conversation's cache.
 - **Memory has hidden line items.** Weights and cache are not the whole bill. Each card also needs about 2.8 GB of compute buffer. Gemma 4 31B QAT Uncensored (Q4\_K\_M) looked like it would fit, but ran out of memory in five different configurations once its separate draft model was added. Without the draft model it fit, but generated only 19 tok/s.
 - **Tokens per second is not everything.** The previous production model, Qwen3.6-35B-A3B heretic, a mixture of experts with 3B active parameters, generated 137 tok/s against the dense 27B's 40. After the switch the median real request went from 2.3 to 8.6 seconds, even though the 27B was more accurate. Short everyday turns reward raw speed.
 - **Speed per token is not speed per answer.** Fast mixture-of-experts models wrote up to five times as many tokens as the dense incumbent, and Gemma 4 26B took twice as long to finish the suite. What matters is how long a real answer takes, and only live traffic shows that.
