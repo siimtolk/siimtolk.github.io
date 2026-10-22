@@ -1,0 +1,11 @@
+title: Siim Tolk
+description: Notes on running local LLMs and AI agents at home.
+url: https://siimtolk.github.io
+author: Siim Tolk
+theme: minima
+plugins:
+  - jekyll-seo-tag
+minima:
+  social_links:
+    github: siimtolk
+header_pages: []
