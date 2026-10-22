@@ -1,11 +1,13 @@
 ---
-layout: page
+layout: post
 title: "I let an AI agent test local LLMs while I sleep"
 description: "An AI agent tested 17 new open-weight models on my home server overnight. None beat the Qwen3.8-27B my assistant already runs."
-image: /llm-testing-overnight/chart.png
-permalink: /llm-testing-overnight/
+date: 2026-10-22
+image: /assets/img/llm-testing-overnight/chart.png
+tags: [Local LLM, LLM evaluation, AI agents]
+redirect_from:
+  - /llm-testing-overnight/
 ---
-
 
 Every week a dozen new open-weight models claim to beat the last one. I wanted to know which of them could actually replace the model my personal assistant runs on, so I built a pipeline that finds candidates, tests them overnight and sends me a verdict over breakfast. Over the past two weeks it has tested seventeen models, and none has beaten the incumbent, an uncensored build of Qwen3.8-27B. The closest came within one graded run of it and still lost on speed. The code, the test suite and every result are on GitHub: [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
 
@@ -189,7 +191,7 @@ The incumbent is [Qwen3.8-27B Heretic Abliterated "RVN"](https://huggingface.co/
 
 *Table 6. Production against every challenger.*
 
-![Quality vs speed: graded runs passed without the Estonian cases against generation speed](chart.png)
+![Quality vs speed: graded runs passed without the Estonian cases against generation speed](/assets/img/llm-testing-overnight/chart.png)
 
 *Figure 1. Quality vs speed. Estonian cases excluded; partial runs and near-duplicates left out.*
 

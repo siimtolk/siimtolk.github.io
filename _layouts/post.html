@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{% assign words = content | strip_html | number_of_words %}
+<article class="post">
+  <header class="post-header wrap narrow">
+    {% if page.tags.size > 0 %}<p class="tags">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    <p class="meta">{{ site.author.name }} · {{ page.date | date: "%-d %B %Y" }} · {{ words | divided_by: 220 | plus: 1 }} min read</p>
+  </header>
+  <div class="post-body wrap narrow">
+    {{ content }}
+  </div>
+  <footer class="post-footer wrap narrow">
+    <p>Thanks for reading. More in <a href="{{ '/articles/' | relative_url }}">Articles</a>, or follow via <a href="{{ '/feed.xml' | relative_url }}">RSS</a>.</p>
+  </footer>
+</article>

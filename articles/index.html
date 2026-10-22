@@ -1,0 +1,12 @@
+---
+layout: default
+title: Articles
+permalink: /articles/
+---
+<section class="wrap list-page">
+  <h1>Articles</h1>
+  <p class="hero-sub">Everything I've written, newest first.</p>
+  <div class="cards">
+  {% for post in site.posts %}{% include article-card.html post=post %}{% endfor %}
+  </div>
+</section>

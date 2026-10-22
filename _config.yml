@@ -1,11 +1,22 @@
 title: Siim Tolk
-description: Notes on running local LLMs and AI agents at home.
+tagline: Local LLMs, AI agents and the home server they run on
+description: Notes from running open-weight models and AI agents on my own hardware.
 url: https://siimtolk.github.io
-author: Siim Tolk
-theme: minima
+author:
+  name: Siim Tolk
+github_username: siimtolk
+lang: en
+permalink: /articles/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
-minima:
-  social_links:
-    github: siimtolk
-header_pages: []
+  - jekyll-sitemap
+  - jekyll-redirect-from
+feed:
+  path: feed.xml
+exclude:
+  - README.md
