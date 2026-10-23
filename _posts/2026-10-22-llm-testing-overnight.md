@@ -144,7 +144,7 @@ So is thinking off worth using? For production, yes, on narrow jobs. Its median 
 
 It loses where the model has to stop and check something:
 
-- **Asking before acting:** "Send a message to Max" was sent at once, with made-up text, in all three runs.
+- **Asking before acting:** "Send a message to Mart" was sent at once, with made-up text, in all three runs.
 - **Typos:** "turn of the kitchn lights" failed 1 of 3 runs: the model turned the lights on.
 - **Estonian tool calls:** "Pane elutoa tuli 50% peale" (set the living-room light to 50%) got no tool call in any run.
 - **Grammar and counting:** Estonian case forms, numbers in words, an acrostic and a word limit.
