@@ -115,13 +115,13 @@ There is no separate thinking budget. The 6,000-token limit is the only hard cap
 
 Why low? With no effort set, Qwen3.8's template defaults to "xhigh" and asks the model to validate assumptions and weigh alternatives. That is too slow for reminders and quick questions, so production runs at low, and a client can ask for more per request. The template accepts only xhigh, medium and low. Sending "high" returns an error, which is worth knowing before you copy settings from one model to another.
 
-At low effort production stays well inside the limit. Its median graded run used 265 tokens, and only 3 of 291 runs hit 6,000, all of them code tasks. One edgy prompt also hit its 2,000 cap. With thinking off the median run drops to 51 tokens and the longest to 364.
+At low effort production stays well inside the limit. Its median graded run used 264 tokens, and only 2 of 291 runs hit 6,000, both on the same code task. One edgy prompt also hit its 2,000 cap. With thinking off the median run drops to 51 tokens and the longest to 663.
 
 Thinking off saves time on every model but one, and costs most of them accuracy. The second pass covers the 47 everyday cases, 141 runs per model:
 
 | Model | Tokens, thinking on → off | Time, on → off | Runs passed, on → off |
 | --- | --- | --- | --- |
-| Qwen3.8-27B RVN (production) | 29k → 9k | 10.5 → 4.6 min | 135 → 116 |
+| Qwen3.8-27B RVN (production) | 29k → 11k | 9.8 → 4.5 min | 137 → 113 |
 | Coder390 EfficientThink (nerkyor) | 25k → 16k | 11.3 → 7.3 min | 131 → 116 |
 | Huihui Coder390 (retest) | 29k → 8k | 9.7 → 3.4 min | 127 → 115 |
 | Gemma 4 31B | 56k → 5k | 67 → 6.4 min | 132 → 118 |
@@ -131,25 +131,25 @@ Thinking off saves time on every model but one, and costs most of them accuracy.
 
 *Table 5. Thinking on vs off, 47 everyday cases (141 runs).*
 
-Muse Glimmer is the exception because its template ignores the switch and it reasons anyway. MiniCPM is the only model that got better with thinking off (by 20 test runs). It never hit the token limit in these cases. Instead, with thinking on it often thought briefly and then returned an empty reply: all three runs of the exact-reply and Estonian-reply cases came back blank. Thinking off fixed most of those, and it stopped sending messages without asking first. The Qwen models lost 12 to 19 runs, mostly in tool use, instruction rules and Estonian.
+Muse Glimmer is the exception because its template ignores the switch and it reasons anyway. MiniCPM is the only model that got better with thinking off (by 20 test runs). It never hit the token limit in these cases. Instead, with thinking on it often thought briefly and then returned an empty reply: all three runs of the exact-reply and Estonian-reply cases came back blank. Thinking off fixed most of those, and it stopped sending messages without asking first. The Qwen models lost 12 to 24 runs, mostly in tool use, instruction rules and Estonian.
 
 On single cases the picture is less tidy. Production used more tokens with thinking off on 2 of the 47 cases, and nerkyor's Coder390 on 3, because the model worked the problem out in its visible answer instead. The second pass leaves out the hard puzzles, so the suite cannot say how often that happens on harder questions. In a quick check of two requests per setting, production answered one counting puzzle in about 800 tokens with thinking off, against about 550 at low effort.
 
 So is thinking off worth using? For production, yes, on narrow jobs. Its median answer takes a quarter to two thirds of the time, with no loss on these:
 
-- **Grading quiz answers:** 18 of 18 either way, 1.6 s per answer instead of 2.4 s.
+- **Grading quiz answers:** 18 of 18 either way, 1.3 s per answer instead of 1.9 s.
 - **Simple English tool calls:** lights, weather, shopping, timers, calendar and three tools at once all passed 3 of 3.
-- **Fixed-format text:** the WhatsApp brief layout, staying silent, exact replies, plain text and three bullets all passed 3 of 3, in under a second.
+- **Fixed-format text:** staying silent, exact replies, plain text and three bullets all passed 3 of 3, in under a second. The WhatsApp brief layout passed 2 of 3: one run dropped the outlet names after the links.
 - **Simple extraction and Estonian replies:** invoices, file names, log lines, Estonian summaries and weather all passed 3 of 3.
 
 It loses where the model has to stop and check something:
 
-- **Asking before acting:** "Send a message to Max" was sent at once, with made-up or empty text, in all three runs.
-- **Typos:** "turn of the kitchn lights" failed 2 of 3 runs: once the model searched the web for how to turn lights on, once it turned them on.
+- **Asking before acting:** "Send a message to Max" was sent at once, with made-up text, in all three runs.
+- **Typos:** "turn of the kitchn lights" failed 1 of 3 runs: the model turned the lights on.
 - **Estonian tool calls:** "Pane elutoa tuli 50% peale" (set the living-room light to 50%) got no tool call in any run.
 - **Grammar and counting:** Estonian case forms, numbers in words, an acrostic and a word limit.
 
-The assistant still runs every request with thinking on. A good split would be thinking off for quiz grading and fixed-format briefs, and thinking on for anything that acts in the world or speaks Estonian.
+The assistant still runs every request with thinking on. A good split would be thinking off for quiz grading and short fixed-format replies, and thinking on for anything that acts in the world or speaks Estonian.
 
 The same settings land differently on other models, because each template decides what "low" means. Gemma 4 26B ran out of tokens 20 times at the same limit. Muse Glimmer's template ignores the thinking-off switch and reasons anyway, at about three times the tokens, so its thinking-off score cannot be compared with production's.
 
