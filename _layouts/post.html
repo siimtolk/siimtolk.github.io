@@ -7,7 +7,7 @@ layout: default
     {% if page.tags.size > 0 %}<p class="tags">{% for t in page.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
     <h1>{{ page.title }}</h1>
     {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
-    <p class="meta">{{ site.author.name }} · {{ page.date | date: "%-d %B %Y" }} · {{ words | divided_by: 220 | plus: 1 }} min read</p>
+    <p class="meta">{{ site.author.name }} · {{ page.date | date: "%-d %B %Y" }}{% if page.updated %} (updated {{ page.updated | date: "%-d %B %Y" }}){% endif %} · {{ words | divided_by: 220 | plus: 1 }} min read</p>
   </header>
   <div class="post-body wrap narrow">
     {{ content }}
