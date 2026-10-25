@@ -34,6 +34,15 @@ The suite is the one from the first article: 97 cases from what my assistant rea
 
 capy-flash is an engine, not a model, so it needs weights in its own `.ninfer` format. I used Feyd89's QUASAR-QAT NVFP4 artifact: 17.4 GB, stock Qwen3.8-27B with quantization-aware 4-bit projections, the MTP draft head and vision included. It is not uncensored.
 
+Versions and setup:
+
+- capy-flash v0.7.4 (commit 3193faf, prebuilt Linux x86_64 binaries), profile `27b` through `serve-tp2.sh`, MTP with 3 draft tokens, INT8 KV cache. The repository has since moved on to v0.7.5.
+- Weights: Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer, a `.ninfer` v3 artifact.
+- Production baseline: llama.cpp build 11707 (commit 1268edac5), RVN Qwen3.8-27B in IQ4_XS with MTP, two 128k slots, low reasoning effort.
+- vLLM column: `vllm/vllm-openai:v0.32.0` with Heretic ARA NVFP4, tested on 2026-10-21 with the same suite.
+- Machine: two RTX 5060 Ti 16 GB (the GTX 1660 SUPER in the box is left out), NVIDIA driver 615.71.09, Fedora 44, kernel 7.2.7. The capy-flash binaries are built for Ubuntu 26.04 and ran on Fedora without trouble.
+- Dates: default-thinking run on 2026-10-24 from 19:22, low-effort and speed runs on 2026-10-25 from 04:01. The suite is [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
+
 It came up on the first try at full defaults: 68 seconds to ready (vLLM took 4.5 to 5.5 minutes), one 196,608-token context with an INT8 KV cache, 25.9 GB of VRAM across both cards. The stock profile serves one request at a time; `--max-concurrency 2` makes two requests share the same pool.
 
 The catch is reasoning. Production runs at low reasoning effort, but capy-flash has no server default for it, so out of the box the model thinks in full. A semver prompt took 5,955 tokens at the default and 1,607 with `reasoning_effort: low` in the request. I therefore ran the suite twice, and only the low-effort run is comparable with production. For the thinking-off passes the engine rejects an effort setting together with `enable_thinking: false`, so those requests send no effort.
