@@ -92,6 +92,10 @@ In the two 2-lane columns of Table 1 the speed carries over: 145 tok/s with two 
 
 **The speed is the best I have measured on these cards.** Prose generates 1.7 times faster than production (77 against 46 tok/s) and tool-call JSON 1.9 times (121 against 65). A 30k-token prompt is read 2.4 times faster. Decoding barely slows with context: 78 tok/s after 30,000 tokens and 69 after 90,000, against production's 39 and 26.5. With two requests at once it reaches 148 tok/s, about 2.1 times production. It beats vLLM on every speed row with 4 GB less VRAM, and the graded suite finished in 34.5 minutes instead of 54.5.
 
+![Quality against speed for the models tested on my suite: capy-flash at low effort sits near production's quality at about 1.7 times its speed, with default thinking lower](/assets/img/capy-flash-test/scatter.png)
+
+*Figure 2. The quality-versus-speed chart from [the nightly-testing article](/articles/llm-testing-overnight/), with capy-flash and the vLLM Heretic build added. Graded runs passed exclude the Estonian cases; speed is the median prose generation of a single request.*
+
 **At the default reasoning it would be rejected.** The model thinks until the 6,000-token cap: the code section falls from 21 to 12 of 24 runs, and five of the eleven uncensored questions run out of tokens. Those are token-cap failures, not refusals. A live trial needs low effort on every request, or a thinking budget on the server, which I have not tested.
 
 **The weak spot is chat latency.** In alternating 13k-token conversations, the first follow-up took 4.2 seconds to the first token against production's 1.3. The engine's own cache dump shows why: the follow-up matches the cached prompt for all 12,906 tokens up to the `<think>` tag and then diverges, because the chat template drops the earlier turn's thinking while the cache keeps it. The first follow-up of each conversation therefore reads the whole history again. From the second one on, the cache hits at 99.5% and the first token arrives in 0.27 seconds. `--preserve-thinking` changed nothing, because my benchmark does not send the reasoning back.
