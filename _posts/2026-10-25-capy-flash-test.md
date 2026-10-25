@@ -15,6 +15,8 @@ This weekend an engine called capy-flash showed up on r/LocalLLaMA: a two-GPU te
 
 ## What I tested
 
+The suite is the one from the first article: 97 cases from what my assistant really does, each run three times and graded by code. [What the test measures](/articles/llm-testing-overnight/#what-the-test-measures) lists the areas and what a pass means, and [How much the models may think](/articles/llm-testing-overnight/#how-much-the-models-may-think) explains the reasoning-effort settings, which matter a lot for this engine. Production's numbers are from the same suite, run on production's current llama.cpp build.
+
 capy-flash is an engine, not a model, so it needs weights in its own `.ninfer` format. I used Feyd89's QUASAR-QAT NVFP4 artifact: 17.4 GB, stock Qwen3.8-27B with quantization-aware 4-bit projections, the MTP draft head and vision included. It is not uncensored. Like a vLLM build, it is queued as its own candidate with its own procedure, and the agent only measures; production is never switched, that stays my decision. I started this test by hand at 04:01, outside the night window, and production was down for an hour.
 
 It came up on the first try at full defaults: 68 seconds to ready (vLLM took 4.5 to 5.5 minutes), one 196,608-token context with an INT8 KV cache, 25.9 GB of VRAM across both cards. The stock profile serves one request at a time; `--max-concurrency 2` makes two requests share the same pool.
