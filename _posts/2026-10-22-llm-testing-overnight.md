@@ -3,6 +3,7 @@ layout: post
 title: "Automated nightly LLM testing: an AI agent benchmarks new local models while I sleep"
 description: "An AI agent tested 18 new open-weight models on my home server overnight. None replaced the Qwen3.8-27B my assistant already runs."
 date: 2026-10-22
+updated: 2026-10-25
 image: /assets/img/llm-testing-overnight/chart.png
 tags: [Local LLM, LLM evaluation, AI agents]
 redirect_from:
@@ -210,7 +211,7 @@ Gemma 4 31B started once I dropped its draft model, and its answers came close: 
 
 Muse Glimmer 30B passed 264 and Gemma 4 26B 251. Underdog Saluki 27B, an abliterated finetune of the same Qwen base, comes as a 2-bit IQ2 quant about half the size of production's file. It was not faster (44 tok/s against 46), passed 253 and managed only 28 of 45 in Estonian. Two more never loaded: Ternary Bonsai 2 27B and Offrail 27B ship in custom ternary tensor formats that llama.cpp cannot read.
 
-The largest candidate did not fit at all. 0bserverx's RVN Qwen3.8 Flash-Next, a 125B mixture of experts with 6B active parameters, is 86 GB even at 3-bit (IQ3\_XS), against 32 GB of video memory plus 46 GB of system RAM. It started and answered correctly, but kept reading weights from the SSD: 1.5 tok/s generation and 2.3 tok/s prompt reading, against production's 46 and 1,213. The suite would have taken more than a day, so the agent stopped it and marked the model skipped.
+The largest candidate needed a second try. 0bserverx's RVN Qwen3.8 Flash-Next, a 125B mixture of experts with 6B active parameters, is 86 GB even at 3-bit (IQ3\_XS), against 32 GB of video memory plus 46 GB of system RAM. On the first attempt it started and answered correctly, but kept reading weights from the SSD: 1.5 tok/s generation and 2.3 tok/s prompt reading, against production's 46 and 1,213. The agent stopped it and marked the model skipped. I then upgraded the machine to 78 GB of RAM and ran it by hand. With 30 blocks of experts and a 29 GB embedding table in RAM it ran the whole suite, and passed 268 of 291 graded runs against production's 283. Estonian matched (41 of 45), all 11 edgy prompts were answered, and with reasoning off it passed 114 of 141 against 113. It was slow, though: 15 tok/s on prose and 18 on tool JSON against 46 and 65, 125 tok/s on prompt reading against 1,213, and 20 tok/s for two requests at once against 69. The suite took 4.4 hours instead of one. No gain in speed, context or quality, so rejected.
 
 [JonathanColetti's Qwen3.8-27B Uncensored](https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF) shares production's base, IQ4\_XS quant and built-in MTP head, so its speed matched to the token. It passed 276, and five of its seven misses were Estonian grammar. NVIDIA's Nemotron 3.5 Bolt 74B-A9B, the leaderboard favourite from the start of this article, only comes in a 24 GB form that is mostly 2-bit. [BoldingBuilds' abliterated build](https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-Abliterated-24GB-GGUF) was quick, 59 tok/s and 1,631 tok/s on a 30k prompt, but passed 247 and managed 16 of 45 in Estonian.
 
@@ -290,4 +291,3 @@ This is a personal acceptance test, not a general benchmark. The cases fit one a
 The idea carries over, though. The test cases live in one file, so you can swap in your own and keep the loop, the code grading and the overnight agent. The benchmark talks to any OpenAI-compatible endpoint, and the serving side is three small commands you can wrap around llama.cpp or vLLM. Code, suite and results: [github.com/siimtolk/local-llm-eval](https://github.com/siimtolk/local-llm-eval).
 
 The most useful part is not the scores. It is that a new model now costs me nothing but a morning message to read. If a release is good, I hear about it the next day. Otherwise the agent says why and moves on to the next one.
-
