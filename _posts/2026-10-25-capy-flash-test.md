@@ -32,12 +32,12 @@ The project does not compare itself with vLLM or llama.cpp; its own benchmarks a
 
 The suite is the one from the first article: 97 cases from what my assistant really does, each run three times and graded by code. [What the test measures](/articles/llm-testing-overnight/#what-the-test-measures) lists the areas and what a pass means, and [How much the models may think](/articles/llm-testing-overnight/#how-much-the-models-may-think) explains the reasoning-effort settings, which matter a lot for this engine. Production's numbers are from the same suite, run on production's current llama.cpp build.
 
-capy-flash is an engine, not a model, so it needs weights in its own `.ninfer` format. I used Feyd89's QUASAR-QAT NVFP4 artifact: 17.4 GB, stock Qwen3.8-27B with quantization-aware 4-bit projections, the MTP draft head and vision included. It is not uncensored.
+The weights are Feyd89's QUASAR-QAT NVFP4 build: stock Qwen3.8-27B with quantization-aware 4-bit projections, the MTP draft head and vision included. It is not uncensored.
 
 Versions and setup:
 
 - capy-flash v0.7.4 (commit 3193faf, prebuilt Linux x86_64 binaries), profile `27b` through `serve-tp2.sh`, MTP with 3 draft tokens, INT8 KV cache. The repository has since moved on to v0.7.5.
-- Weights: Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer, a `.ninfer` v3 artifact.
+- Weights: Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer (`.ninfer` v3, 17.4 GB).
 - Production baseline: llama.cpp build 11707 (commit 1268edac5), RVN Qwen3.8-27B in IQ4_XS with MTP, two 128k slots, low reasoning effort.
 - vLLM column: `vllm/vllm-openai:v0.32.0` with Heretic ARA NVFP4, tested on 2026-10-21 with the same suite.
 - Machine: two RTX 5060 Ti 16 GB (the GTX 1660 SUPER in the box is left out), NVIDIA driver 615.71.09, Fedora 44, kernel 7.2.7. The capy-flash binaries are built for Ubuntu 26.04 and ran on Fedora without trouble.
