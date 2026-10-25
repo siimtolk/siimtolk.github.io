@@ -80,6 +80,23 @@ Per section of the graded suite (passed of runs):
 
 *Table 2. Graded sections. Out-of-tokens failures: 2 for production, 3 at effort low, 14 at default thinking.*
 
+## Production's setup: two lanes in a 256k pool
+
+Production runs two independent 128k slots, so I repeated the speed part with the same shape: `--max-context 262144 --max-concurrency 2`, a 256k pool for two lanes. It started on the first try, with 1.63 GiB free per card (2.81 GiB at 196k) and 28.3 GB of VRAM in total instead of 25.9.
+
+| | llama.cpp (production, 2 x 128k) | capy-flash, 196k pool, 2 lanes | capy-flash, 256k pool, 2 lanes |
+| --- | --- | --- | --- |
+| Prose / tool JSON (tok/s) | 46.0 / 65.5 | 82.2 / not run | 78.3 / 121.3 |
+| 30k prompt processing (tok/s) | 1213 | not run | 2851 |
+| Decode after 30k / 90k context (tok/s) | 39.0 / 26.5 | not run | 76.0 / 68.2 |
+| Two requests at once (tok/s) | 69 | 147.8 | 145.4 |
+| First turn / follow-up, first token (s) | 10.3 / 1.3 | 4.1 / 2.2 | 4.1 / 4.2 |
+| VRAM (GB) | 25.5 | 25.9 | 28.3 |
+
+*Table 3. Two lanes in the capy-flash profile, against production's two slots. Speed pass only, at low reasoning effort.*
+
+The speed carries over: 145 tok/s with two requests at once, 2.1 times production, and the long-context decoding is unchanged. So the engine can serve the same two-conversation shape as production. The follow-up time did not improve. With the 196k pool the follow-ups averaged 2.2 s, and with 256k they took 4.2 s, the same as with one lane. I ran this once, so I cannot say whether the difference is noise or an effect of the larger pool; the first-follow-up cache miss explained above is the likely cause either way.
+
 ## What it showed
 
 **Quality is close to production at low effort.** 280 graded runs against 283, 40 Estonian cases against 41. The misses were two remembered preferences in the agent section, one release name in extraction, two code cases (three runs out of tokens) and three Estonian cases. With thinking off the suite scored 117 and 120 of 141 in two runs, against production's 113, and Estonian was better too (33 against 29).
