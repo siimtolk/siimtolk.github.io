@@ -49,20 +49,20 @@ The catch is reasoning. Production runs at low reasoning effort, but capy-flash 
 
 ## The numbers
 
-|  | llama.cpp (production) | capy-flash, effort low | capy-flash, default thinking | vLLM, Heretic ARA NVFP4 |
-| --- | --- | --- | --- | --- |
-| Context | 2 x 128k | 1 x 196k | 1 x 196k | 2 x 128k |
-| Graded / Estonian | 283/291, 41/45 | 280/291, 40/45 | 272/291, 41/45 | 278/291, 37/45 |
-| Uncensored / thinking off | 11/11, 113/141 | 10/11, 117 and 120/141 | 6/11, not run | 11/11, 115/141 |
-| Graded suite (min) | 54.5 | 34.5 | 52.4 | not run |
-| Prose / tool JSON (tok/s) | 46.0 / 65.5 | 77.0 / 121.5 | 78.3 / 120.0 | 59.1 / 89.1 |
-| 30k prompt processing (tok/s) | 1213 | 2855 | 2833 | 1161 |
-| Decode after 30k / 90k context (tok/s) | 39.0 / 26.5 | 78.3 / 68.8 | 72.2 / 76.3 | not run |
-| Two requests at once (tok/s) | 69 | 148 | 88 | 116.6 |
-| Follow-up time to first token (s) | 1.3 | 4.2 (2.2) | 4.2 | 2.9 |
-| VRAM (GB) | 25.5 | 25.9 | 25.9 | 30.2 |
+|  | llama.cpp (production) | capy-flash, effort low | capy-flash, effort low, 2 lanes, 196k | capy-flash, effort low, 2 lanes, 256k | capy-flash, default thinking | vLLM, Heretic ARA NVFP4 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Context | 2 x 128k | 1 lane, 196k | 2 lanes, 196k pool | 2 lanes, 256k pool | 1 lane, 196k | 2 x 128k |
+| Graded / Estonian | 283/291, 41/45 | 280/291, 40/45 | not run | not run | 272/291, 41/45 | 278/291, 37/45 |
+| Uncensored / thinking off | 11/11, 113/141 | 10/11, 117 and 120/141 | not run | not run | 6/11, not run | 11/11, 115/141 |
+| Graded suite (min) | 54.5 | 34.5 | not run | not run | 52.4 | not run |
+| Prose / tool JSON (tok/s) | 46.0 / 65.5 | 77.0 / 121.5 | 82.2 / not run | 78.3 / 121.3 | 78.3 / 120.0 | 59.1 / 89.1 |
+| 30k prompt processing (tok/s) | 1213 | 2855 | not run | 2851 | 2833 | 1161 |
+| Decode after 30k / 90k context (tok/s) | 39.0 / 26.5 | 78.3 / 68.8 | not run | 76.0 / 68.2 | 72.2 / 76.3 | not run |
+| Two requests at once (tok/s) | 69 | 88 (the second waits) | 147.8 | 145.4 | 88 (the second waits) | 116.6 |
+| Follow-up time to first token (s) | 1.3 | 4.2 | 2.2 | 4.2 | 4.2 | 2.9 |
+| VRAM (GB) | 25.5 | 25.9 | 25.9 | 28.3 | 25.9 | 30.2 |
 
-*Table 1. capy-flash vs llama.cpp and vLLM on the same two cards. The 148 tok/s and the 2.2 s follow-up (the figure in brackets) come from `--max-concurrency 2`; the default profile queues the second request, which starts after 6.1 s.*
+*Table 1. capy-flash vs llama.cpp and vLLM on the same two cards. The 2-lane columns use `--max-concurrency 2` and ran the speed part only, so their quality rows are empty; the 256k column has the same shape as production's two 128k slots. The stock profile has one lane, so a second request starts after 6.1 s.*
 
 Per section of the graded suite (passed of runs):
 
@@ -84,18 +84,7 @@ Per section of the graded suite (passed of runs):
 
 Production runs two independent 128k slots, so I repeated the speed part with the same shape: `--max-context 262144 --max-concurrency 2`, a 256k pool for two lanes. It started on the first try, with 1.63 GiB free per card (2.81 GiB at 196k) and 28.3 GB of VRAM in total instead of 25.9.
 
-| | llama.cpp (production, 2 x 128k) | capy-flash, 196k pool, 2 lanes | capy-flash, 256k pool, 2 lanes |
-| --- | --- | --- | --- |
-| Prose / tool JSON (tok/s) | 46.0 / 65.5 | 82.2 / not run | 78.3 / 121.3 |
-| 30k prompt processing (tok/s) | 1213 | not run | 2851 |
-| Decode after 30k / 90k context (tok/s) | 39.0 / 26.5 | not run | 76.0 / 68.2 |
-| Two requests at once (tok/s) | 69 | 147.8 | 145.4 |
-| First turn / follow-up, first token (s) | 10.3 / 1.3 | 4.1 / 2.2 | 4.1 / 4.2 |
-| VRAM (GB) | 25.5 | 25.9 | 28.3 |
-
-*Table 3. Two lanes in the capy-flash profile, against production's two slots. Speed pass only, at low reasoning effort.*
-
-The speed carries over: 145 tok/s with two requests at once, 2.1 times production, and the long-context decoding is unchanged. So the engine can serve the same two-conversation shape as production. The follow-up time did not improve. With the 196k pool the follow-ups averaged 2.2 s, and with 256k they took 4.2 s, the same as with one lane. I ran this once, so I cannot say whether the difference is noise or an effect of the larger pool; the first-follow-up cache miss explained above is the likely cause either way.
+In the two 2-lane columns of Table 1 the speed carries over: 145 tok/s with two requests at once, 2.1 times production, and the long-context decoding is unchanged. So the engine can serve the same two-conversation shape as production. The follow-up time did not improve. With the 196k pool the follow-ups averaged 2.2 s, and with 256k they took 4.2 s, the same as with one lane. I ran this once, so I cannot say whether the difference is noise or an effect of the larger pool; the first-follow-up cache miss explained above is the likely cause either way.
 
 ## What it showed
 
