@@ -266,6 +266,35 @@ Heretic ARA was the fastest: 1.3 times production's prose speed and 1.7 times it
 
 The AWQ build answered the side-by-side llama.cpp vs vLLM question. [twolven's build](https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP) of the HauhauCS fine-tune had passed 282 as a GGUF on llama.cpp that afternoon. On vLLM it passed 272, and Estonian fell from 40 to 34 of 45, mostly on word forms. It generated faster, but read a 30k-token prompt at 752 tok/s against production's 1,213. Same model, same night: the conversion for vLLM cost ten graded runs. So production stays on llama.cpp, and vLLM stays in the nightly test until a build matches it on quality.
 
+## A third engine: capy-flash
+
+The newest candidate was not a model but an engine. capy-flash is a two-GPU tensor-parallel inference server for Qwen3.8-27B on RTX 50 cards. It runs its own `.ninfer` weight files, so it needs a build made for it: I used Feyd89's QUASAR-QAT NVFP4 artifact, 17.4 GB, stock Qwen3.8-27B with quantization-aware 4-bit projections and the MTP head included. Like the vLLM builds it is a separate candidate with its own procedure, and the agent again only measures; production is not switched. I started this test by hand at 04:01, outside the window, and production was down for an hour.
+
+It came up on the first try at full defaults, in 68 seconds (vLLM took 4.5 to 5.5 minutes), with one 196,608-token context in 25.9 GB. The catch is reasoning. Production runs at low reasoning effort; capy-flash has no server default for it, so out of the box the model thinks in full. I ran the suite twice, once at the server default and once with `reasoning_effort: low` sent on every request. Only the second is comparable with production.
+
+|  | llama.cpp (production) | capy-flash, effort low | capy-flash, default thinking | vLLM, Heretic ARA NVFP4 |
+| --- | --- | --- | --- | --- |
+| Context | 2 x 128k | 1 x 196k | 1 x 196k | 2 x 128k |
+| Graded / Estonian | 283/291, 41/45 | 280/291, 40/45 | 272/291, 41/45 | 278/291, 37/45 |
+| Uncensored / thinking off | 11/11, 113/141 | 10/11, 117 and 120/141 | 6/11, not run | 11/11, 115/141 |
+| Graded suite (min) | 54.5 | 34.5 | 52.4 | not run |
+| Prose / tool JSON (tok/s) | 46.0 / 65.5 | 77.0 / 121.5 | 78.3 / 120.0 | 59.1 / 89.1 |
+| 30k prompt processing (tok/s) | 1213 | 2855 | 2833 | 1161 |
+| Decode after 30k / 90k context (tok/s) | 39.0 / 26.5 | 78.3 / 68.8 | 72.2 / 76.3 | not run |
+| Two requests at once (tok/s) | 69 | 148 | 88 | 116.6 |
+| Follow-up time to first token (s) | 1.3 | 4.2 (2.2) | 4.2 | 2.9 |
+| VRAM (GB) | 25.5 | 25.9 | 25.9 | 30.2 |
+
+*Table 8. capy-flash vs llama.cpp and vLLM on the same two cards. The 148 tok/s and the 2.2 s follow-up come from `--max-concurrency 2`; the default profile serves one request at a time and queues the second.*
+
+At low effort the quality is close to production: 280 graded runs against 283, and 40 Estonian cases against 41. The speed is the best I have measured on these cards. Prose generates 1.7 times faster than production, prompts are read 2.4 times faster, and decoding barely slows with long context: 69 tok/s after 90,000 tokens against production's 26.5. With two requests at once it reaches 148 tok/s, about 2.1 times production, and it beats vLLM on every speed row with 4 GB less VRAM. The graded suite finished in 34.5 minutes instead of 54.5.
+
+At the server's default reasoning it would have been rejected. The model thinks until the 6,000-token cap: the code section falls from 21 to 12 of 24 runs, and five of the eleven uncensored questions run out of tokens rather than being refused. A live trial would need low effort on every request, or a thinking budget set on the server, which I have not tested.
+
+The weak spot is chat latency. An alternating conversation's follow-up took 4.2 seconds to the first token against production's 1.3. The cause showed up in the engine's own cache dump: the follow-up matches the cached prompt for all 12,906 tokens up to the `<think>` tag and then diverges, because the chat template drops the earlier turn's thinking while the cache keeps it. The first follow-up of each conversation therefore re-reads the whole history. From the second one on, the cache hits at 99.5% and the first token arrives in 0.27 seconds. The weights are also stock Qwen3.8, not uncensored, and one question already ran out of tokens.
+
+Verdict: tested, worth a live trial. It meets every point of the bar I set for it, and I will decide whether to switch. For a chat where answers are long, the speed pays off; where short follow-ups dominate, production's 1.3 seconds still wins.
+
 ## What I learned
 
 - **Split the model, don't duplicate it.** On one card the 27B ran at 44 tok/s and read prompts at 806 tok/s. Split over two cards, generation stayed at 44 tok/s and prompt reading rose to 1,100 tok/s, because both cards share the work. The second card added context and faster prompts at no cost in generation speed.
