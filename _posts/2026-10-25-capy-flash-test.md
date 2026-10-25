@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "One engine, two cards: testing capy-flash against llama.cpp and vLLM"
+title: "capy-flash on two RTX 5060 Ti: 1.7 times faster than llama.cpp, with slower follow-ups"
 description: "capy-flash ran my Qwen3.8-27B suite 1.7 times faster than llama.cpp on two RTX 5060 Ti at nearly the same quality, but its follow-up replies start three times slower."
 date: 2026-10-25
 image: /assets/img/capy-flash-test/chart.png
@@ -12,6 +12,21 @@ This weekend an engine called capy-flash showed up on r/LocalLLaMA: a two-GPU te
 ![Six panels comparing llama.cpp, capy-flash at low and default reasoning effort, and vLLM: graded runs passed, Estonian cases passed, prose speed, two requests at once, 30k prompt speed and follow-up latency](/assets/img/capy-flash-test/chart.png)
 
 *Figure 1. capy-flash against llama.cpp and vLLM on the same two cards and the same suite. The two quality panels start at 240 and 30, not at zero.*
+
+## What capy-flash is
+
+capy-flash is not a general serving engine like vLLM or llama.cpp. It is a purpose-built server for two models, Qwen3.8-27B (dense) and Qwen3.8-Flash-Next (a 125B mixture of experts, with the experts that do not fit in VRAM computed on the CPU). It runs them on one or two 16 GB RTX 50-series (Blackwell) cards under Linux, and it exposes an OpenAI- and Anthropic-compatible API, so tools such as Claude Code and Codex CLI can talk to it directly. The code is Apache-2.0.
+
+Its lineage explains the differences. It began as ninfer-tp2, a fork of [NInfer](https://github.com/Neroued/ninfer), a from-scratch C++/CUDA engine written for a single RTX 5090 that explicitly leaves multi-GPU out of scope. The fork added tensor parallelism over two cards, and it works without peer-to-peer copies: my 5060 Ti pair has no P2P link, and the engine stages the transfers through host memory. It was renamed capy-flash at v0.5.0, and the author says very little of NInfer is left. The binaries still carry the old `ninfer` prefix.
+
+What that means in practice, compared with vLLM:
+
+- **Weights come in its own format.** vLLM loads ordinary safetensors builds (NVFP4, AWQ, GPTQ) of many models. capy-flash runs `.ninfer` artifacts that someone has converted for it, such as Feyd89's QUASAR-QAT build below, so the list of usable models is short.
+- **It is tuned for one box.** The author builds and measures everything on two RTX 5070 Ti, and the README says the engine is validated there without P2P. My 5060 Ti numbers are a different card, and the author's announcement says other people have posted results from other cards in the repository's issues.
+- **It serves few requests at a time.** The documented profiles run with `--max-concurrency 1`, though the server accepts up to eight, and vLLM's scheduler is built for many requests at once. The stock 27B profile queues a second request, which matters in the results below.
+- **It keeps conversations in memory.** A prefix cache works across turns, and idle conversations move to host RAM and optionally to disk. This is what the follow-up numbers below depend on.
+
+The project does not compare itself with vLLM or llama.cpp; its own benchmarks are against Strata, another engine for the same cards. The comparison with vLLM in this article is mine, from the same suite and the same two cards. Sources: the [capy-flash repository](https://github.com/ValerioDolci/capy-flash) and its [announcement on r/LocalLLaMA](https://www.reddit.com/r/LocalLLaMA/comments/1xe9yyg/capyflash_v074_where_my_twogpu_qwen38_engine_is/).
 
 ## What I tested
 

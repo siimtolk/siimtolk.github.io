@@ -268,7 +268,7 @@ The AWQ build answered the side-by-side llama.cpp vs vLLM question. [twolven's b
 
 ## A third engine: capy-flash
 
-After vLLM I tested a third engine, capy-flash, on the same cards and the same suite. At low reasoning effort it passed 280 graded runs against production's 283 while generating 1.7 times faster, but its follow-up replies start 3 times slower. It has its own article: [One engine, two cards: testing capy-flash against llama.cpp and vLLM](/articles/capy-flash-test/).
+After vLLM I tested a third engine, capy-flash, on the same cards and the same suite. At low reasoning effort it passed 280 graded runs against production's 283 while generating 1.7 times faster, but its follow-up replies start 3 times slower. It has its own article: [capy-flash on two RTX 5060 Ti: 1.7 times faster than llama.cpp, with slower follow-ups](/articles/capy-flash-test/).
 
 ## What I learned
 
