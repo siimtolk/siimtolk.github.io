@@ -7,6 +7,16 @@ layout: default
     <h1>Notes from running open-weight models and AI agents on my own hardware.</h1>
   </div>
 </section>
+{% assign board = site.data.results %}
+{% if board %}{% assign latest = board.models | where: "latest", true | sort: "started" | last %}{% assign setups = board.models | where: "latest", true | size %}
+<section class="wrap">
+  <a class="live-banner" href="{{ '/results/' | relative_url }}">
+    <span class="live-dot" aria-hidden="true"></span>
+    <span class="live-text"><strong>Live results</strong> · {{ setups }} local model and engine setups on my own suite, updated after every test. Latest: {{ latest.name }}, {{ latest.date | date: "%-d %B" }}.</span>
+    <span class="live-go">See the board →</span>
+  </a>
+</section>
+{% endif %}
 <section class="wrap">
   <div class="section-head"><h2>Latest articles</h2><a href="{{ '/articles/' | relative_url }}">All articles →</a></div>
   <div class="cards">
