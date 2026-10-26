@@ -26,11 +26,13 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; font-size: 17px; }
 .logo { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--accent);
   color: #fff; font-size: 13px; letter-spacing: .5px; }
-nav { display: flex; gap: 22px; }
+nav { display: flex; align-items: center; gap: 22px; }
 nav a { color: var(--ink-2); text-decoration: none; font-size: 15px; }
 nav a:hover { color: var(--accent-ink); }
-nav a.nav-live, nav a.nav-live:hover { background: #f5c518; color: #1a1a19; font-weight: 600; padding: 6px 12px; border-radius: 8px; }
-nav a.nav-live:hover { background: #ffd43b; }
+nav a.nav-live { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; padding: 5px 13px 5px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); line-height: 1.4; transition: border-color .15s ease, box-shadow .15s ease; }
+nav a.nav-live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #f5c518; box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.28); animation: live-pulse 1.8s ease-in-out infinite; }
+nav a.nav-live:hover { color: var(--ink); border-color: #f5c518; box-shadow: 0 2px 10px rgba(245, 197, 24, 0.3); }
+@media (prefers-reduced-motion: reduce) { nav a.nav-live::before { animation: none; } }
 
 /* hero + lists */
 .hero { padding: 72px 0 40px; }
