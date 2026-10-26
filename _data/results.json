@@ -1,10 +1,85 @@
 {
- "generated": "2026-10-26 14:15 UTC",
+ "generated": "2026-10-26 18:59 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
+   "label": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
+   "url": null,
+   "name": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "short": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "title": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "backend": "vLLM",
+   "traits": "",
+   "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     46,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 19:53:33",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    110,
+    141
+   ],
+   "minutes": 58.9,
+   "prose": 58.4,
+   "tool_json": 88.6,
+   "prompt_30k": 1174.2,
+   "parallel": 117.2,
+   "followup_ttft": 2.85,
+   "decode_30k": 27.7,
+   "decode_90k": 12.3,
+   "latest": true
+  },
   {
    "key": "exp-20261026-capy-uncensored-2x128k",
    "label": "exp-20261026-capy-uncensored-2x128k",
