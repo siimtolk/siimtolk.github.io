@@ -23,12 +23,7 @@ description: Every local model and engine I test, scored against the one I run e
   <div class="r-legend" id="legend"></div>
   <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover or tap a point for its numbers.</p>
 
-  <h2 class="r-h">Latest result against production</h2>
-  <p class="meta r-lead">Green means better than production, red worse. Differences under 2% are not coloured.</p>
-  <div class="r-scroll"><table id="vs"></table></div>
-
   <h2 class="r-h">All results</h2>
-  <label class="r-check"><input type="checkbox" id="older"> Show earlier runs of the same setup</label>
   <div class="r-scroll"><table id="all"></table></div>
   <p class="meta">Click a column to sort. Graded = passed/runs without Estonian and uncensored; thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total tok/s with two simultaneous requests. A dash means that test was not run for that setup.</p>
 </section>
@@ -124,37 +119,17 @@ description: Every local model and engine I test, scored against the one I run e
     g.addEventListener('click', function () { show(g); });
   });
 
-  // latest vs production
-  var rows = [['Graded runs passed', function (m) { return f1(m.pct) + '%'; }, 'pct', 1],
-    ['Estonian passed', function (m) { return fr(m.estonian); }, null],
-    ['Prose, tok/s', function (m) { return f1(m.prose); }, 'prose', 1],
-    ['Tool JSON, tok/s', function (m) { return f1(m.tool_json); }, 'tool_json', 1],
-    ['30k prompt, tok/s', function (m) { return f1(m.prompt_30k, 0); }, 'prompt_30k', 1],
-    ['Two requests at once, tok/s', function (m) { return f1(m.parallel); }, 'parallel', 1],
-    ['Follow-up first token, s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', -1],
-    ['Decode after 90k context, tok/s', function (m) { return f1(m.decode_90k); }, 'decode_90k', 1]];
-  var vs = '<thead><tr><th></th><th>' + newest.name + '</th><th>' + prod.name + '</th><th>Difference</th></tr></thead><tbody>';
-  rows.forEach(function (r) {
-    var diff = '–', cls = '';
-    if (r[2] && newest[r[2]] != null && prod[r[2]]) {
-      var q = newest[r[2]] / prod[r[2]]; diff = (q >= 1 ? '+' : '−') + Math.abs((q - 1) * 100).toFixed(0) + '%';
-      cls = Math.abs(q - 1) < 0.02 ? '' : (q > 1) === (r[3] > 0) ? 'good' : 'bad';
-    }
-    vs += '<tr><th>' + r[0] + '</th><td>' + r[1](newest) + '</td><td>' + r[1](prod) + '</td><td class="' + cls + '">' + diff + '</td></tr>';
-  });
-  $('vs').innerHTML = vs + '</tbody>';
-
   // all results, sortable
   var cols = [['Setup', function (m) { return m.name; }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
     ['Graded', function (m) { return f1(m.pct) + '% <small>' + fr(m.graded) + '</small>'; }, 'pct', 'n'],
     ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n'],
     ['Prose', function (m) { return f1(m.prose); }, 'prose', 'n'], ['Tool JSON', function (m) { return f1(m.tool_json); }, 'tool_json', 'n'],
     ['30k prompt', function (m) { return f1(m.prompt_30k, 0); }, 'prompt_30k', 'n'], ['2 at once', function (m) { return f1(m.parallel); }, 'parallel', 'n'],
-    ['Follow-up s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', 'n'], ['Suite min', function (m) { return f1(m.minutes, 0); }, 'minutes', 'n']];
+    ['Follow-up s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', 'n'], ['Test duration, min', function (m) { return f1(m.minutes, 0); }, 'minutes', 'n']];
   var sortKey = 'date', sortDir = -1;
   var val = function (m, k) { return k === 'est' ? (m.estonian ? m.estonian[0] : null) : k === 'nt' ? (m.nothink ? m.nothink[0] : null) : m[k]; };
   function render() {
-    var list = M.filter(function (m) { return m.latest || $('older').checked; });
+    var list = P.slice();
     list.sort(function (a, b) {
       var x = val(a, sortKey), y = val(b, sortKey);
       if (x == null) return 1; if (y == null) return -1;
@@ -162,7 +137,7 @@ description: Every local model and engine I test, scored against the one I run e
     });
     var h = '<thead><tr>' + cols.map(function (c) { return '<th data-k="' + c[2] + '" class="sortable' + (c[2] === sortKey ? ' on' : '') + '">' + c[0] + (c[2] === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : '') + '</th>'; }).join('') + '</tr></thead><tbody>';
     list.forEach(function (m) {
-      h += '<tr class="' + (m.production ? 'prod' : '') + (m.latest ? '' : ' old') + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">') + c[1](m) + (i ? '</td>' : (m.production ? ' <small>production</small>' : '') + (m.latest ? '' : ' <small>earlier run</small>') + '</th>'); }).join('') + '</tr>';
+      h += '<tr class="' + (m.production ? 'prod' : '') + '' + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">') + c[1](m) + (i ? '</td>' : (m.production ? ' <small>production</small>' : '') + '' + '</th>'); }).join('') + '</tr>';
     });
     $('all').innerHTML = h + '</tbody>';
     Array.prototype.forEach.call(document.querySelectorAll('#all th.sortable'), function (th) {
@@ -171,6 +146,6 @@ description: Every local model and engine I test, scored against the one I run e
       });
     });
   }
-  $('older').addEventListener('change', render); render();
+  render();
 })();
 </script>
