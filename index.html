@@ -11,9 +11,9 @@ layout: default
 {% if board %}{% assign latest = board.models | where: "latest", true | sort: "started" | last %}{% assign setups = board.models | where: "latest", true | size %}
 <section class="wrap">
   <a class="live-banner" href="{{ '/results/' | relative_url }}">
-    <span class="live-dot" aria-hidden="true"></span>
-    <span class="live-text"><strong>Live results</strong> · {{ setups }} local model and engine setups on my own suite, updated after every test. Latest: {{ latest.name }}, {{ latest.date | date: "%-d %B" }}.</span>
-    <span class="live-go">See the board →</span>
+    <span class="live-pill"><span class="live-dot" aria-hidden="true"></span>LIVE</span>
+    <span class="live-text">Latest test: <strong>{{ latest.name }}</strong> · {{ latest.pct | round: 1 }}% quality, {{ latest.prose | round }} tok/s</span>
+    <span class="live-go">Live results →</span>
   </a>
 </section>
 {% endif %}
