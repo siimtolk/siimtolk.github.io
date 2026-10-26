@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26 18:59 UTC",
+ "generated": "2026-10-26 19:24 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -1576,8 +1576,8 @@
    "prompt_30k": 1213.1,
    "parallel": 68.8,
    "followup_ttft": 1.26,
-   "decode_30k": null,
-   "decode_90k": null,
+   "decode_30k": 39.0,
+   "decode_90k": 26.5,
    "latest": true
   },
   {
@@ -1726,8 +1726,8 @@
    "prompt_30k": 1112.4,
    "parallel": 65.1,
    "followup_ttft": 1.39,
-   "decode_30k": null,
-   "decode_90k": null,
+   "decode_30k": 39.0,
+   "decode_90k": 26.5,
    "latest": false
   },
   {
