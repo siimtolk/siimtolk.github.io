@@ -7,7 +7,19 @@ description: Quality against speed for every local model and inference engine I 
 {% assign d = site.data.results %}
 <section class="wrap list-page results">
   <h1>Live results</h1>
-  <p class="hero-sub">Every model and engine setup I have run through my own acceptance suite on two RTX 5060 Ti, updated automatically when a new result arrives. Suite {{ d.suite }}, {{ d.graded_cases }} graded runs. Last update {{ d.generated }}. Method: <a href="{{ '/articles/llm-testing-overnight/' | relative_url }}">Automated nightly LLM testing</a>.</p>
+  <p class="hero-sub">How local language models and inference engines perform on my own home server, updated automatically after every test..</p>
+
+  <div class="r-info">
+    <h2>How to read this</h2>
+    <ul>
+      <li><strong>The test.</strong> {{ d.graded_cases }} graded runs (97 cases, three runs each) taken from what my assistant really does: tool calls, agent tasks, reasoning, code, instruction following. Code grades the answers, not me. <a href="{{ '/articles/llm-testing-overnight/' | relative_url }}">How the suite works</a>.</li>
+      <li><strong>The machine.</strong> Two RTX 5060 Ti (16 GB each). Every setup has to fit on it, with the same two-conversation shape and context my everyday assistant uses.</li>
+      <li><strong>Quality</strong> is the share of graded runs passed, with the Estonian and uncensored sets counted separately. <strong>Speed</strong> is how fast a single request generates text, in tokens per second.</li>
+      <li><strong>Production</strong> is the model I run every day. It is the baseline: every candidate is compared with it, and a new model has to beat it to take its place.</li>
+      <li><strong>In the plot</strong>, up is better quality and right is faster, so the best setups sit in the top right corner.</li>
+      <li>Results are comparable only within suite version {{ d.suite }}. Last update {{ d.generated }}.</li>
+    </ul>
+  </div>
 
   <div id="tiles" class="r-tiles"></div>
 
@@ -17,6 +29,7 @@ description: Quality against speed for every local model and inference engine I 
   <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover or tap a point for its numbers.</p>
 
   <h2 class="r-h">Latest result against production</h2>
+  <p class="meta r-lead">Green means better than production, red worse. Differences under 2% are not coloured.</p>
   <div class="r-scroll"><table id="vs"></table></div>
 
   <h2 class="r-h">All results</h2>
@@ -45,13 +58,15 @@ description: Quality against speed for every local model and inference engine I 
 
   // tiles
   var newest = P.slice().sort(function (a, b) { return a.started < b.started ? 1 : -1; })[0];
+  var top = function (f) { return P.slice().sort(function (a, b) { return b[f] - a[f]; })[0]; };
+  var bestQ = top('pct'), bestS = top('prose');
   $('tiles').innerHTML = [
-    ['Setups tested', P.length, 'on suite ' + D.suite],
-    ['Latest result', newest.name, newest.date],
-    ['Production', f1(prod.pct) + '%', f1(prod.prose) + ' tok/s prose'],
-    ['Best graded', f1(Math.max.apply(null, P.map(function (m) { return m.pct; }))) + '%', P.filter(function (m) { return m.pct === Math.max.apply(null, P.map(function (x) { return x.pct; })); })[0].name],
-    ['Fastest', f1(Math.max.apply(null, P.map(function (m) { return m.prose; }))) + ' tok/s', P.slice().sort(function (a, b) { return b.prose - a.prose; })[0].name]
-  ].map(function (t) { return '<div class="r-tile"><div class="r-k">' + t[0] + '</div><div class="r-v">' + t[1] + '</div><div class="r-s">' + t[2] + '</div></div>'; }).join('');
+    ['Setups tested', P.length, 'on suite ' + D.suite, ''],
+    ['Latest result', newest.name, f1(newest.pct) + '% quality · ' + f1(newest.prose) + ' tok/s', 'tested ' + newest.date],
+    ['Production (my baseline)', prod.name, f1(prod.pct) + '% quality · ' + f1(prod.prose) + ' tok/s', 'the model I run every day'],
+    ['Highest quality', bestQ.name, f1(bestQ.pct) + '% of graded runs passed', f1(bestQ.prose) + ' tok/s'],
+    ['Fastest', bestS.name, f1(bestS.prose) + ' tok/s prose', f1(bestS.pct) + '% quality']
+  ].map(function (t, i) { return '<div class="r-tile' + (i === 0 ? ' r-count' : '') + '"><div class="r-k">' + t[0] + '</div><div class="r-v">' + t[1] + '</div><div class="r-s">' + t[2] + '</div><div class="r-s r-s2">' + t[3] + '</div></div>'; }).join('');
 
   // chart
   var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
