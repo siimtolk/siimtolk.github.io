@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26 14:10 UTC",
+ "generated": "2026-10-26 14:15 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -11,6 +11,9 @@
    "url": "https://huggingface.co/wallawalla47/Qwen3.8-27B-Uncensored-NVFP4-NInferV3",
    "name": "capy-flash · Qwen3.8-27B Uncensored (2 x 128k) · NVFP4 · uncensored · wallawalla47",
    "short": "Qwen3.8-27B Uncensored (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B Uncensored (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 · uncensored · wallawalla47",
    "kind": "capy",
    "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048",
    "sections": {
@@ -83,6 +86,9 @@
    "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash · Qwen3.8-27B QUASAR (2 x 128k) · NVFP4 (QAT) · stock · Feyd89",
    "short": "Qwen3.8-27B QUASAR (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B QUASAR (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
    "kind": "capy",
    "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048",
    "sections": {
@@ -155,6 +161,9 @@
    "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
    "name": "llama.cpp · Qwen3.8-27B · IQ3_S (GSQ-RCO) · stock · ISTA-DASLab",
    "short": "Qwen3.8-27B",
+   "title": "Qwen3.8-27B",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S (GSQ-RCO) · stock · ISTA-DASLab",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -227,6 +236,9 @@
    "url": "https://huggingface.co/0bserverx/RVN-Qwen3.8-Flash-Next-Abliterated-Uncensored-GGUF",
    "name": "llama.cpp · Qwen3.8-Flash-Next 125B · IQ3_XS · abliterated · 0bserverx",
    "short": "Qwen3.8-Flash-Next 125B",
+   "title": "Qwen3.8-Flash-Next 125B",
+   "backend": "llama.cpp",
+   "traits": "IQ3_XS · abliterated · 0bserverx",
    "kind": "moe",
    "detail": "no drafting · 2 GPUs · 128k context",
    "sections": {
@@ -299,6 +311,9 @@
    "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash · Qwen3.8-27B QUASAR (effort low) · NVFP4 (QAT) · stock · Feyd89",
    "short": "Qwen3.8-27B QUASAR (capy-flash, effort low)",
+   "title": "Qwen3.8-27B QUASAR (effort low)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
    "kind": "capy",
    "detail": "capy-flash 0.7.4 · 2 GPUs · reasoning effort low",
    "sections": {
@@ -371,6 +386,9 @@
    "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash · Qwen3.8-27B QUASAR (default thinking) · NVFP4 (QAT) · stock · Feyd89",
    "short": "Qwen3.8-27B QUASAR (capy-flash, default thinking)",
+   "title": "Qwen3.8-27B QUASAR (default thinking)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
    "kind": "capy",
    "detail": "capy-flash 0.7.4 · 2 GPUs · default thinking",
    "sections": {
@@ -443,6 +461,9 @@
    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-Turbo-Brilliance-50X-Reasoning-Instruct-NEO-MAX-MTP-GGUF",
    "name": "llama.cpp · Qwen3.8-27B Turbo-Brilliance · IQ4_XS · stock (fine-tune) · DavidAU",
    "short": "Qwen3.8-27B Turbo-Brilliance",
+   "title": "Qwen3.8-27B Turbo-Brilliance",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · stock (fine-tune) · DavidAU",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -515,6 +536,9 @@
    "url": "https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP",
    "name": "vLLM · Qwen3.8-27B HauhauCS Aggressive · AWQ · undisclosed · twolven",
    "short": "Qwen3.8-27B HauhauCS Aggressive (vLLM)",
+   "title": "Qwen3.8-27B HauhauCS Aggressive",
+   "backend": "vLLM",
+   "traits": "AWQ · undisclosed · twolven",
    "kind": "vllm",
    "detail": "vLLM 0.32 · 2 GPUs",
    "sections": {
@@ -587,6 +611,9 @@
    "url": "https://huggingface.co/dealignai/Nemotron-3.5-Bolt-74B-A9B-CRACK-24GB-GGUF",
    "name": "llama.cpp · Nemotron 3.5 Bolt 74B-A9B (CRACK) · IQ2_XXS · CRACK · dealignai",
    "short": "Nemotron 3.5 Bolt 74B-A9B (CRACK)",
+   "title": "Nemotron 3.5 Bolt 74B-A9B (CRACK)",
+   "backend": "llama.cpp",
+   "traits": "IQ2_XXS · CRACK · dealignai",
    "kind": "moe",
    "detail": "DFlash drafting · 2 GPUs · 128k context",
    "sections": {
@@ -659,6 +686,9 @@
    "url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
    "name": "llama.cpp · Qwen3.8-27B Uncensored · IQ4_XS · Heretic · JonathanColetti",
    "short": "Qwen3.8-27B Uncensored",
+   "title": "Qwen3.8-27B Uncensored",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic · JonathanColetti",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -731,6 +761,9 @@
    "url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
    "name": "llama.cpp · Qwen3.8-27B HauhauCS Aggressive · IQ4_XS · undisclosed · HauhauCS",
    "short": "Qwen3.8-27B HauhauCS Aggressive",
+   "title": "Qwen3.8-27B HauhauCS Aggressive",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · undisclosed · HauhauCS",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -803,6 +836,9 @@
    "url": "https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-Abliterated-24GB-GGUF",
    "name": "llama.cpp · Nemotron 3.5 Bolt 74B-A9B · IQ2_XXS · abliterated · BoldingBuilds",
    "short": "Nemotron 3.5 Bolt 74B-A9B",
+   "title": "Nemotron 3.5 Bolt 74B-A9B",
+   "backend": "llama.cpp",
+   "traits": "IQ2_XXS · abliterated · BoldingBuilds",
    "kind": "moe",
    "detail": "no drafting · 2 GPUs · 128k context",
    "sections": {
@@ -875,6 +911,9 @@
    "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
    "name": "vLLM · Qwen3.8-27B Heretic ARA · NVFP4 · Heretic ARA · lyf",
    "short": "Qwen3.8-27B Heretic ARA (vLLM)",
+   "title": "Qwen3.8-27B Heretic ARA",
+   "backend": "vLLM",
+   "traits": "NVFP4 · Heretic ARA · lyf",
    "kind": "vllm",
    "detail": "vLLM 0.32 · 2 GPUs",
    "sections": {
@@ -947,6 +986,9 @@
    "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "llama.cpp · Ornith 1.5 35B-A3B · Q4_K_M · CRACK · dealignai",
    "short": "Ornith 1.5 35B-A3B",
+   "title": "Ornith 1.5 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · CRACK · dealignai",
    "kind": "moe",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1019,6 +1061,9 @@
    "url": "https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF",
    "name": "llama.cpp · Qwen3.8-27B OrcaSAQ-2 Cyber · IQ4_XS · abliterated · orcarouter",
    "short": "Qwen3.8-27B OrcaSAQ-2 Cyber",
+   "title": "Qwen3.8-27B OrcaSAQ-2 Cyber",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated · orcarouter",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1091,6 +1136,9 @@
    "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "llama.cpp · Muse Glimmer 30B · Q4_K_M · abliterated · The-freezer",
    "short": "Muse Glimmer 30B",
+   "title": "Muse Glimmer 30B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · abliterated · The-freezer",
    "kind": "dense",
    "detail": "DFlash drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1163,6 +1211,9 @@
    "url": "https://huggingface.co/HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP",
    "name": "llama.cpp · Gemma 4 26B-A4B · Q4_K_M · undisclosed · HauhauCS",
    "short": "Gemma 4 26B-A4B",
+   "title": "Gemma 4 26B-A4B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · undisclosed · HauhauCS",
    "kind": "moe",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1235,6 +1286,9 @@
    "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "llama.cpp · MiniCPM-V 4.7 35B-A3B · IQ4_XS · abliterated (AD) · AtomicChat",
    "short": "MiniCPM-V 4.7 35B-A3B",
+   "title": "MiniCPM-V 4.7 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated (AD) · AtomicChat",
    "kind": "moe",
    "detail": "no drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1307,6 +1361,9 @@
    "url": "https://huggingface.co/Kujira/Underdog-Saluki-27B-1.0-MTP-Abliterated-GGUF",
    "name": "llama.cpp · Qwen3.8-27B Underdog Saluki · IQ2-mix · abliterated · Kujira",
    "short": "Qwen3.8-27B Underdog Saluki",
+   "title": "Qwen3.8-27B Underdog Saluki",
+   "backend": "llama.cpp",
+   "traits": "IQ2-mix · abliterated · Kujira",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1379,6 +1436,9 @@
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
    "short": "Qwen3.8-27B RVN (production)",
+   "title": "Qwen3.8-27B RVN (production)",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
    "kind": "dense",
    "detail": "2 GPUs · 128k context",
    "sections": {
@@ -1451,6 +1511,9 @@
    "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "llama.cpp · Qwen3.8-27B Coder390 · IQ3_S · abliterated · huihui-ai",
    "short": "Qwen3.8-27B Coder390",
+   "title": "Qwen3.8-27B Coder390",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S · abliterated · huihui-ai",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1523,6 +1586,9 @@
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
    "short": "Qwen3.8-27B RVN (production)",
+   "title": "Qwen3.8-27B RVN (production)",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
    "kind": "dense",
    "detail": "2 GPUs · 128k context",
    "sections": {
@@ -1595,6 +1661,9 @@
    "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "llama.cpp · Muse Glimmer 30B · Q4_K_M · abliterated · The-freezer",
    "short": "Muse Glimmer 30B",
+   "title": "Muse Glimmer 30B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · abliterated · The-freezer",
    "kind": "dense",
    "detail": "DFlash drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1667,6 +1736,9 @@
    "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "llama.cpp · Qwen3.8-27B Coder390 · IQ3_S · abliterated · huihui-ai",
    "short": "Qwen3.8-27B Coder390",
+   "title": "Qwen3.8-27B Coder390",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S · abliterated · huihui-ai",
    "kind": "dense",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1739,6 +1811,9 @@
    "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "llama.cpp · MiniCPM-V 4.7 35B-A3B · IQ4_XS · abliterated (AD) · AtomicChat",
    "short": "MiniCPM-V 4.7 35B-A3B",
+   "title": "MiniCPM-V 4.7 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated (AD) · AtomicChat",
    "kind": "moe",
    "detail": "no drafting · 2 GPUs · 128k context",
    "sections": {
@@ -1811,6 +1886,9 @@
    "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "llama.cpp · Ornith 1.5 35B-A3B · Q4_K_M · CRACK · dealignai",
    "short": "Ornith 1.5 35B-A3B",
+   "title": "Ornith 1.5 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · CRACK · dealignai",
    "kind": "moe",
    "detail": "MTP drafting · 2 GPUs · 128k context",
    "sections": {

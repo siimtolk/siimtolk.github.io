@@ -167,5 +167,5 @@ nav a.nav-live:hover { color: var(--ink); border-color: #f5c518; box-shadow: 0 2
 .r-chart .pt.sel .mark { stroke: var(--ink); stroke-width: 3; }
 .results tbody tr.sel, .results tbody tr.sel th:first-child { background: var(--tag-bg); }
 .results tbody tr.sel { box-shadow: inset 3px 0 0 var(--accent); }
-.results .r-name, .results small.r-detail { display: block; width: 300px; white-space: normal; }
+.results .r-name, .results small.r-detail { display: block; width: 230px; white-space: normal; }
 .results small.r-detail { margin-top: 2px; font-weight: 400; line-height: 1.3; }
