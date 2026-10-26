@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26 09:19 UTC",
+ "generated": "2026-10-26 09:24 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -8,6 +8,7 @@
   {
    "key": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
    "label": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
+   "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
    "name": "Qwen3.8-27B GSQ-RCO (3-bit)",
    "kind": "dense",
    "date": "2026-10-26",
@@ -43,6 +44,7 @@
   {
    "key": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
    "label": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/0bserverx/RVN-Qwen3.8-Flash-Next-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-Flash-Next 125B (3-bit)",
    "kind": "moe",
    "date": "2026-10-25",
@@ -78,6 +80,7 @@
   {
    "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
    "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash, effort low",
    "kind": "capy",
    "date": "2026-10-25",
@@ -113,6 +116,7 @@
   {
    "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
    "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash, default thinking",
    "kind": "capy",
    "date": "2026-10-24",
@@ -148,6 +152,7 @@
   {
    "key": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
    "label": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-Turbo-Brilliance-50X-Reasoning-Instruct-NEO-MAX-MTP-GGUF",
    "name": "Turbo-Brilliance 27B",
    "kind": "dense",
    "date": "2026-10-22",
@@ -183,6 +188,7 @@
   {
    "key": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
    "label": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
+   "url": "https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP",
    "name": "vLLM HauhauCS",
    "kind": "vllm",
    "date": "2026-10-21",
@@ -218,6 +224,7 @@
   {
    "key": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
    "label": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
+   "url": "https://huggingface.co/dealignai/Nemotron-3.5-Bolt-74B-A9B-CRACK-24GB-GGUF",
    "name": "Nemotron 3.5 Bolt CRACK-24GB",
    "kind": "moe",
    "date": "2026-10-21",
@@ -253,6 +260,7 @@
   {
    "key": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
    "label": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
    "name": "Qwen3.8-27B Uncensored (Heretic)",
    "kind": "dense",
    "date": "2026-10-21",
@@ -288,6 +296,7 @@
   {
    "key": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
    "label": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
    "name": "HauhauCS Qwen3.8-27B",
    "kind": "dense",
    "date": "2026-10-21",
@@ -323,6 +332,7 @@
   {
    "key": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
    "label": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-Abliterated-24GB-GGUF",
    "name": "Nemotron 3.5 Bolt 74B-A9B (2-bit)",
    "kind": "moe",
    "date": "2026-10-21",
@@ -358,6 +368,7 @@
   {
    "key": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
    "label": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
+   "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
    "name": "vLLM Heretic ARA",
    "kind": "vllm",
    "date": "2026-10-21",
@@ -393,6 +404,7 @@
   {
    "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
    "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k_b11707",
+   "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "Ornith 1.5 35B-A3B",
    "kind": "moe",
    "date": "2026-10-21",
@@ -428,6 +440,7 @@
   {
    "key": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
    "label": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF",
    "name": "OrcaSAQ-2 Cyber 27B",
    "kind": "dense",
    "date": "2026-10-21",
@@ -463,6 +476,7 @@
   {
    "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
    "label": "muse-glimmer-30b-abliterated-2_q4km_dflash_2gpu_128k",
+   "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "Muse Glimmer 30B",
    "kind": "dense",
    "date": "2026-10-20",
@@ -498,6 +512,7 @@
   {
    "key": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
    "label": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
+   "url": "https://huggingface.co/HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP",
    "name": "Gemma 4 26B-A4B",
    "kind": "moe",
    "date": "2026-10-20",
@@ -533,6 +548,7 @@
   {
    "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
    "label": "minicpm-v-4.7-35b-a3b-uncensored-3_iq4xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "MiniCPM-V 4.7 35B-A3B",
    "kind": "moe",
    "date": "2026-10-20",
@@ -568,6 +584,7 @@
   {
    "key": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
    "label": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
+   "url": "https://huggingface.co/Kujira/Underdog-Saluki-27B-1.0-MTP-Abliterated-GGUF",
    "name": "Underdog Saluki 27B (2-bit)",
    "kind": "dense",
    "date": "2026-10-20",
@@ -603,6 +620,7 @@
   {
    "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
    "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-27B RVN (production)",
    "kind": "dense",
    "date": "2026-10-20",
@@ -638,6 +656,7 @@
   {
    "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
    "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k_r2",
+   "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "Huihui Coder390",
    "kind": "dense",
    "date": "2026-10-19",
@@ -673,6 +692,7 @@
   {
    "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
    "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-27B RVN (production)",
    "kind": "dense",
    "date": "2026-10-19",
@@ -708,6 +728,7 @@
   {
    "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
    "label": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "Muse Glimmer 30B",
    "kind": "dense",
    "date": "2026-10-19",
@@ -743,6 +764,7 @@
   {
    "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
    "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "Huihui Coder390",
    "kind": "dense",
    "date": "2026-10-19",
@@ -778,6 +800,7 @@
   {
    "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
    "label": "minicpm-v-4.7-35b-a3b-uncensored-2_iq4xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "MiniCPM-V 4.7 35B-A3B",
    "kind": "moe",
    "date": "2026-10-18",
@@ -813,6 +836,7 @@
   {
    "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
    "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "Ornith 1.5 35B-A3B",
    "kind": "moe",
    "date": "2026-10-18",
