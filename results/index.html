@@ -1,0 +1,166 @@
+---
+layout: default
+title: Live results
+permalink: /results/
+description: Quality against speed for every local model and inference engine I have tested on my own suite, updated automatically after each benchmark run.
+---
+{% assign d = site.data.results %}
+<section class="wrap list-page results">
+  <h1>Live results</h1>
+  <p class="hero-sub">Every model and engine setup I have run through my own acceptance suite on two RTX 5060 Ti, updated automatically when a new result arrives. Suite {{ d.suite }}, {{ d.graded_cases }} graded runs. Last update {{ d.generated }}. Method: <a href="{{ '/articles/llm-testing-overnight/' | relative_url }}">Automated nightly LLM testing</a>.</p>
+
+  <div id="tiles" class="r-tiles"></div>
+
+  <h2 class="r-h">Quality against speed</h2>
+  <div class="r-chart" id="chart"></div>
+  <div class="r-legend" id="legend"></div>
+  <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover or tap a point for its numbers.</p>
+
+  <h2 class="r-h">Latest result against production</h2>
+  <div class="r-scroll"><table id="vs"></table></div>
+
+  <h2 class="r-h">All results</h2>
+  <label class="r-check"><input type="checkbox" id="older"> Show earlier runs of the same setup</label>
+  <div class="r-scroll"><table id="all"></table></div>
+  <p class="meta">Click a column to sort. Graded = passed/runs without Estonian and uncensored; thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total tok/s with two simultaneous requests. A dash means that test was not run for that setup.</p>
+</section>
+<script id="board-data" type="application/json">{{ d | jsonify }}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('board-data').textContent);
+  var M = D.models, P = M.filter(function (m) { return m.latest; });
+  var prod = M.filter(function (m) { return m.production; })[0];
+  var KIND = {dense: ['Dense', 'o'], moe: ['Mixture of experts', 'tri'], capy: ['capy-flash', 'dia'], vllm: ['vLLM', 'sq'], other: ['Other', 'o']};
+  var $ = function (id) { return document.getElementById(id); };
+  var f1 = function (v, n) { return v == null ? '–' : v.toFixed(n == null ? 1 : n); };
+  var fr = function (p) { return p ? p[0] + '/' + p[1] : '–'; };
+
+  function shape(k, x, y, r, cls) {
+    var s = KIND[k][1];
+    if (s === 'sq') return '<rect class="' + cls + '" x="' + (x - r) + '" y="' + (y - r) + '" width="' + 2 * r + '" height="' + 2 * r + '" rx="2"/>';
+    if (s === 'tri') return '<path class="' + cls + '" d="M' + x + ' ' + (y - r - 1) + 'L' + (x + r + 1) + ' ' + (y + r) + 'L' + (x - r - 1) + ' ' + (y + r) + 'Z"/>';
+    if (s === 'dia') return '<path class="' + cls + '" d="M' + x + ' ' + (y - r - 2) + 'L' + (x + r + 2) + ' ' + y + 'L' + x + ' ' + (y + r + 2) + 'L' + (x - r - 2) + ' ' + y + 'Z"/>';
+    return '<circle class="' + cls + '" cx="' + x + '" cy="' + y + '" r="' + r + '"/>';
+  }
+
+  // tiles
+  var newest = P.slice().sort(function (a, b) { return a.started < b.started ? 1 : -1; })[0];
+  $('tiles').innerHTML = [
+    ['Setups tested', P.length, 'on suite ' + D.suite],
+    ['Latest result', newest.name, newest.date],
+    ['Production', f1(prod.pct) + '%', f1(prod.prose) + ' tok/s prose'],
+    ['Best graded', f1(Math.max.apply(null, P.map(function (m) { return m.pct; }))) + '%', P.filter(function (m) { return m.pct === Math.max.apply(null, P.map(function (x) { return x.pct; })); })[0].name],
+    ['Fastest', f1(Math.max.apply(null, P.map(function (m) { return m.prose; }))) + ' tok/s', P.slice().sort(function (a, b) { return b.prose - a.prose; })[0].name]
+  ].map(function (t) { return '<div class="r-tile"><div class="r-k">' + t[0] + '</div><div class="r-v">' + t[1] + '</div><div class="r-s">' + t[2] + '</div></div>'; }).join('');
+
+  // chart
+  var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
+  var xmax = Math.ceil(Math.max.apply(null, P.map(function (m) { return m.prose; })) / 20) * 20;
+  var pcts = P.map(function (m) { return m.pct; }).sort(function (a, b) { return a - b; });
+  var ymin = Math.max(0, Math.floor(((pcts.length > 2 ? pcts[1] : pcts[0]) - 2) / 5) * 5), ymax = 100;  // one outlier may sit below the axis
+  var yv = function (m) { return Math.max(m.pct, ymin + 0.8); };
+  var X = function (v) { return L + (v / xmax) * (W - L - R); };
+  var Y = function (v) { return T + (1 - (v - ymin) / (ymax - ymin)) * (H - T - B); };
+  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quality against speed scatter plot">';
+  for (var gx = 0; gx <= xmax; gx += 20) svg += '<line class="grid" x1="' + X(gx) + '" x2="' + X(gx) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + X(gx) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + gx + '</text>';
+  var ystep = (ymax - ymin) > 30 ? 10 : 5;
+  for (var gy = ymin; gy <= ymax; gy += ystep) svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(gy) + '" y2="' + Y(gy) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + gy + '%</text>';
+  svg += '<text class="axis" x="' + (L + (W - L - R) / 2) + '" y="' + (H - 8) + '" text-anchor="middle">Generation speed, tok/s (median, single request)</text>';
+  svg += '<text class="axis" transform="translate(14 ' + (T + (H - T - B) / 2) + ') rotate(-90)" text-anchor="middle">Graded runs passed, %</text>';
+
+  // label placement: try right, left, above, below; take the one that overlaps least
+  var boxes = [], pts = P.map(function (m) { return {m: m, x: X(m.prose), y: Y(yv(m))}; });
+  pts.forEach(function (p) { boxes.push([p.x - 8, p.y - 8, p.x + 8, p.y + 8]); });
+  var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
+  pts.sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0); });
+  pts.forEach(function (p) {
+    var w = (p.m.name.length + (p.m.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
+    [[12, 0, 'start'], [-12, 0, 'end'], [0, -16, 'middle'], [0, 20, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
+      var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
+      var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
+      var cost = Math.abs(o[0]) + Math.abs(o[1]) + boxes.reduce(function (s, b) { return s + 20 * hit(bx, b); }, 0) + (bx[0] < 0 || bx[2] > W ? 1e5 : 0) + (bx[1] < 0 || bx[3] > H - B ? 1e5 : 0);
+      if (!best || cost < best.cost) best = {cost: cost, o: o, bx: bx};
+    });
+    boxes.push(best.bx); p.lab = best;
+  });
+  pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
+  pts.forEach(function (p, i) {
+    var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
+    svg += '<g class="pt k-' + m.kind + (m.production ? ' prod' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
+      '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.kind in KIND ? m.kind : 'other', p.x, p.y, m.production ? 7 : 6, 'mark') +
+      '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m.pct < ymin ? ' (' + f1(m.pct) + '%, below axis)' : '') + '</text></g>';
+  });
+  $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
+  var kinds = Object.keys(KIND).filter(function (k) { return P.some(function (m) { return m.kind === k; }); });
+  $('legend').innerHTML = kinds.map(function (k) {
+    return '<span class="k-' + k + '"><svg width="16" height="16" viewBox="0 0 16 16">' + shape(k, 8, 8, 5, 'mark') + '</svg>' + KIND[k][0] + '</span>';
+  }).join('');
+
+  var tip = $('tip');
+  function show(g) {
+    var m = M[+g.getAttribute('data-i')];
+    tip.innerHTML = '<b>' + m.name + '</b>' + (m.production ? ' · production' : '') + '<br>' + f1(m.pct) + '% graded (' + fr(m.graded) + ') · ' + f1(m.prose) + ' tok/s<br>' +
+      'Estonian ' + fr(m.estonian) + ' · prompt ' + f1(m.prompt_30k, 0) + ' tok/s · 2 at once ' + f1(m.parallel, 0) + '<br>' + m.date;
+    tip.hidden = false;
+    var r = g.getBoundingClientRect(), c = $('chart').getBoundingClientRect();
+    var x = r.left - c.left + r.width / 2, y = r.top - c.top;
+    tip.style.left = Math.min(Math.max(x, 120), c.width - 120) + 'px'; tip.style.top = (y - 8) + 'px';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) {
+    g.addEventListener('mouseenter', function () { show(g); });
+    g.addEventListener('focus', function () { show(g); });
+    g.addEventListener('mouseleave', function () { tip.hidden = true; });
+    g.addEventListener('blur', function () { tip.hidden = true; });
+    g.addEventListener('click', function () { show(g); });
+  });
+
+  // latest vs production
+  var rows = [['Graded runs passed', function (m) { return f1(m.pct) + '%'; }, 'pct', 1],
+    ['Estonian passed', function (m) { return fr(m.estonian); }, null],
+    ['Prose, tok/s', function (m) { return f1(m.prose); }, 'prose', 1],
+    ['Tool JSON, tok/s', function (m) { return f1(m.tool_json); }, 'tool_json', 1],
+    ['30k prompt, tok/s', function (m) { return f1(m.prompt_30k, 0); }, 'prompt_30k', 1],
+    ['Two requests at once, tok/s', function (m) { return f1(m.parallel); }, 'parallel', 1],
+    ['Follow-up first token, s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', -1],
+    ['Decode after 90k context, tok/s', function (m) { return f1(m.decode_90k); }, 'decode_90k', 1]];
+  var vs = '<thead><tr><th></th><th>' + newest.name + '</th><th>' + prod.name + '</th><th>Difference</th></tr></thead><tbody>';
+  rows.forEach(function (r) {
+    var diff = '–', cls = '';
+    if (r[2] && newest[r[2]] != null && prod[r[2]]) {
+      var q = newest[r[2]] / prod[r[2]]; diff = (q >= 1 ? '+' : '−') + Math.abs((q - 1) * 100).toFixed(0) + '%';
+      cls = Math.abs(q - 1) < 0.02 ? '' : (q > 1) === (r[3] > 0) ? 'good' : 'bad';
+    }
+    vs += '<tr><th>' + r[0] + '</th><td>' + r[1](newest) + '</td><td>' + r[1](prod) + '</td><td class="' + cls + '">' + diff + '</td></tr>';
+  });
+  $('vs').innerHTML = vs + '</tbody>';
+
+  // all results, sortable
+  var cols = [['Setup', function (m) { return m.name; }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
+    ['Graded', function (m) { return f1(m.pct) + '% <small>' + fr(m.graded) + '</small>'; }, 'pct', 'n'],
+    ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n'],
+    ['Prose', function (m) { return f1(m.prose); }, 'prose', 'n'], ['Tool JSON', function (m) { return f1(m.tool_json); }, 'tool_json', 'n'],
+    ['30k prompt', function (m) { return f1(m.prompt_30k, 0); }, 'prompt_30k', 'n'], ['2 at once', function (m) { return f1(m.parallel); }, 'parallel', 'n'],
+    ['Follow-up s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', 'n'], ['Suite min', function (m) { return f1(m.minutes, 0); }, 'minutes', 'n']];
+  var sortKey = 'date', sortDir = -1;
+  var val = function (m, k) { return k === 'est' ? (m.estonian ? m.estonian[0] : null) : k === 'nt' ? (m.nothink ? m.nothink[0] : null) : m[k]; };
+  function render() {
+    var list = M.filter(function (m) { return m.latest || $('older').checked; });
+    list.sort(function (a, b) {
+      var x = val(a, sortKey), y = val(b, sortKey);
+      if (x == null) return 1; if (y == null) return -1;
+      return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+    });
+    var h = '<thead><tr>' + cols.map(function (c) { return '<th data-k="' + c[2] + '" class="sortable' + (c[2] === sortKey ? ' on' : '') + '">' + c[0] + (c[2] === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : '') + '</th>'; }).join('') + '</tr></thead><tbody>';
+    list.forEach(function (m) {
+      h += '<tr class="' + (m.production ? 'prod' : '') + (m.latest ? '' : ' old') + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">') + c[1](m) + (i ? '</td>' : (m.production ? ' <small>production</small>' : '') + (m.latest ? '' : ' <small>earlier run</small>') + '</th>'); }).join('') + '</tr>';
+    });
+    $('all').innerHTML = h + '</tbody>';
+    Array.prototype.forEach.call(document.querySelectorAll('#all th.sortable'), function (th) {
+      th.addEventListener('click', function () {
+        var k = th.getAttribute('data-k'); sortDir = k === sortKey ? -sortDir : (k === 'name' ? 1 : -1); sortKey = k; render();
+      });
+    });
+  }
+  $('older').addEventListener('change', render); render();
+})();
+</script>
