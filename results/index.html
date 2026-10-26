@@ -18,9 +18,10 @@ description: Updated automatically after each benchmark run.
   <div id="tiles" class="r-tiles"></div>
 
   <h2 class="r-h">Quality against speed</h2>
+  <div class="r-controls" id="controls"></div>
   <div class="r-chart" id="chart"></div>
   <div class="r-legend" id="legend"></div>
-  <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover a point for its numbers; click it to jump to its row in the table below.</p>
+  <p class="meta" id="chartnote"></p>
 
   <h2 class="r-h">All results</h2>
   <div class="r-scroll"><table id="all"></table></div>
@@ -54,6 +55,7 @@ description: Updated automatically after each benchmark run.
   }
 
   // tiles
+  var selected = null;
   var newest = P.slice().sort(function (a, b) { return a.started < b.started ? 1 : -1; })[0];
   var top = function (f) { return P.slice().sort(function (a, b) { return b[f] - a[f]; })[0]; };
   var bestQ = top('pct'), bestS = top('prose');
@@ -65,68 +67,106 @@ description: Updated automatically after each benchmark run.
     ['Fastest', bestS.short, f1(bestS.prose) + ' TPS prose', f1(bestS.pct) + '% quality']
   ].map(function (t, i) { return '<div class="r-tile' + (i === 0 ? ' r-count' : '') + '"><div class="r-k">' + t[0] + '</div><div class="r-v">' + t[1] + '</div><div class="r-s">' + t[2] + '</div><div class="r-s r-s2">' + t[3] + '</div></div>'; }).join('');
 
-  // chart
-  var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
-  var xmax = Math.ceil(Math.max.apply(null, P.map(function (m) { return m.prose; })) / 20) * 20;
-  var pcts = P.map(function (m) { return m.pct; }).sort(function (a, b) { return a - b; });
-  var ymin = Math.max(0, Math.floor(((pcts.length > 2 ? pcts[1] : pcts[0]) - 2) / 5) * 5), ymax = 100;  // one outlier may sit below the axis
-  var yv = function (m) { return Math.max(m.pct, ymin + 0.8); };
-  var X = function (v) { return L + (v / xmax) * (W - L - R); };
-  var Y = function (v) { return T + (1 - (v - ymin) / (ymax - ymin)) * (H - T - B); };
-  var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quality against speed scatter plot">';
-  for (var gx = 0; gx <= xmax; gx += 20) svg += '<line class="grid" x1="' + X(gx) + '" x2="' + X(gx) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + X(gx) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + gx + '</text>';
-  var ystep = (ymax - ymin) > 30 ? 10 : 5;
-  for (var gy = ymin; gy <= ymax; gy += ystep) svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(gy) + '" y2="' + Y(gy) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + gy + '%</text>';
-  svg += '<text class="axis" x="' + (L + (W - L - R) / 2) + '" y="' + (H - 8) + '" text-anchor="middle">Generation speed, TPS (tokens per second, median, single request)</text>';
-  svg += '<text class="axis" transform="translate(14 ' + (T + (H - T - B) / 2) + ') rotate(-90)" text-anchor="middle">Graded runs passed, %</text>';
-
-  // label placement: try right, left, above, below; take the one that overlaps least
-  var boxes = [], pts = P.map(function (m) { return {m: m, x: X(m.prose), y: Y(yv(m))}; });
-  pts.forEach(function (p) { var h = p.m.production ? 15 : 8; boxes.push([p.x - h, p.y - h, p.x + h, p.y + h]); });
-  var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
-  pts.sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0); });
-  pts.forEach(function (p) {
-    var w = (p.m.short.length + (p.m.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
-    [[16, 0, 'start'], [-16, 0, 'end'], [0, -20, 'middle'], [0, 24, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
-      var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
-      var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
-      var cost = Math.abs(o[0]) + Math.abs(o[1]) + boxes.reduce(function (s, b) { return s + 20 * hit(bx, b); }, 0) + (bx[0] < 0 || bx[2] > W ? 1e5 : 0) + (bx[1] < 0 || bx[3] > H - B ? 1e5 : 0);
-      if (!best || cost < best.cost) best = {cost: cost, o: o, bx: bx};
+  // chart controls: which test areas count towards quality (Y) and which speed is on X
+  var AREAS = SEC_().concat([['estonian', 'Estonian'], ['uncensored', 'Uncensored']]);
+  var SPEEDS = [['prose', 'Single request', 'Generation speed, TPS (tokens per second, median, single request)', 'median prose generation speed of a single request'],
+    ['tool_json', 'Agentic (tool JSON)', 'Tool-call JSON generation speed, TPS (tokens per second)', 'generation speed of tool-call JSON, the agentic workload'],
+    ['decode_30k', 'Long, 30k context', 'Generation speed at 30k tokens of context, TPS', 'generation speed with 30k tokens of context'],
+    ['decode_90k', 'Long, 90k context', 'Generation speed at 90k tokens of context, TPS', 'generation speed with 90k tokens of context'],
+    ['parallel', '2 at once', 'Total generation speed with two simultaneous requests, TPS', 'total speed with two simultaneous requests']];
+  var on = {}, xk = 'prose';
+  AREAS.forEach(function (a) { on[a[0]] = a[0] !== 'estonian' && a[0] !== 'uncensored'; });  // default = the graded total
+  $('controls').innerHTML = '<fieldset><legend>Count in quality (Y)</legend>' + AREAS.map(function (a) {
+    return '<label><input type="checkbox" data-area="' + a[0] + '"' + (on[a[0]] ? ' checked' : '') + '> ' + a[1] + '</label>';
+  }).join('') + '</fieldset><fieldset><legend>Speed on X</legend>' + SPEEDS.map(function (s) {
+    return '<label><input type="radio" name="xspeed" value="' + s[0] + '"' + (s[0] === xk ? ' checked' : '') + '> ' + s[1] + '</label>';
+  }).join('') + '</fieldset>';
+  function SEC_() { return [['tools', 'Tool use'], ['agent', 'Agent tasks'], ['reason', 'Reasoning'], ['extract', 'Extraction'], ['code', 'Code'], ['hard', 'Hard + long context'], ['instruct', 'Instructions'], ['judge', 'Judging']]; }
+  function quality(m) {
+    var ok = 0, n = 0;
+    AREAS.forEach(function (a) {
+      if (!on[a[0]]) return;
+      var v = a[0] === 'estonian' ? m.estonian : a[0] === 'uncensored' ? m.uncensored : (m.sections || {})[a[0]];
+      if (v) { ok += v[0]; n += v[1]; }
     });
-    boxes.push(best.bx); p.lab = best;
-  });
-  pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
-  pts.forEach(function (p, i) {
-    var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
-    svg += '<g class="pt k-' + bk(m) + (m.production ? ' prod' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
-      '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : bk(m), p.x, p.y, m.production ? 12 : 6, 'mark') +
-      '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.short.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m.pct < ymin ? ' (' + f1(m.pct) + '%, below axis)' : '') + '</text></g>';
-  });
-  $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
+    return n ? {ok: ok, n: n, pct: Math.round(1000 * ok / n) / 10} : null;
+  }
+
+  var tip;
+  function drawChart() {
+    var sp = SPEEDS.filter(function (s) { return s[0] === xk; })[0];
+    P.forEach(function (m) { m._q = quality(m); });
+    var Q = P.filter(function (m) { return m._q && m[xk] != null; });
+    var missing = P.length - Q.length;
+    $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '. By default: the graded total, i.e. Estonian and the uncensored set left out. The vertical axis does not start at zero. Hover a point for its numbers; click it to jump to its row in the table below.' + (missing && Q.length ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
+    if (!Q.length) { $('chart').innerHTML = '<p class="meta">Nothing to plot: tick at least one test area.</p>'; return; }
+    var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
+    var mx = Math.max.apply(null, Q.map(function (m) { return m[xk]; })), xstep = mx > 80 ? 20 : mx > 40 ? 10 : 5;
+    var xmax = Math.ceil(mx / xstep) * xstep || xstep;
+    var pcts = Q.map(function (m) { return m._q.pct; }).sort(function (a, b) { return a - b; });
+    var ymin = Math.max(0, Math.floor(((pcts.length > 2 ? pcts[1] : pcts[0]) - 2) / 5) * 5), ymax = 100;  // one outlier may sit below the axis
+    var yv = function (m) { return Math.max(m._q.pct, ymin + 0.8); };
+    var X = function (v) { return L + (v / xmax) * (W - L - R); };
+    var Y = function (v) { return T + (1 - (v - ymin) / (ymax - ymin)) * (H - T - B); };
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quality against speed scatter plot">';
+    for (var gx = 0; gx <= xmax; gx += xstep) svg += '<line class="grid" x1="' + X(gx) + '" x2="' + X(gx) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + X(gx) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + gx + '</text>';
+    var ystep = (ymax - ymin) > 30 ? 10 : 5;
+    for (var gy = ymin; gy <= ymax; gy += ystep) svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(gy) + '" y2="' + Y(gy) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + gy + '%</text>';
+    svg += '<text class="axis" x="' + (L + (W - L - R) / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + sp[2] + '</text>';
+    svg += '<text class="axis" transform="translate(14 ' + (T + (H - T - B) / 2) + ') rotate(-90)" text-anchor="middle">Selected runs passed, %</text>';
+
+    // label placement: try right, left, above, below; take the one that overlaps least
+    var boxes = [], pts = Q.map(function (m) { return {m: m, x: X(m[xk]), y: Y(yv(m))}; });
+    pts.forEach(function (p) { var h = p.m.production ? 15 : 8; boxes.push([p.x - h, p.y - h, p.x + h, p.y + h]); });
+    var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
+    pts.sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0); });
+    pts.forEach(function (p) {
+      var w = (p.m.short.length + (p.m._q.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
+      [[16, 0, 'start'], [-16, 0, 'end'], [0, -20, 'middle'], [0, 24, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
+        var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
+        var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
+        var cost = Math.abs(o[0]) + Math.abs(o[1]) + boxes.reduce(function (s, b) { return s + 20 * hit(bx, b); }, 0) + (bx[0] < 0 || bx[2] > W ? 1e5 : 0) + (bx[1] < 0 || bx[3] > H - B ? 1e5 : 0);
+        if (!best || cost < best.cost) best = {cost: cost, o: o, bx: bx};
+      });
+      boxes.push(best.bx); p.lab = best;
+    });
+    pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
+    pts.forEach(function (p, i) {
+      var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
+      svg += '<g class="pt k-' + bk(m) + (m.production ? ' prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
+        '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : bk(m), p.x, p.y, m.production ? 12 : 6, 'mark') +
+        '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.short.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m._q.pct < ymin ? ' (' + f1(m._q.pct) + '%, below axis)' : '') + '</text></g>';
+    });
+    $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
+    tip = $('tip');
+    Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) {
+      g.addEventListener('mouseenter', function () { show(g); });
+      g.addEventListener('focus', function () { show(g); });
+      g.addEventListener('mouseleave', function () { tip.hidden = true; });
+      g.addEventListener('blur', function () { tip.hidden = true; });
+      g.addEventListener('click', function () { tip.hidden = true; select(+g.getAttribute('data-i'), true); });
+      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
+    });
+  }
   var kinds = Object.keys(KIND).filter(function (k) { return k === 'star' ? !!prod : P.some(function (m) { return bk(m) === k && !m.production; }); });
   $('legend').innerHTML = kinds.map(function (k) {
     return '<span class="k-' + k + '"><svg width="18" height="18" viewBox="0 0 18 18">' + shape(k, 9, 9, k === 'star' ? 8 : 5, 'mark') + '</svg>' + KIND[k][0] + '</span>';
   }).join('');
 
-  var tip = $('tip');
   function show(g) {
-    var m = M[+g.getAttribute('data-i')];
-    tip.innerHTML = '<b>' + m.short + '</b>' + (m.production ? ' · ★ production' : '') + '<br><small>' + m.name + '</small><br>' + f1(m.pct) + '% graded (' + fr(m.graded) + ') · ' + f1(m.prose) + ' TPS<br>' +
-      'Estonian ' + fr(m.estonian) + ' · prompt ' + f1(m.prompt_30k, 0) + ' TPS · 2 at once ' + f1(m.parallel, 0) + '<br>' + m.date;
+    var m = M[+g.getAttribute('data-i')], q = m._q;
+    tip.innerHTML = '<b>' + m.short + '</b>' + (m.production ? ' · ★ production' : '') + '<br><small>' + m.name + '</small><br>' + f1(q.pct) + '% selected (' + q.ok + '/' + q.n + ') · ' + f1(m[xk]) + ' TPS<br>' +
+      'Graded ' + f1(m.pct) + '% · Estonian ' + fr(m.estonian) + ' · prompt ' + f1(m.prompt_30k, 0) + ' TPS · 2 at once ' + f1(m.parallel, 0) + '<br>' + m.date;
     tip.hidden = false;
     var r = g.getBoundingClientRect(), c = $('chart').getBoundingClientRect();
     var x = r.left - c.left + r.width / 2, y = r.top - c.top;
     tip.style.left = Math.min(Math.max(x, 120), c.width - 120) + 'px'; tip.style.top = (y - 8) + 'px';
   }
-  Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) {
-    g.addEventListener('mouseenter', function () { show(g); });
-    g.addEventListener('focus', function () { show(g); });
-    g.addEventListener('mouseleave', function () { tip.hidden = true; });
-    g.addEventListener('blur', function () { tip.hidden = true; });
-    g.addEventListener('click', function () { tip.hidden = true; select(+g.getAttribute('data-i'), true); });
-    g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
+  $('controls').addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.name === 'xspeed') xk = t.value; else on[t.getAttribute('data-area')] = t.checked;
+    drawChart();
   });
-  var selected = null;
   function select(i, scroll) {
     selected = i;
     Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) { g.classList.toggle('sel', +g.getAttribute('data-i') === i); });
@@ -142,12 +182,13 @@ description: Updated automatically after each benchmark run.
   var SEC = [['tools', 'Tool use'], ['agent', 'Agent tasks'], ['reason', 'Reasoning'], ['extract', 'Extraction'], ['code', 'Code'], ['hard', 'Hard + long context'], ['instruct', 'Instructions'], ['judge', 'Judging']];
   var cols = [['Setup', function (m) { var d = [m.traits, m.detail].filter(Boolean).join(' · '); return '<span class="r-name">' + (m.url ? '<a class="r-link" href="' + m.url + '" target="_blank" rel="noopener" title="Weights on Hugging Face">' + m.title + '</a>' : m.title) + '</span>' + (d ? '<small class="r-detail">' + d + '</small>' : ''); }, 'name', 's'], ['Backend', function (m) { return m.backend; }, 'backend', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
     ['Graded', function (m) { return f1(m.pct) + '% <small>' + fr(m.graded) + '</small>'; }, 'pct', 'n'],
-    ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Uncensored', function (m) { return fr(m.uncensored); }, 'unc', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n']]
-    .concat(SEC.map(function (c) { return [c[1], function (m) { return fr((m.sections || {})[c[0]]); }, 'sec:' + c[0], 'n']; })).concat([
     ['Prose TPS', function (m) { return f1(m.prose); }, 'prose', 'n'], ['Tool JSON TPS', function (m) { return f1(m.tool_json); }, 'tool_json', 'n'],
     ['30k prompt TPS', function (m) { return f1(m.prompt_30k, 0); }, 'prompt_30k', 'n'], ['2 at once TPS', function (m) { return f1(m.parallel); }, 'parallel', 'n'],
-    ['Follow-up s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', 'n'], ['Test duration, min', function (m) { return f1(m.minutes, 0); }, 'minutes', 'n']]);
-  var sortKey = 'date', sortDir = -1;
+    ['Follow-up s', function (m) { return f1(m.followup_ttft, 2); }, 'followup_ttft', 'n'],
+    ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Uncensored', function (m) { return fr(m.uncensored); }, 'unc', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n']]
+    .concat(SEC.map(function (c) { return [c[1], function (m) { return fr((m.sections || {})[c[0]]); }, 'sec:' + c[0], 'n']; })).concat([
+    ['Test duration, min', function (m) { return f1(m.minutes, 0); }, 'minutes', 'n']]);
+  var sortKey = 'pct', sortDir = -1;
   var val = function (m, k) { if (k === 'name') return m.title; if (k.indexOf('sec:') === 0) { var p = (m.sections || {})[k.slice(4)]; return p ? p[0] / p[1] : null; } return k === 'est' ? (m.estonian ? m.estonian[0] : null) : k === 'unc' ? (m.uncensored ? m.uncensored[0] : null) : k === 'nt' ? (m.nothink ? m.nothink[0] : null) : m[k]; };
   function render() {
     var list = P.slice();
@@ -168,5 +209,16 @@ description: Updated automatically after each benchmark run.
     });
   }
   render();
+  drawChart();
+  // drag the wide table sideways with the mouse
+  (function () {
+    var sc = document.querySelector('.r-scroll'), x0, l0, down = false, moved = false;
+    sc.style.cursor = 'grab';
+    sc.addEventListener('mousedown', function (e) { down = true; moved = false; x0 = e.pageX; l0 = sc.scrollLeft; });
+    window.addEventListener('mousemove', function (e) { if (!down) return; var dx = e.pageX - x0; if (Math.abs(dx) > 4) { moved = true; sc.style.cursor = 'grabbing'; sc.scrollLeft = l0 - dx; } });
+    window.addEventListener('mouseup', function () { down = false; sc.style.cursor = 'grab'; });
+    sc.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+    sc.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  })();
 })();
 </script>
