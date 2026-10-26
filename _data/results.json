@@ -1,10 +1,45 @@
 {
- "generated": "2026-10-26 08:45 UTC",
+ "generated": "2026-10-26 09:06 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
+   "name": "qwen3.8 27b gsq rco",
+   "kind": "other",
+   "date": "2026-10-26",
+   "started": "2026-10-26 10:00:22",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    110,
+    141
+   ],
+   "minutes": 61.5,
+   "prose": 44.0,
+   "tool_json": 67.0,
+   "prompt_30k": 1098.0,
+   "parallel": 61.9,
+   "followup_ttft": 1.15,
+   "decode_30k": 35.2,
+   "decode_90k": 27.2,
+   "latest": true
+  },
   {
    "key": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
    "label": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
