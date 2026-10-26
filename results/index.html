@@ -24,6 +24,7 @@ description: Updated automatically after each benchmark run.
   <p class="meta" id="chartnote"></p>
 
   <h2 class="r-h">All results</h2>
+  <label class="r-sortsel">Sort by <select id="sortsel"></select></label>
   <div class="r-scroll"><table id="all"></table></div>
   <p class="meta">All speed numbers are TPS (tokens per second); higher is better. Under each setup name: quantization · uncensoring method · author of the weights, then how it was served (stock = not uncensored; undisclosed = the author does not say how). Click a column to sort; click a setup name to open its weights on Hugging Face; the grey line under it says how it was served. Graded = passed/runs without Estonian and uncensored; uncensored = edgy but harmless tasks answered instead of refused (counted separately, not in graded); thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total TPS with two simultaneous requests. The test-area columns (tool use, agent tasks, reasoning, extraction, code, hard tasks with long context and prompt injection, following instructions, judging) show passed/runs for each area; together they make up the graded total. A dash means that test was not run for that setup.</p>
 </section>
@@ -199,9 +200,15 @@ description: Updated automatically after each benchmark run.
     });
     var h = '<thead><tr>' + cols.map(function (c) { return '<th data-k="' + c[2] + '" class="sortable' + (c[2] === sortKey ? ' on' : '') + '">' + c[0] + (c[2] === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : '') + '</th>'; }).join('') + '</tr></thead><tbody>';
     list.forEach(function (m) {
-      h += '<tr class="' + (m.production ? 'prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">' + (m.production ? '<span class="r-star" title="Production (my baseline)">★</span> ' : '')) + c[1](m) + (i ? '</td>' : '' + '' + '</th>'); }).join('') + '</tr>';
+      h += '<tr class="' + (m.production ? 'prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '">' + cols.map(function (c, i) { return (i ? '<td data-label="' + c[0] + '">' : '<th scope="row">' + (m.production ? '<span class="r-star" title="Production (my baseline)">★</span> ' : '')) + c[1](m) + (i ? '</td>' : '' + '' + '</th>'); }).join('') + '</tr>';
     });
     $('all').innerHTML = h + '</tbody>';
+    var ss = $('sortsel');
+    if (!ss.options.length) {
+      cols.forEach(function (c) { var o = document.createElement('option'); o.value = c[2]; o.textContent = c[0]; ss.appendChild(o); });
+      ss.addEventListener('change', function () { sortKey = ss.value; sortDir = sortKey === 'name' ? 1 : -1; render(); });
+    }
+    ss.value = sortKey;
     Array.prototype.forEach.call(document.querySelectorAll('#all th.sortable'), function (th) {
       th.addEventListener('click', function () {
         var k = th.getAttribute('data-k'); sortDir = k === sortKey ? -sortDir : (k === 'name' ? 1 : -1); sortKey = k; render();
