@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26 09:06 UTC",
+ "generated": "2026-10-26 09:19 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -8,8 +8,8 @@
   {
    "key": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
    "label": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
-   "name": "qwen3.8 27b gsq rco",
-   "kind": "other",
+   "name": "Qwen3.8-27B GSQ-RCO (3-bit)",
+   "kind": "dense",
    "date": "2026-10-26",
    "started": "2026-10-26 10:00:22",
    "production": false,
