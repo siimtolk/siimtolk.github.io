@@ -1,10 +1,46 @@
 {
- "generated": "2026-10-26 09:24 UTC",
+ "generated": "2026-10-26 11:06 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "exp-20261026-capy-2x128k-budget",
+   "label": "exp-20261026-capy-2x128k-budget",
+   "url": null,
+   "name": "capy-flash v0.7.5, 2 x 128k, concurrency 2, default thinking budget 2048, lease window 0",
+   "kind": "capy",
+   "date": "2026-10-26",
+   "started": "2026-10-26 12:11:08",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    4,
+    11
+   ],
+   "nothink": [
+    123,
+    141
+   ],
+   "minutes": 47.9,
+   "prose": 75.4,
+   "tool_json": 118.6,
+   "prompt_30k": 2843.3,
+   "parallel": 143.8,
+   "followup_ttft": 2.18,
+   "decode_30k": 80.7,
+   "decode_90k": 74.0,
+   "latest": true
+  },
   {
    "key": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
    "label": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
