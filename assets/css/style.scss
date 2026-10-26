@@ -118,6 +118,8 @@ nav a:hover { color: var(--accent-ink); }
 .r-chart .pt:hover .lab, .r-chart .pt:focus .lab { fill: var(--ink); }
 .r-chart .mark, .r-legend .mark { stroke: var(--surface); stroke-width: 2; }
 .k-dense .mark, .r-legend .k-dense .mark, .k-other .mark { fill: #2a78d6; } .k-moe .mark { fill: #eb6834; } .k-capy .mark { fill: #1baf7a; } .k-vllm .mark { fill: #eda100; }
+.r-chart .pt.prod .mark, .r-legend .k-star .mark { fill: #f5b800; stroke: #8a6500; stroke-width: 1.2; }
+.r-star { color: #f5b800; text-shadow: 0 0 1px #8a6500; }
 .r-chart .pt:focus .mark, .r-chart .pt:hover .mark { stroke: var(--ink); }
 .r-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 10px 0 6px; font-size: 14px; color: var(--ink-2); }
 .r-legend span { display: inline-flex; align-items: center; gap: 6px; }
