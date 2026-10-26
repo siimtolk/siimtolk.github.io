@@ -20,7 +20,7 @@ description: Updated automatically after each benchmark run.
   <h2 class="r-h">Quality against speed</h2>
   <div class="r-chart" id="chart"></div>
   <div class="r-legend" id="legend"></div>
-  <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover or tap a point for its numbers.</p>
+  <p class="meta">Graded runs passed (Estonian and the uncensored set left out) against median prose generation speed of a single request. The vertical axis does not start at zero. Hover a point for its numbers; click it to jump to its row in the table below.</p>
 
   <h2 class="r-h">All results</h2>
   <div class="r-scroll"><table id="all"></table></div>
@@ -121,8 +121,20 @@ description: Updated automatically after each benchmark run.
     g.addEventListener('focus', function () { show(g); });
     g.addEventListener('mouseleave', function () { tip.hidden = true; });
     g.addEventListener('blur', function () { tip.hidden = true; });
-    g.addEventListener('click', function () { show(g); });
+    g.addEventListener('click', function () { tip.hidden = true; select(+g.getAttribute('data-i'), true); });
+    g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
   });
+  var selected = null;
+  function select(i, scroll) {
+    selected = i;
+    Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) { g.classList.toggle('sel', +g.getAttribute('data-i') === i); });
+    render();
+    var row = document.querySelector('#all tr.sel');
+    if (scroll && row) {
+      var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      row.scrollIntoView({behavior: still ? 'auto' : 'smooth', block: 'center'});
+    }
+  }
 
   // all results, sortable
   var cols = [['Setup', function (m) { return m.url ? '<a class="r-link" href="' + m.url + '" target="_blank" rel="noopener" title="Weights on Hugging Face">' + m.name + '</a>' : m.name; }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
@@ -142,7 +154,7 @@ description: Updated automatically after each benchmark run.
     });
     var h = '<thead><tr>' + cols.map(function (c) { return '<th data-k="' + c[2] + '" class="sortable' + (c[2] === sortKey ? ' on' : '') + '">' + c[0] + (c[2] === sortKey ? (sortDir > 0 ? ' ▲' : ' ▼') : '') + '</th>'; }).join('') + '</tr></thead><tbody>';
     list.forEach(function (m) {
-      h += '<tr class="' + (m.production ? 'prod' : '') + '' + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">' + (m.production ? '<span class="r-star" title="Production (my baseline)">★</span> ' : '')) + c[1](m) + (i ? '</td>' : '' + '' + '</th>'); }).join('') + '</tr>';
+      h += '<tr class="' + (m.production ? 'prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '">' + cols.map(function (c, i) { return (i ? '<td>' : '<th scope="row">' + (m.production ? '<span class="r-star" title="Production (my baseline)">★</span> ' : '')) + c[1](m) + (i ? '</td>' : '' + '' + '</th>'); }).join('') + '</tr>';
     });
     $('all').innerHTML = h + '</tbody>';
     Array.prototype.forEach.call(document.querySelectorAll('#all th.sortable'), function (th) {

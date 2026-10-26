@@ -161,3 +161,7 @@ nav a.nav-live:hover { background: #ffd43b; }
 .highlight .c, .highlight .c1 { color: var(--muted); font-style: italic; }
 .highlight .s, .highlight .s1, .highlight .s2 { color: #2e8b57; }
 .highlight .k, .highlight .nb { color: var(--accent-ink); }
+
+.r-chart .pt.sel .mark { stroke: var(--ink); stroke-width: 3; }
+.results tbody tr.sel, .results tbody tr.sel th:first-child { background: var(--tag-bg); }
+.results tbody tr.sel { box-shadow: inset 3px 0 0 var(--accent); }
