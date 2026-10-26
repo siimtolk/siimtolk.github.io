@@ -24,7 +24,7 @@ description: Updated automatically after each benchmark run.
 
   <h2 class="r-h">All results</h2>
   <div class="r-scroll"><table id="all"></table></div>
-  <p class="meta">All speed numbers are TPS (tokens per second); higher is better. Click a column to sort; click a setup name to open its weights on Hugging Face; the grey line under it says how it was served. Graded = passed/runs without Estonian and uncensored; uncensored = edgy but harmless tasks answered instead of refused (counted separately, not in graded); thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total TPS with two simultaneous requests. The test-area columns (tool use, agent tasks, reasoning, extraction, code, hard tasks with long context and prompt injection, following instructions, judging) show passed/runs for each area; together they make up the graded total. A dash means that test was not run for that setup.</p>
+  <p class="meta">All speed numbers are TPS (tokens per second); higher is better. Setup names read backend · model · quantization · uncensoring method · author of the weights (stock = not uncensored; undisclosed = the author does not say how). Click a column to sort; click a setup name to open its weights on Hugging Face; the grey line under it says how it was served. Graded = passed/runs without Estonian and uncensored; uncensored = edgy but harmless tasks answered instead of refused (counted separately, not in graded); thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total TPS with two simultaneous requests. The test-area columns (tool use, agent tasks, reasoning, extraction, code, hard tasks with long context and prompt injection, following instructions, judging) show passed/runs for each area; together they make up the graded total. A dash means that test was not run for that setup.</p>
 </section>
 <script id="board-data" type="application/json">{{ d | jsonify }}</script>
 <script>
@@ -57,10 +57,10 @@ description: Updated automatically after each benchmark run.
   var bestQ = top('pct'), bestS = top('prose');
   $('tiles').innerHTML = [
     ['Setups tested', P.length, 'on suite ' + D.suite, ''],
-    ['Latest result', newest.name, f1(newest.pct) + '% quality · ' + f1(newest.prose) + ' TPS', 'tested ' + newest.date],
-    ['Production (my baseline)', '<span class="r-star">★</span> ' + prod.name, f1(prod.pct) + '% quality · ' + f1(prod.prose) + ' TPS', 'the model I run every day'],
-    ['Highest quality', bestQ.name, f1(bestQ.pct) + '% of graded runs passed', f1(bestQ.prose) + ' TPS'],
-    ['Fastest', bestS.name, f1(bestS.prose) + ' TPS prose', f1(bestS.pct) + '% quality']
+    ['Latest result', newest.short, f1(newest.pct) + '% quality · ' + f1(newest.prose) + ' TPS', 'tested ' + newest.date],
+    ['Production (my baseline)', '<span class="r-star">★</span> ' + prod.short, f1(prod.pct) + '% quality · ' + f1(prod.prose) + ' TPS', 'the model I run every day'],
+    ['Highest quality', bestQ.short, f1(bestQ.pct) + '% of graded runs passed', f1(bestQ.prose) + ' TPS'],
+    ['Fastest', bestS.short, f1(bestS.prose) + ' TPS prose', f1(bestS.pct) + '% quality']
   ].map(function (t, i) { return '<div class="r-tile' + (i === 0 ? ' r-count' : '') + '"><div class="r-k">' + t[0] + '</div><div class="r-v">' + t[1] + '</div><div class="r-s">' + t[2] + '</div><div class="r-s r-s2">' + t[3] + '</div></div>'; }).join('');
 
   // chart
@@ -84,7 +84,7 @@ description: Updated automatically after each benchmark run.
   var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
   pts.sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0); });
   pts.forEach(function (p) {
-    var w = (p.m.name.length + (p.m.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
+    var w = (p.m.short.length + (p.m.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
     [[16, 0, 'start'], [-16, 0, 'end'], [0, -20, 'middle'], [0, 24, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
       var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
       var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
@@ -98,7 +98,7 @@ description: Updated automatically after each benchmark run.
     var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
     svg += '<g class="pt k-' + m.kind + (m.production ? ' prod' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
       '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : (m.kind in KIND ? m.kind : 'other'), p.x, p.y, m.production ? 12 : 6, 'mark') +
-      '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.name.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m.pct < ymin ? ' (' + f1(m.pct) + '%, below axis)' : '') + '</text></g>';
+      '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.short.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m.pct < ymin ? ' (' + f1(m.pct) + '%, below axis)' : '') + '</text></g>';
   });
   $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
   var kinds = Object.keys(KIND).filter(function (k) { return k === 'star' ? !!prod : P.some(function (m) { return m.kind === k && !m.production; }); });
@@ -109,7 +109,7 @@ description: Updated automatically after each benchmark run.
   var tip = $('tip');
   function show(g) {
     var m = M[+g.getAttribute('data-i')];
-    tip.innerHTML = '<b>' + m.name + '</b>' + (m.production ? ' · ★ production' : '') + '<br>' + f1(m.pct) + '% graded (' + fr(m.graded) + ') · ' + f1(m.prose) + ' TPS<br>' +
+    tip.innerHTML = '<b>' + m.short + '</b>' + (m.production ? ' · ★ production' : '') + '<br><small>' + m.name + '</small><br>' + f1(m.pct) + '% graded (' + fr(m.graded) + ') · ' + f1(m.prose) + ' TPS<br>' +
       'Estonian ' + fr(m.estonian) + ' · prompt ' + f1(m.prompt_30k, 0) + ' TPS · 2 at once ' + f1(m.parallel, 0) + '<br>' + m.date;
     tip.hidden = false;
     var r = g.getBoundingClientRect(), c = $('chart').getBoundingClientRect();
@@ -138,7 +138,7 @@ description: Updated automatically after each benchmark run.
 
   // all results, sortable
   var SEC = [['tools', 'Tool use'], ['agent', 'Agent tasks'], ['reason', 'Reasoning'], ['extract', 'Extraction'], ['code', 'Code'], ['hard', 'Hard + long context'], ['instruct', 'Instructions'], ['judge', 'Judging']];
-  var cols = [['Setup', function (m) { return (m.url ? '<a class="r-link" href="' + m.url + '" target="_blank" rel="noopener" title="Weights on Hugging Face">' + m.name + '</a>' : m.name) + (m.detail ? '<small class="r-detail">' + m.detail + '</small>' : ''); }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
+  var cols = [['Setup', function (m) { return '<span class="r-name">' + (m.url ? '<a class="r-link" href="' + m.url + '" target="_blank" rel="noopener" title="Weights on Hugging Face">' + m.name + '</a>' : m.name) + '</span>' + (m.detail ? '<small class="r-detail">' + m.detail + '</small>' : ''); }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
     ['Graded', function (m) { return f1(m.pct) + '% <small>' + fr(m.graded) + '</small>'; }, 'pct', 'n'],
     ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Uncensored', function (m) { return fr(m.uncensored); }, 'unc', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n']]
     .concat(SEC.map(function (c) { return [c[1], function (m) { return fr((m.sections || {})[c[0]]); }, 'sec:' + c[0], 'n']; })).concat([
