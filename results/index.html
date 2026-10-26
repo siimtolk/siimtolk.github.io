@@ -25,7 +25,7 @@ description: Every local model and engine I test, scored against the one I run e
 
   <h2 class="r-h">All results</h2>
   <div class="r-scroll"><table id="all"></table></div>
-  <p class="meta">Click a column to sort. Graded = passed/runs without Estonian and uncensored; thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total tok/s with two simultaneous requests. A dash means that test was not run for that setup.</p>
+  <p class="meta">Click a column to sort; click a setup name to open its weights on Hugging Face. Graded = passed/runs without Estonian and uncensored; thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total tok/s with two simultaneous requests. A dash means that test was not run for that setup.</p>
 </section>
 <script id="board-data" type="application/json">{{ d | jsonify }}</script>
 <script>
@@ -126,7 +126,7 @@ description: Every local model and engine I test, scored against the one I run e
   });
 
   // all results, sortable
-  var cols = [['Setup', function (m) { return m.name; }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
+  var cols = [['Setup', function (m) { return m.url ? '<a class="r-link" href="' + m.url + '" target="_blank" rel="noopener" title="Weights on Hugging Face">' + m.name + '</a>' : m.name; }, 'name', 's'], ['Date', function (m) { return m.date; }, 'date', 's'],
     ['Graded', function (m) { return f1(m.pct) + '% <small>' + fr(m.graded) + '</small>'; }, 'pct', 'n'],
     ['Estonian', function (m) { return fr(m.estonian); }, 'est', 'n'], ['Thinking off', function (m) { return fr(m.nothink); }, 'nt', 'n'],
     ['Prose', function (m) { return f1(m.prose); }, 'prose', 'n'], ['Tool JSON', function (m) { return f1(m.tool_json); }, 'tool_json', 'n'],
