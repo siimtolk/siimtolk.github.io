@@ -10,14 +10,9 @@ description: Every local model and engine I test, scored against the one I run e
   <p class="hero-sub">Every local model and engine I test, scored against the one I run every day.</p>
 
   <div class="r-info">
-    <h2>How to read this</h2>
     <ul>
-      <li><strong>The test.</strong> {{ d.graded_cases }} graded runs (97 cases, three runs each) taken from what my assistant really does: tool calls, agent tasks, reasoning, code, instruction following. Code grades the answers, not me. <a href="{{ '/articles/llm-testing-overnight/' | relative_url }}">How the suite works</a>.</li>
-      <li><strong>The machine.</strong> Two RTX 5060 Ti (16 GB each). Every setup has to fit on it, with the same two-conversation shape and context my everyday assistant uses.</li>
-      <li><strong>Quality</strong> is the share of graded runs passed, with the Estonian and uncensored sets counted separately. <strong>Speed</strong> is how fast a single request generates text, in tokens per second.</li>
-      <li><strong>Production</strong> is the model I run every day. It is the baseline: every candidate is compared with it, and a new model has to beat it to take its place.</li>
-      <li><strong>In the plot</strong>, up is better quality and right is faster, so the best setups sit in the top right corner.</li>
-      <li>Results are comparable only within suite version {{ d.suite }}. Last update {{ d.generated }}.</li>
+      <li><strong>The test.</strong> {{ d.graded_cases }} graded runs from what my assistant really does, suite version {{ d.suite }}. <a href="{{ '/articles/llm-testing-overnight/' | relative_url }}">How the suite works</a>.</li>
+      <li><strong>The hardware.</strong> Two RTX 5060 Ti (16 GB each), running the same two-conversation setup as my everyday assistant. Last update {{ d.generated }}.</li>
     </ul>
   </div>
 
