@@ -1,10 +1,46 @@
 {
- "generated": "2026-10-26 11:06 UTC",
+ "generated": "2026-10-26 13:37 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "exp-20261026-capy-uncensored-2x128k",
+   "label": "exp-20261026-capy-uncensored-2x128k",
+   "url": null,
+   "name": "capy-flash v0.7.5, wallawalla47 Uncensored NVFP4 NInferV3, 2 x 128k, thinking budget 2048, lease window 0",
+   "kind": "capy",
+   "date": "2026-10-26",
+   "started": "2026-10-26 14:40:24",
+   "production": false,
+   "graded": [
+    237,
+    246
+   ],
+   "pct": 96.3,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    5,
+    11
+   ],
+   "nothink": [
+    122,
+    141
+   ],
+   "minutes": 50.5,
+   "prose": 78.8,
+   "tool_json": 103.9,
+   "prompt_30k": 2797.2,
+   "parallel": 118.7,
+   "followup_ttft": 0.24,
+   "decode_30k": 66.2,
+   "decode_90k": 61.8,
+   "latest": true
+  },
   {
    "key": "exp-20261026-capy-2x128k-budget",
    "label": "exp-20261026-capy-2x128k-budget",
