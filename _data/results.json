@@ -1,0 +1,814 @@
+{
+ "generated": "2026-10-26 08:45 UTC",
+ "suite": "2026-10-18",
+ "graded_cases": 291,
+ "older_suite_runs": 0,
+ "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+ "models": [
+  {
+   "key": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
+   "label": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
+   "name": "Qwen3.8-Flash-Next 125B (3-bit)",
+   "kind": "moe",
+   "date": "2026-10-25",
+   "started": "2026-10-25 15:59:08",
+   "production": false,
+   "graded": [
+    227,
+    246
+   ],
+   "pct": 92.3,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    114,
+    141
+   ],
+   "minutes": 267.8,
+   "prose": 15.2,
+   "tool_json": 18.3,
+   "prompt_30k": 125.2,
+   "parallel": 20.0,
+   "followup_ttft": 1.82,
+   "decode_30k": 14.9,
+   "decode_90k": 14.0,
+   "latest": true
+  },
+  {
+   "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+   "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+   "name": "capy-flash, effort low",
+   "kind": "capy",
+   "date": "2026-10-25",
+   "started": "2026-10-25 04:08:08",
+   "production": false,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    120,
+    141
+   ],
+   "minutes": 39.3,
+   "prose": 77.0,
+   "tool_json": 121.5,
+   "prompt_30k": 2855.4,
+   "parallel": 88.1,
+   "followup_ttft": 4.19,
+   "decode_30k": 78.3,
+   "decode_90k": 68.8,
+   "latest": true
+  },
+  {
+   "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
+   "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
+   "name": "capy-flash, default thinking",
+   "kind": "capy",
+   "date": "2026-10-24",
+   "started": "2026-10-24 19:22:46",
+   "production": false,
+   "graded": [
+    231,
+    246
+   ],
+   "pct": 93.9,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    6,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "minutes": 59.0,
+   "prose": 78.3,
+   "tool_json": 120.0,
+   "prompt_30k": 2833.5,
+   "parallel": 88.0,
+   "followup_ttft": 4.17,
+   "decode_30k": 72.2,
+   "decode_90k": 76.3,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
+   "name": "Turbo-Brilliance 27B",
+   "kind": "dense",
+   "date": "2026-10-22",
+   "started": "2026-10-22 13:14:43",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "estonian": [
+    42,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    118,
+    141
+   ],
+   "minutes": 66.0,
+   "prose": 37.7,
+   "tool_json": 53.1,
+   "prompt_30k": 1216.6,
+   "parallel": 57.7,
+   "followup_ttft": 1.17,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
+   "label": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
+   "name": "vLLM HauhauCS",
+   "kind": "vllm",
+   "date": "2026-10-21",
+   "started": "2026-10-21 17:48:32",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "minutes": 65.4,
+   "prose": 56.7,
+   "tool_json": 90.2,
+   "prompt_30k": 751.7,
+   "parallel": 97.5,
+   "followup_ttft": 4.63,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
+   "label": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
+   "name": "Nemotron 3.5 Bolt CRACK-24GB",
+   "kind": "moe",
+   "date": "2026-10-21",
+   "started": "2026-10-21 15:58:30",
+   "production": false,
+   "graded": [
+    159,
+    246
+   ],
+   "pct": 64.6,
+   "estonian": [
+    8,
+    45
+   ],
+   "uncensored": [
+    4,
+    11
+   ],
+   "nothink": [
+    80,
+    141
+   ],
+   "minutes": 96.8,
+   "prose": 65.6,
+   "tool_json": 107.4,
+   "prompt_30k": 1020.1,
+   "parallel": 71.0,
+   "followup_ttft": 1.31,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "name": "Qwen3.8-27B Uncensored (Heretic)",
+   "kind": "dense",
+   "date": "2026-10-21",
+   "started": "2026-10-21 14:50:08",
+   "production": false,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "minutes": 55.5,
+   "prose": 44.8,
+   "tool_json": 64.3,
+   "prompt_30k": 1212.1,
+   "parallel": 70.1,
+   "followup_ttft": 1.25,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
+   "name": "HauhauCS Qwen3.8-27B",
+   "kind": "dense",
+   "date": "2026-10-21",
+   "started": "2026-10-21 13:18:46",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "minutes": 57.5,
+   "prose": 43.5,
+   "tool_json": 65.0,
+   "prompt_30k": 1234.7,
+   "parallel": 65.1,
+   "followup_ttft": 1.26,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
+   "label": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
+   "name": "Nemotron 3.5 Bolt 74B-A9B (2-bit)",
+   "kind": "moe",
+   "date": "2026-10-21",
+   "started": "2026-10-21 12:24:49",
+   "production": false,
+   "graded": [
+    231,
+    246
+   ],
+   "pct": 93.9,
+   "estonian": [
+    16,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    91,
+    141
+   ],
+   "minutes": 45.7,
+   "prose": 58.8,
+   "tool_json": 60.1,
+   "prompt_30k": 1630.6,
+   "parallel": 78.5,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
+   "label": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
+   "name": "vLLM Heretic ARA",
+   "kind": "vllm",
+   "date": "2026-10-21",
+   "started": "2026-10-21 09:18:07",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "estonian": [
+    37,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    115,
+    141
+   ],
+   "minutes": 53.0,
+   "prose": 59.1,
+   "tool_json": 89.1,
+   "prompt_30k": 1161.3,
+   "parallel": 116.6,
+   "followup_ttft": 2.89,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k_b11707",
+   "name": "Ornith 1.5 35B-A3B",
+   "kind": "moe",
+   "date": "2026-10-21",
+   "started": "2026-10-21 02:23:50",
+   "production": false,
+   "graded": [
+    228,
+    246
+   ],
+   "pct": 92.7,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    8,
+    11
+   ],
+   "nothink": [
+    107,
+    141
+   ],
+   "minutes": 52.2,
+   "prose": 88.1,
+   "tool_json": 117.3,
+   "prompt_30k": 3021.4,
+   "parallel": 122.7,
+   "followup_ttft": 0.46,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "label": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "name": "OrcaSAQ-2 Cyber 27B",
+   "kind": "dense",
+   "date": "2026-10-21",
+   "started": "2026-10-21 01:24:49",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    112,
+    141
+   ],
+   "minutes": 54.8,
+   "prose": 43.7,
+   "tool_json": 67.3,
+   "prompt_30k": 1210.2,
+   "parallel": 68.7,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "label": "muse-glimmer-30b-abliterated-2_q4km_dflash_2gpu_128k",
+   "name": "Muse Glimmer 30B",
+   "kind": "dense",
+   "date": "2026-10-20",
+   "started": "2026-10-20 18:30:58",
+   "production": false,
+   "graded": [
+    223,
+    246
+   ],
+   "pct": 90.7,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    133,
+    141
+   ],
+   "minutes": 40.2,
+   "prose": 35.1,
+   "tool_json": 108.1,
+   "prompt_30k": 1210.1,
+   "parallel": 35.3,
+   "followup_ttft": 0.67,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
+   "label": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
+   "name": "Gemma 4 26B-A4B",
+   "kind": "moe",
+   "date": "2026-10-20",
+   "started": "2026-10-20 16:11:45",
+   "production": false,
+   "graded": [
+    216,
+    246
+   ],
+   "pct": 87.8,
+   "estonian": [
+    35,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    118,
+    141
+   ],
+   "minutes": 112.8,
+   "prose": 82.7,
+   "tool_json": 106.6,
+   "prompt_30k": 3983.9,
+   "parallel": 93.0,
+   "followup_ttft": 0.56,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
+   "label": "minicpm-v-4.7-35b-a3b-uncensored-3_iq4xs_nospec_2gpu_128k",
+   "name": "MiniCPM-V 4.7 35B-A3B",
+   "kind": "moe",
+   "date": "2026-10-20",
+   "started": "2026-10-20 15:17:06",
+   "production": false,
+   "graded": [
+    208,
+    246
+   ],
+   "pct": 84.6,
+   "estonian": [
+    33,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    119,
+    141
+   ],
+   "minutes": 40.9,
+   "prose": 102.7,
+   "tool_json": 103.1,
+   "prompt_30k": 4381.1,
+   "parallel": 158.6,
+   "followup_ttft": 0.41,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
+   "label": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
+   "name": "Underdog Saluki 27B (2-bit)",
+   "kind": "dense",
+   "date": "2026-10-20",
+   "started": "2026-10-20 13:43:50",
+   "production": false,
+   "graded": [
+    225,
+    246
+   ],
+   "pct": 91.5,
+   "estonian": [
+    28,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    96,
+    141
+   ],
+   "minutes": 78.5,
+   "prose": 44.1,
+   "tool_json": 69.3,
+   "prompt_30k": 1067.7,
+   "parallel": 56.9,
+   "followup_ttft": 1.16,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
+   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+   "name": "Qwen3.8-27B RVN (production)",
+   "kind": "dense",
+   "date": "2026-10-20",
+   "started": "2026-10-20 08:16:29",
+   "production": true,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    113,
+    141
+   ],
+   "minutes": 61.1,
+   "prose": 45.7,
+   "tool_json": 65.3,
+   "prompt_30k": 1213.1,
+   "parallel": 68.8,
+   "followup_ttft": 1.26,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k_r2",
+   "name": "Huihui Coder390",
+   "kind": "dense",
+   "date": "2026-10-19",
+   "started": "2026-10-19 20:38:19",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "estonian": [
+    35,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    115,
+    141
+   ],
+   "minutes": 54.3,
+   "prose": 44.4,
+   "tool_json": 68.0,
+   "prompt_30k": 1094.0,
+   "parallel": 65.0,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
+   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18",
+   "name": "Qwen3.8-27B RVN (production)",
+   "kind": "dense",
+   "date": "2026-10-19",
+   "started": "2026-10-19 12:54:30",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    116,
+    141
+   ],
+   "minutes": 80.9,
+   "prose": 43.4,
+   "tool_json": 64.4,
+   "prompt_30k": 1112.4,
+   "parallel": 65.1,
+   "followup_ttft": 1.39,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "label": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "name": "Muse Glimmer 30B",
+   "kind": "dense",
+   "date": "2026-10-19",
+   "started": "2026-10-19 03:38:17",
+   "production": false,
+   "graded": [
+    225,
+    246
+   ],
+   "pct": 91.5,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    131,
+    141
+   ],
+   "minutes": 39.6,
+   "prose": 36.1,
+   "tool_json": 114.8,
+   "prompt_30k": 1215.0,
+   "parallel": 37.3,
+   "followup_ttft": 0.65,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "name": "Huihui Coder390",
+   "kind": "dense",
+   "date": "2026-10-19",
+   "started": "2026-10-19 00:04:27",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    111,
+    141
+   ],
+   "minutes": 49.3,
+   "prose": 44.2,
+   "tool_json": 65.6,
+   "prompt_30k": 1101.2,
+   "parallel": 64.7,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
+   "label": "minicpm-v-4.7-35b-a3b-uncensored-2_iq4xs_nospec_2gpu_128k",
+   "name": "MiniCPM-V 4.7 35B-A3B",
+   "kind": "moe",
+   "date": "2026-10-18",
+   "started": "2026-10-18 23:20:01",
+   "production": false,
+   "graded": [
+    205,
+    246
+   ],
+   "pct": 83.3,
+   "estonian": [
+    30,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    126,
+    141
+   ],
+   "minutes": 37.3,
+   "prose": 99.9,
+   "tool_json": 102.2,
+   "prompt_30k": 4367.8,
+   "parallel": 158.3,
+   "followup_ttft": 0.41,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "name": "Ornith 1.5 35B-A3B",
+   "kind": "moe",
+   "date": "2026-10-18",
+   "started": "2026-10-18 22:15:47",
+   "production": false,
+   "graded": [
+    222,
+    246
+   ],
+   "pct": 90.2,
+   "estonian": [
+    29,
+    45
+   ],
+   "uncensored": [
+    6,
+    7
+   ],
+   "nothink": [
+    109,
+    141
+   ],
+   "minutes": 51.6,
+   "prose": 87.5,
+   "tool_json": 113.0,
+   "prompt_30k": 3013.2,
+   "parallel": 120.9,
+   "followup_ttft": 0.46,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  }
+ ]
+}
