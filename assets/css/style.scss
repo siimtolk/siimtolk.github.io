@@ -121,7 +121,7 @@ nav a.nav-live:hover { color: var(--ink); border-color: #f5c518; box-shadow: 0 2
 .r-chart .hitarea { fill: transparent; } .r-chart .pt { cursor: pointer; outline: none; }
 .r-chart .pt:hover .lab, .r-chart .pt:focus .lab { fill: var(--ink); }
 .r-chart .mark, .r-legend .mark { stroke: var(--surface); stroke-width: 2; }
-.k-dense .mark, .r-legend .k-dense .mark, .k-other .mark { fill: #2a78d6; } .k-moe .mark { fill: #eb6834; } .k-capy .mark { fill: #1baf7a; } .k-vllm .mark { fill: #eda100; }
+.k-llama .mark, .r-legend .k-llama .mark { fill: #2a78d6; } .k-capy .mark { fill: #1baf7a; } .k-vllm .mark { fill: #eda100; }
 .r-chart .pt.prod .mark, .r-legend .k-star .mark { fill: #f5b800; stroke: #8a6500; stroke-width: 1.2; }
 .results a.r-link { color: inherit; text-decoration: underline; text-decoration-color: var(--line); text-decoration-thickness: 2px; }
 .results a.r-link:hover { color: var(--accent-ink); text-decoration-color: var(--accent); }

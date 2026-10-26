@@ -32,7 +32,9 @@ description: Updated automatically after each benchmark run.
   var D = JSON.parse(document.getElementById('board-data').textContent);
   var M = D.models, P = M.filter(function (m) { return m.latest; });
   var prod = M.filter(function (m) { return m.production; })[0];
-  var KIND = {dense: ['Dense', 'o'], moe: ['Mixture of experts', 'tri'], capy: ['capy-flash', 'dia'], vllm: ['vLLM', 'sq'], other: ['Other', 'o'], star: ['Production (my baseline)', 'star']};
+  var KIND = {llama: ['llama.cpp', 'o'], vllm: ['vLLM', 'sq'], capy: ['capy-flash', 'dia'], star: ['Production (my baseline)', 'star']};
+  var BK = {'llama.cpp': 'llama', 'vLLM': 'vllm', 'capy-flash': 'capy'};
+  var bk = function (m) { return BK[m.backend] || 'llama'; };
   var $ = function (id) { return document.getElementById(id); };
   var f1 = function (v, n) { return v == null ? '–' : v.toFixed(n == null ? 1 : n); };
   var fr = function (p) { return p ? p[0] + '/' + p[1] : '–'; };
@@ -96,12 +98,12 @@ description: Updated automatically after each benchmark run.
   pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
   pts.forEach(function (p, i) {
     var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
-    svg += '<g class="pt k-' + m.kind + (m.production ? ' prod' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
-      '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : (m.kind in KIND ? m.kind : 'other'), p.x, p.y, m.production ? 12 : 6, 'mark') +
+    svg += '<g class="pt k-' + bk(m) + (m.production ? ' prod' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
+      '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : bk(m), p.x, p.y, m.production ? 12 : 6, 'mark') +
       '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.short.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m.pct < ymin ? ' (' + f1(m.pct) + '%, below axis)' : '') + '</text></g>';
   });
   $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
-  var kinds = Object.keys(KIND).filter(function (k) { return k === 'star' ? !!prod : P.some(function (m) { return m.kind === k && !m.production; }); });
+  var kinds = Object.keys(KIND).filter(function (k) { return k === 'star' ? !!prod : P.some(function (m) { return bk(m) === k && !m.production; }); });
   $('legend').innerHTML = kinds.map(function (k) {
     return '<span class="k-' + k + '"><svg width="18" height="18" viewBox="0 0 18 18">' + shape(k, 9, 9, k === 'star' ? 8 : 5, 'mark') + '</svg>' + KIND[k][0] + '</span>';
   }).join('');
