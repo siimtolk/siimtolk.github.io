@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26 13:37 UTC",
+ "generated": "2026-10-26 13:57 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -8,9 +8,44 @@
   {
    "key": "exp-20261026-capy-uncensored-2x128k",
    "label": "exp-20261026-capy-uncensored-2x128k",
-   "url": null,
-   "name": "capy-flash v0.7.5, wallawalla47 Uncensored NVFP4 NInferV3, 2 x 128k, thinking budget 2048, lease window 0",
+   "url": "https://huggingface.co/wallawalla47/Qwen3.8-27B-Uncensored-NVFP4-NInferV3",
+   "name": "capy-flash Uncensored, 2 x 128k",
    "kind": "capy",
+   "detail": "capy-flash 0.7.5 · NVFP4 · 2 GPUs · 2 x 128k context · thinking budget 2048",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     45,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-26",
    "started": "2026-10-26 14:40:24",
    "production": false,
@@ -44,9 +79,44 @@
   {
    "key": "exp-20261026-capy-2x128k-budget",
    "label": "exp-20261026-capy-2x128k-budget",
-   "url": null,
-   "name": "capy-flash v0.7.5, 2 x 128k, concurrency 2, default thinking budget 2048, lease window 0",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
+   "name": "capy-flash QUASAR, 2 x 128k",
    "kind": "capy",
+   "detail": "capy-flash 0.7.5 · NVFP4 · 2 GPUs · 2 x 128k context · thinking budget 2048",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-26",
    "started": "2026-10-26 12:11:08",
    "production": false,
@@ -83,6 +153,41 @@
    "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
    "name": "Qwen3.8-27B GSQ-RCO (3-bit)",
    "kind": "dense",
+   "detail": "IQ3_S · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-26",
    "started": "2026-10-26 10:00:22",
    "production": false,
@@ -119,6 +224,41 @@
    "url": "https://huggingface.co/0bserverx/RVN-Qwen3.8-Flash-Next-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-Flash-Next 125B (3-bit)",
    "kind": "moe",
+   "detail": "IQ3_XS · no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     43,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     19,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-25",
    "started": "2026-10-25 15:59:08",
    "production": false,
@@ -155,6 +295,41 @@
    "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash, effort low",
    "kind": "capy",
+   "detail": "capy-flash 0.7.4 · NVFP4 · 2 GPUs · reasoning effort low",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-25",
    "started": "2026-10-25 04:08:08",
    "production": false,
@@ -191,6 +366,41 @@
    "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
    "name": "capy-flash, default thinking",
    "kind": "capy",
+   "detail": "capy-flash 0.7.4 · NVFP4 · 2 GPUs · default thinking",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     12,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-24",
    "started": "2026-10-24 19:22:46",
    "production": false,
@@ -227,6 +437,41 @@
    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-Turbo-Brilliance-50X-Reasoning-Instruct-NEO-MAX-MTP-GGUF",
    "name": "Turbo-Brilliance 27B",
    "kind": "dense",
+   "detail": "IQ4_XS · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-22",
    "started": "2026-10-22 13:14:43",
    "production": false,
@@ -263,6 +508,41 @@
    "url": "https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP",
    "name": "vLLM HauhauCS",
    "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     44,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     46,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 17:48:32",
    "production": false,
@@ -299,6 +579,41 @@
    "url": "https://huggingface.co/dealignai/Nemotron-3.5-Bolt-74B-A9B-CRACK-24GB-GGUF",
    "name": "Nemotron 3.5 Bolt CRACK-24GB",
    "kind": "moe",
+   "detail": "IQ2_XXS · DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     29,
+     48
+    ],
+    "reason": [
+     27,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     3,
+     24
+    ],
+    "hard": [
+     21,
+     48
+    ],
+    "instruct": [
+     12,
+     21
+    ],
+    "judge": [
+     17,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 15:58:30",
    "production": false,
@@ -335,6 +650,41 @@
    "url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
    "name": "Qwen3.8-27B Uncensored (Heretic)",
    "kind": "dense",
+   "detail": "IQ4_XS · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 14:50:08",
    "production": false,
@@ -371,6 +721,41 @@
    "url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
    "name": "HauhauCS Qwen3.8-27B",
    "kind": "dense",
+   "detail": "IQ4_XS · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 13:18:46",
    "production": false,
@@ -407,6 +792,41 @@
    "url": "https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-Abliterated-24GB-GGUF",
    "name": "Nemotron 3.5 Bolt 74B-A9B (2-bit)",
    "kind": "moe",
+   "detail": "IQ2_XXS · no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 12:24:49",
    "production": false,
@@ -443,6 +863,41 @@
    "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
    "name": "vLLM Heretic ARA",
    "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 09:18:07",
    "production": false,
@@ -479,6 +934,41 @@
    "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "Ornith 1.5 35B-A3B",
    "kind": "moe",
+   "detail": "Q4_K_M · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     45,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 02:23:50",
    "production": false,
@@ -515,6 +1005,41 @@
    "url": "https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF",
    "name": "OrcaSAQ-2 Cyber 27B",
    "kind": "dense",
+   "detail": "IQ4_XS · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-21",
    "started": "2026-10-21 01:24:49",
    "production": false,
@@ -551,6 +1076,41 @@
    "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "Muse Glimmer 30B",
    "kind": "dense",
+   "detail": "Q4_K_M · DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     40,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-20",
    "started": "2026-10-20 18:30:58",
    "production": false,
@@ -587,6 +1147,41 @@
    "url": "https://huggingface.co/HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP",
    "name": "Gemma 4 26B-A4B",
    "kind": "moe",
+   "detail": "Q4_K_M · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     31,
+     48
+    ],
+    "instruct": [
+     19,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-20",
    "started": "2026-10-20 16:11:45",
    "production": false,
@@ -623,6 +1218,41 @@
    "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "MiniCPM-V 4.7 35B-A3B",
    "kind": "moe",
+   "detail": "IQ4_XS · no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     37,
+     48
+    ],
+    "instruct": [
+     12,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-20",
    "started": "2026-10-20 15:17:06",
    "production": false,
@@ -659,6 +1289,41 @@
    "url": "https://huggingface.co/Kujira/Underdog-Saluki-27B-1.0-MTP-Abliterated-GGUF",
    "name": "Underdog Saluki 27B (2-bit)",
    "kind": "dense",
+   "detail": "IQ2 mix · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     38,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     15,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-20",
    "started": "2026-10-20 13:43:50",
    "production": false,
@@ -695,6 +1360,41 @@
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-27B RVN (production)",
    "kind": "dense",
+   "detail": "IQ4_XS · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-20",
    "started": "2026-10-20 08:16:29",
    "production": true,
@@ -731,6 +1431,41 @@
    "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "Huihui Coder390",
    "kind": "dense",
+   "detail": "IQ3_S · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-19",
    "started": "2026-10-19 20:38:19",
    "production": false,
@@ -767,6 +1502,41 @@
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
    "name": "Qwen3.8-27B RVN (production)",
    "kind": "dense",
+   "detail": "IQ4_XS · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-19",
    "started": "2026-10-19 12:54:30",
    "production": false,
@@ -803,6 +1573,41 @@
    "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
    "name": "Muse Glimmer 30B",
    "kind": "dense",
+   "detail": "Q4_K_M · DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-19",
    "started": "2026-10-19 03:38:17",
    "production": false,
@@ -839,6 +1644,41 @@
    "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
    "name": "Huihui Coder390",
    "kind": "dense",
+   "detail": "IQ3_S · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-19",
    "started": "2026-10-19 00:04:27",
    "production": false,
@@ -875,6 +1715,41 @@
    "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
    "name": "MiniCPM-V 4.7 35B-A3B",
    "kind": "moe",
+   "detail": "IQ4_XS · no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     38,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     13,
+     24
+    ],
+    "hard": [
+     38,
+     48
+    ],
+    "instruct": [
+     11,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-18",
    "started": "2026-10-18 23:20:01",
    "production": false,
@@ -911,6 +1786,41 @@
    "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
    "name": "Ornith 1.5 35B-A3B",
    "kind": "moe",
+   "detail": "Q4_K_M · MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     15,
+     24
+    ],
+    "hard": [
+     43,
+     48
+    ],
+    "instruct": [
+     16,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
    "date": "2026-10-18",
    "started": "2026-10-18 22:15:47",
    "production": false,
