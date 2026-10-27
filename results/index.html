@@ -87,14 +87,15 @@ description: Updated automatically after each benchmark run.
     return '<label><input type="radio" name="xspeed" value="' + s[0] + '"' + (s[0] === xk ? ' checked' : '') + '> ' + s[1] + '</label>';
   }).join('') + '</fieldset>';
   function SEC_() { return [['tools', 'Tool use'], ['agent', 'Agent tasks'], ['reason', 'Reasoning'], ['extract', 'Extraction'], ['code', 'Code'], ['hard', 'Hard + long context'], ['instruct', 'Instructions'], ['judge', 'Judging']]; }
-  function quality(m) {
-    var ok = 0, n = 0;
+  function quality(m) {  // null when the setup has no result for a ticked area: it is left off the plot
+    var ok = 0, n = 0, gap = false;
     AREAS.forEach(function (a) {
       if (!on[a[0]]) return;
       var v = a[0] === 'estonian' ? m.estonian : a[0] === 'uncensored' ? m.uncensored : XT.some(function (x) { return x[0] === a[0]; }) ? xval(m, a[0]) : (m.sections || {})[a[0]];
-      if (v) { ok += v[0]; n += v[1]; }
+      if (!v) { gap = true; return; }
+      ok += v[0]; n += v[1];
     });
-    return n ? {ok: ok, n: n, pct: Math.round(1000 * ok / n) / 10} : null;
+    return n && !gap ? {ok: ok, n: n, pct: Math.round(1000 * ok / n) / 10} : null;
   }
 
   var tip;
@@ -102,9 +103,9 @@ description: Updated automatically after each benchmark run.
     var sp = SPEEDS.filter(function (s) { return s[0] === xk; })[0];
     P.forEach(function (m) { m._q = quality(m); });
     var Q = P.filter(function (m) { return m._q && m[xk] != null; });
-    var missing = P.length - Q.length;
-    $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '.' + (missing && Q.length ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
-    if (!Q.length) { $('chart').innerHTML = '<p class="meta">Nothing to plot: tick at least one test area.</p>'; return; }
+    var noArea = P.filter(function (m) { return !m._q; }).length, missing = Q.length ? P.filter(function (m) { return m._q && m[xk] == null; }).length : 0;
+    $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '.' + (noArea ? ' ' + noArea + ' setups have no result for a ticked test area and are not plotted.' : '') + (missing ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
+    if (!Q.length) { $('chart').innerHTML = '<p class="meta">Nothing to plot: tick at least one test area, and note that setups without a result for a ticked area are left off.</p>'; return; }
     var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
     var mx = Math.max.apply(null, Q.map(function (m) { return m[xk]; })), xstep = mx > 80 ? 20 : mx > 40 ? 10 : 5;
     var xmax = Math.ceil(mx / xstep) * xstep || xstep;
