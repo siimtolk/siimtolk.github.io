@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27 18:44 UTC",
+ "generated": "2026-10-27 19:17 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -8,14 +8,14 @@
   {
    "key": "exp-20261027-capy-rvn-nvfp4-a",
    "label": "exp-20261027-capy-rvn-nvfp4-a",
-   "url": null,
-   "name": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
-   "short": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
-   "title": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant A) · NVFP4 (variant A, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant A)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant A)",
    "backend": "capy-flash",
-   "traits": "",
+   "traits": "NVFP4 (variant A, from BF16) · Heretic ARA · 0bserverx",
    "kind": "capy",
-   "detail": "",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500 · lease window 0 · every layer projection in NVFP4 (smallest, fastest)",
    "sections": {
     "tools": [
      39,
@@ -58,8 +58,11 @@
     246
    ],
    "pct": 94.3,
-   "graded_all": null,
-   "pct_all": null,
+   "graded_all": [
+    367,
+    396
+   ],
+   "pct_all": 92.7,
    "estonian": [
     39,
     45
@@ -69,11 +72,33 @@
     11
    ],
    "nothink": null,
-   "extra": {},
+   "extra": {
+    "estonian_free": [
+     33,
+     39
+    ],
+    "vision": [
+     18,
+     18
+    ],
+    "robust": [
+     64,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
    "own_traffic": null,
    "own_traffic_parts": {},
-   "section_versions": {},
-   "minutes": 51.0,
+   "section_versions": {
+    "estonian_free": "v1",
+    "vision": "v1",
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 82.9,
    "prose": 78.7,
    "tool_json": 117.8,
    "prompt_30k": 1227.5,
@@ -211,14 +236,14 @@
   {
    "key": "exp-20261027-capy-heretic-ara-retry",
    "label": "exp-20261027-capy-heretic-ara-retry",
-   "url": null,
-   "name": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
-   "short": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
-   "title": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
+   "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
+   "name": "capy-flash · Qwen3.8-27B Heretic ARA (2 x 128k) · NVFP4 · Heretic ARA · lyf",
+   "short": "Qwen3.8-27B Heretic ARA (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B Heretic ARA (2 x 128k)",
    "backend": "capy-flash",
-   "traits": "",
+   "traits": "NVFP4 · Heretic ARA · lyf",
    "kind": "capy",
-   "detail": "",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048 · lease window 0 · rebuilt with the official Qwen tokenizer",
    "sections": {
     "tools": [
      40,
