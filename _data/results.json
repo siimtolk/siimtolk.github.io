@@ -1,10 +1,85 @@
 {
- "generated": "2026-10-26 19:24 UTC",
+ "generated": "2026-10-27 07:55 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "exp-20261027-capy-heretic-ara-retry",
+   "label": "exp-20261027-capy-heretic-ara-retry",
+   "url": null,
+   "name": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
+   "short": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
+   "title": "capy-flash v0.7.5, Heretic ARA NVFP4 rebuilt with the official Qwen tokenizer, 2 x 128k, thinking budget 2048, lease window 0",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     44,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 09:02:56",
+   "production": false,
+   "graded": [
+    235,
+    246
+   ],
+   "pct": 95.5,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    5,
+    11
+   ],
+   "nothink": [
+    89,
+    96
+   ],
+   "minutes": 49.8,
+   "prose": 80.5,
+   "tool_json": 113.4,
+   "prompt_30k": 2847.4,
+   "parallel": 135.9,
+   "followup_ttft": 0.21,
+   "decode_30k": 73.9,
+   "decode_90k": 68.4,
+   "latest": true
+  },
   {
    "key": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
    "label": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
