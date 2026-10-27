@@ -1,10 +1,83 @@
 {
- "generated": "2026-10-27 08:00 UTC",
+ "generated": "2026-10-27 14:24 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "ternary-nemotron-3.5-lightning-30b-a3b_lightning_nospec_2gpu_128k",
+   "label": "ternary-nemotron-3.5-lightning-30b-a3b_lightning_nospec_2gpu_128k",
+   "url": "https://huggingface.co/boro64/Ternary-Nemotron-3.5-Lightning-30B-A3B-GGUF",
+   "name": "ternary nemotron 3.5 lightning 30b a3b",
+   "short": "ternary nemotron 3.5 lightning 30b a3b",
+   "title": "ternary nemotron 3.5 lightning 30b a3b",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     22,
+     42
+    ],
+    "agent": [
+     8,
+     48
+    ],
+    "reason": [
+     27,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     8,
+     24
+    ],
+    "hard": [
+     21,
+     48
+    ],
+    "instruct": [
+     11,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 14:41:52",
+   "production": false,
+   "graded": [
+    124,
+    246
+   ],
+   "pct": 50.4,
+   "estonian": [
+    6,
+    45
+   ],
+   "uncensored": null,
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 74.8,
+   "prose": 220.6,
+   "tool_json": 220.2,
+   "prompt_30k": 5619.8,
+   "parallel": 266.8,
+   "followup_ttft": 0.31,
+   "decode_30k": 157.6,
+   "decode_90k": 100.7,
+   "latest": true
+  },
   {
    "key": "exp-20261027-capy-heretic-ara-retry",
    "label": "exp-20261027-capy-heretic-ara-retry",
@@ -70,6 +143,10 @@
     123,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 49.8,
    "prose": 80.5,
    "tool_json": 113.4,
@@ -145,6 +222,10 @@
     110,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 58.9,
    "prose": 58.4,
    "tool_json": 88.6,
@@ -220,6 +301,10 @@
     122,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 50.5,
    "prose": 78.8,
    "tool_json": 103.9,
@@ -295,6 +380,10 @@
     123,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 47.9,
    "prose": 75.4,
    "tool_json": 118.6,
@@ -370,6 +459,10 @@
     110,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 61.5,
    "prose": 44.0,
    "tool_json": 67.0,
@@ -445,6 +538,10 @@
     114,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 267.8,
    "prose": 15.2,
    "tool_json": 18.3,
@@ -520,6 +617,10 @@
     120,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 39.3,
    "prose": 77.0,
    "tool_json": 121.5,
@@ -595,6 +696,10 @@
     117,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 59.0,
    "prose": 78.3,
    "tool_json": 120.0,
@@ -670,6 +775,10 @@
     118,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 66.0,
    "prose": 37.7,
    "tool_json": 53.1,
@@ -745,6 +854,10 @@
     117,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 65.4,
    "prose": 56.7,
    "tool_json": 90.2,
@@ -820,6 +933,10 @@
     80,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 96.8,
    "prose": 65.6,
    "tool_json": 107.4,
@@ -895,6 +1012,10 @@
     117,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 55.5,
    "prose": 44.8,
    "tool_json": 64.3,
@@ -970,6 +1091,10 @@
     117,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 57.5,
    "prose": 43.5,
    "tool_json": 65.0,
@@ -1045,6 +1170,10 @@
     91,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 45.7,
    "prose": 58.8,
    "tool_json": 60.1,
@@ -1120,6 +1249,10 @@
     115,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 53.0,
    "prose": 59.1,
    "tool_json": 89.1,
@@ -1195,6 +1328,10 @@
     107,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 52.2,
    "prose": 88.1,
    "tool_json": 117.3,
@@ -1270,6 +1407,10 @@
     112,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 54.8,
    "prose": 43.7,
    "tool_json": 67.3,
@@ -1345,6 +1486,10 @@
     133,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 40.2,
    "prose": 35.1,
    "tool_json": 108.1,
@@ -1420,6 +1565,10 @@
     118,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 112.8,
    "prose": 82.7,
    "tool_json": 106.6,
@@ -1495,6 +1644,10 @@
     119,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 40.9,
    "prose": 102.7,
    "tool_json": 103.1,
@@ -1570,6 +1723,10 @@
     96,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 78.5,
    "prose": 44.1,
    "tool_json": 69.3,
@@ -1645,6 +1802,10 @@
     113,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 61.1,
    "prose": 45.7,
    "tool_json": 65.3,
@@ -1720,6 +1881,10 @@
     115,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 54.3,
    "prose": 44.4,
    "tool_json": 68.0,
@@ -1795,6 +1960,10 @@
     116,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 80.9,
    "prose": 43.4,
    "tool_json": 64.4,
@@ -1870,6 +2039,10 @@
     131,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 39.6,
    "prose": 36.1,
    "tool_json": 114.8,
@@ -1945,6 +2118,10 @@
     111,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 49.3,
    "prose": 44.2,
    "tool_json": 65.6,
@@ -2020,6 +2197,10 @@
     126,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 37.3,
    "prose": 99.9,
    "tool_json": 102.2,
@@ -2095,6 +2276,10 @@
     109,
     141
    ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
    "minutes": 51.6,
    "prose": 87.5,
    "tool_json": 113.0,
