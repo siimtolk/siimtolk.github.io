@@ -103,7 +103,7 @@ description: Updated automatically after each benchmark run.
     P.forEach(function (m) { m._q = quality(m); });
     var Q = P.filter(function (m) { return m._q && m[xk] != null; });
     var missing = P.length - Q.length;
-    $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '. By default: all the base test areas (including Estonian and the uncensored set); the newer tests (Estonian free text, vision, own traffic, robustness, long agent tasks) are unticked until you add them, and a setup that has no result for a ticked area simply counts without it. The vertical axis does not start at zero. Hover a point for its numbers; click it to jump to its row in the table below.' + (missing && Q.length ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
+    $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '.' + (missing && Q.length ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
     if (!Q.length) { $('chart').innerHTML = '<p class="meta">Nothing to plot: tick at least one test area.</p>'; return; }
     var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
     var mx = Math.max.apply(null, Q.map(function (m) { return m[xk]; })), xstep = mx > 80 ? 20 : mx > 40 ? 10 : 5;
