@@ -19,6 +19,10 @@ description: Updated automatically after each benchmark run.
 
   <h2 class="r-h">Quality against speed</h2>
   <div class="r-controls" id="controls"></div>
+  <div class="r-zoom">
+    <button type="button" id="zin" aria-label="Zoom in" title="Zoom in">+</button><button type="button" id="zout" aria-label="Zoom out" title="Zoom out">−</button><button type="button" id="zreset" title="Show the whole chart">Reset</button>
+    <span class="meta" id="zoomnote"></span>
+  </div>
   <div class="r-chart" id="chart"></div>
   <div class="r-legend" id="legend"></div>
   <p class="meta" id="chartnote"></p>
@@ -98,7 +102,7 @@ description: Updated automatically after each benchmark run.
     return n && !gap ? {ok: ok, n: n, pct: Math.round(1000 * ok / n) / 10} : null;
   }
 
-  var tip;
+  var tip, chartView;
   function drawChart() {
     var sp = SPEEDS.filter(function (s) { return s[0] === xk; })[0];
     P.forEach(function (m) { m._q = quality(m); });
@@ -106,53 +110,91 @@ description: Updated automatically after each benchmark run.
     var noArea = P.filter(function (m) { return !m._q; }).length, missing = Q.length ? P.filter(function (m) { return m._q && m[xk] == null; }).length : 0;
     $('chartnote').textContent = 'Share of selected test-area runs passed (' + AREAS.filter(function (a) { return on[a[0]]; }).map(function (a) { return a[1].toLowerCase(); }).join(', ') + ') against ' + sp[3] + '.' + (noArea ? ' ' + noArea + ' setups have no result for a ticked test area and are not plotted.' : '') + (missing ? ' ' + missing + ' setups have no ' + sp[1].toLowerCase() + ' measurement and are not plotted.' : '');
     if (!Q.length) { $('chart').innerHTML = '<p class="meta">Nothing to plot: tick at least one test area, and note that setups without a result for a ticked area are left off.</p>'; return; }
-    var W = 960, H = 640, L = 58, R = 20, T = 14, B = 48;
+    var W = 960, H = 640, L = 58, R = 20, T = 26, B = 48, PW = W - L - R, PH = H - T - B;
     var mx = Math.max.apply(null, Q.map(function (m) { return m[xk]; })), xstep = mx > 80 ? 20 : mx > 40 ? 10 : 5;
     var xmax = Math.ceil(mx / xstep) * xstep || xstep;
     var pcts = Q.map(function (m) { return m._q.pct; }).sort(function (a, b) { return a - b; });
     var ymin = Math.max(0, Math.floor(((pcts.length > 2 ? pcts[1] : pcts[0]) - 2) / 5) * 5), ymax = 100;  // one outlier may sit below the axis
     var yv = function (m) { return Math.max(m._q.pct, ymin + 0.8); };
-    var X = function (v) { return L + (v / xmax) * (W - L - R); };
-    var Y = function (v) { return T + (1 - (v - ymin) / (ymax - ymin)) * (H - T - B); };
-    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quality against speed scatter plot">';
-    for (var gx = 0; gx <= xmax; gx += xstep) svg += '<line class="grid" x1="' + X(gx) + '" x2="' + X(gx) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + X(gx) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + gx + '</text>';
-    var ystep = (ymax - ymin) > 30 ? 10 : 5;
-    for (var gy = ymin; gy <= ymax; gy += ystep) svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(gy) + '" y2="' + Y(gy) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + gy + '%</text>';
-    svg += '<text class="axis" x="' + (L + (W - L - R) / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + sp[2] + '</text>';
-    svg += '<text class="axis" transform="translate(14 ' + (T + (H - T - B) / 2) + ') rotate(-90)" text-anchor="middle">Selected runs passed, %</text>';
+    // the view is the visible data window; zooming and panning change it, the label layout is redone for it each time
+    var full = {x0: 0, x1: xmax, y0: ymin, y1: ymax + 1};
+    var view = {x0: full.x0, x1: full.x1, y0: full.y0, y1: full.y1};
+    var niceStep = function (span) { var raw = span / 8, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p; return (f > 5 ? 10 : f > 2 ? 5 : f > 1 ? 2 : 1) * p; };
+    var clipId = 'clip' + Math.round(Math.random() * 1e6);
+    var short = function (s) { s = s.replace(/ \((capy-flash|vLLM)\)$/, '').replace(/\((capy-flash|vLLM), /, '('); return s.length > 42 ? s.slice(0, 41) + '…' : s; };  // the marker shape already says which backend
+    var esc = function (s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); };
 
-    // label placement: try right, left, above, below; take the one that overlaps least
-    var boxes = [], pts = Q.map(function (m) { return {m: m, x: X(m[xk]), y: Y(yv(m))}; });
-    pts.forEach(function (p) { var h = p.m.production ? 15 : 8; boxes.push([p.x - h, p.y - h, p.x + h, p.y + h]); });
-    var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
-    pts.sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0); });
-    pts.forEach(function (p) {
-      var w = (p.m.short.length + (p.m._q.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
-      [[16, 0, 'start'], [-16, 0, 'end'], [0, -20, 'middle'], [0, 24, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
-        var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
-        var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
-        var cost = Math.abs(o[0]) + Math.abs(o[1]) + boxes.reduce(function (s, b) { return s + 20 * hit(bx, b); }, 0) + (bx[0] < 0 || bx[2] > W ? 1e5 : 0) + (bx[1] < 0 || bx[3] > H - B ? 1e5 : 0);
-        if (!best || cost < best.cost) best = {cost: cost, o: o, bx: bx};
+    function paint() {
+      var X = function (v) { return L + (v - view.x0) / (view.x1 - view.x0) * PW; };
+      var Y = function (v) { return T + (1 - (v - view.y0) / (view.y1 - view.y0)) * PH; };
+      var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Quality against speed scatter plot"><defs><clipPath id="' + clipId + '"><rect x="' + L + '" y="' + T + '" width="' + PW + '" height="' + PH + '"/></clipPath></defs>';
+      var xs = niceStep(view.x1 - view.x0), ys = niceStep(view.y1 - view.y0), dec = function (s) { return s < 1 ? 1 : 0; };
+      for (var gx = Math.ceil(view.x0 / xs) * xs; gx <= view.x1 + 1e-9; gx += xs) svg += '<line class="grid" x1="' + X(gx) + '" x2="' + X(gx) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + X(gx) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + gx.toFixed(dec(xs)) + '</text>';
+      for (var gy = Math.ceil(view.y0 / ys) * ys; gy <= view.y1 + 1e-9; gy += ys) svg += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(gy) + '" y2="' + Y(gy) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(gy) + 4) + '" text-anchor="end">' + gy.toFixed(dec(ys)) + '%</text>';
+      svg += '<text class="axis" x="' + (L + PW / 2) + '" y="' + (H - 8) + '" text-anchor="middle">' + sp[2] + '</text>';
+      svg += '<text class="axis" transform="translate(14 ' + (T + PH / 2) + ') rotate(-90)" text-anchor="middle">Selected runs passed, %</text>';
+
+      // label placement, most important first (production, then best quality): try right, left, above, below...; a label that
+      // would overlap another label or a marker is left off (hover shows the name; zooming in makes room)
+      var inView = function (p) { return p.x >= L - 8 && p.x <= W - R + 8 && p.y >= T - 8 && p.y <= H - B + 8; };
+      var boxes = [], pts = Q.map(function (m) { return {m: m, x: X(m[xk]), y: Y(yv(m))}; }).filter(inView);
+      pts.forEach(function (p) { var h = p.m.production ? 15 : 8; boxes.push([p.x - h, p.y - h, p.x + h, p.y + h]); });
+      var hit = function (a, b) { return Math.max(0, Math.min(a[2], b[2]) - Math.max(a[0], b[0])) * Math.max(0, Math.min(a[3], b[3]) - Math.max(a[1], b[1])); };
+      var order = pts.slice().sort(function (a, b) { return (b.m.production ? 1 : 0) - (a.m.production ? 1 : 0) || b.m._q.pct - a.m._q.pct; });
+      order.forEach(function (p) {
+        var w = (short(p.m.short).length + (p.m._q.pct < ymin ? 22 : 0)) * 6.6, h = 14, best = null;
+        [[16, 0, 'start'], [-16, 0, 'end'], [0, -20, 'middle'], [0, 24, 'middle'], [12, -13, 'start'], [12, 15, 'start'], [-12, -13, 'end'], [-12, 15, 'end'], [0, -34, 'middle'], [0, 38, 'middle'], [14, -30, 'start'], [-14, -30, 'end'], [14, 32, 'start'], [-14, 32, 'end'], [26, 0, 'start'], [-26, 0, 'end']].forEach(function (o) {
+          var x0 = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] - w : p.x - w / 2;
+          var bx = [x0, p.y + o[1] - h / 2, x0 + w, p.y + o[1] + h / 2];
+          var ov = boxes.reduce(function (s, b) { return s + hit(bx, b); }, 0);
+          var out = bx[0] < L || bx[2] > W - R || bx[1] < T || bx[3] > H - B;
+          var cost = Math.abs(o[0]) + Math.abs(o[1]) + 20 * ov + (out ? 1e5 : 0);
+          if (!best || cost < best.cost) best = {cost: cost, o: o, bx: bx, ov: ov, out: out};
+        });
+        if (best.ov < 1 && !best.out) { boxes.push(best.bx); p.lab = best; }
       });
-      boxes.push(best.bx); p.lab = best;
-    });
-    pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
-    pts.forEach(function (p, i) {
-      var m = p.m, o = p.lab.o, tx = o[2] === 'start' ? p.x + o[0] : o[2] === 'end' ? p.x + o[0] : p.x;
-      svg += '<g class="pt k-' + bk(m) + (m.production ? ' prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
-        '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : bk(m), p.x, p.y, m.production ? 12 : 6, 'mark') +
-        '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + m.short.replace(/&/g, '&amp;').replace(/</g, '&lt;') + (m._q.pct < ymin ? ' (' + f1(m._q.pct) + '%, below axis)' : '') + '</text></g>';
-    });
-    $('chart').innerHTML = svg + '</svg><div id="tip" class="r-tip" hidden></div>';
-    tip = $('tip');
-    Array.prototype.forEach.call(document.querySelectorAll('.pt'), function (g) {
-      g.addEventListener('mouseenter', function () { show(g); });
-      g.addEventListener('focus', function () { show(g); });
-      g.addEventListener('mouseleave', function () { tip.hidden = true; });
-      g.addEventListener('blur', function () { tip.hidden = true; });
-      g.addEventListener('click', function () { tip.hidden = true; select(+g.getAttribute('data-i'), true); });
-      g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
-    });
+      var hidden = pts.filter(function (p) { return !p.lab; }).length;
+      pts.sort(function (a, b) { return M.indexOf(a.m) - M.indexOf(b.m); });
+      svg += '<g clip-path="url(#' + clipId + ')">';
+      pts.forEach(function (p) {
+        var m = p.m, o = p.lab && p.lab.o, tx = o ? (o[2] === 'middle' ? p.x : p.x + o[0]) : 0;
+        svg += '<g class="pt k-' + bk(m) + (m.production ? ' prod' : '') + (M.indexOf(m) === selected ? ' sel' : '') + '" data-i="' + M.indexOf(m) + '" tabindex="0">' +
+          '<circle class="hitarea" cx="' + p.x + '" cy="' + p.y + '" r="16"/>' + shape(m.production ? 'star' : bk(m), p.x, p.y, m.production ? 12 : 6, 'mark') +
+          (o && Math.abs(o[1]) > 20 ? '<line class="lead" x1="' + p.x + '" y1="' + p.y + '" x2="' + tx + '" y2="' + (p.y + o[1] + (o[1] < 0 ? 3 : -9)) + '"/>' : '') +
+          (o ? '<text class="lab" x="' + tx + '" y="' + (p.y + o[1] + 4) + '" text-anchor="' + o[2] + '">' + esc(short(m.short)) + (m._q.pct < ymin ? ' (' + f1(m._q.pct) + '%, below axis)' : '') + '</text>' : '') + '</g>';
+      });
+      $('chart').innerHTML = svg + '</g></svg><div id="tip" class="r-tip" hidden></div>';
+      tip = $('tip');
+      var zoomed = view.x1 - view.x0 < full.x1 - full.x0 - 1e-9 || view.y1 - view.y0 < full.y1 - full.y0 - 1e-9;
+      $('chart').classList.toggle('zoomed', zoomed);
+      $('zoomnote').textContent = hidden ? hidden + ' of ' + pts.length + ' labels hidden to avoid overlap: hover a marker for its name, or zoom in.' : (zoomed ? '' : 'All labels shown.');
+    }
+    chartView = {
+      zoom: function (f, cx, cy) {  // f < 1 zooms in; cx, cy are the anchor as 0..1 fractions of the plot (default: centre)
+        cx = cx == null ? 0.5 : cx; cy = cy == null ? 0.5 : cy;
+        var nx = (view.x1 - view.x0) * f, ny = (view.y1 - view.y0) * f;
+        nx = Math.min(Math.max(nx, (full.x1 - full.x0) / 60), full.x1 - full.x0); ny = Math.min(Math.max(ny, (full.y1 - full.y0) / 60), full.y1 - full.y0);
+        var ax = view.x0 + cx * (view.x1 - view.x0), ay = view.y1 - cy * (view.y1 - view.y0);
+        view.x0 = ax - cx * nx; view.x1 = view.x0 + nx; view.y1 = ay + cy * ny; view.y0 = view.y1 - ny;
+        chartView.clamp(); paint();
+      },
+      pan: function (dx, dy) {  // in fractions of the visible plot
+        var sx = (view.x1 - view.x0) * dx, sy = (view.y1 - view.y0) * dy;
+        view.x0 += sx; view.x1 += sx; view.y0 += sy; view.y1 += sy; chartView.clamp(); paint();
+      },
+      clamp: function () {
+        var sx = view.x1 - view.x0, sy = view.y1 - view.y0;
+        view.x0 = Math.min(Math.max(view.x0, full.x0), full.x1 - sx); view.x1 = view.x0 + sx;
+        view.y0 = Math.min(Math.max(view.y0, full.y0), full.y1 - sy); view.y1 = view.y0 + sy;
+      },
+      reset: function () { view.x0 = full.x0; view.x1 = full.x1; view.y0 = full.y0; view.y1 = full.y1; paint(); },
+      plotFrac: function (e) {
+        var svgEl = $('chart').querySelector('svg'), r = svgEl.getBoundingClientRect(), k = W / r.width;
+        return [Math.min(Math.max(((e.clientX - r.left) * k - L) / PW, 0), 1), Math.min(Math.max(((e.clientY - r.top) * k - T) / PH, 0), 1), k];
+      },
+      plotPx: function () { var r = $('chart').querySelector('svg').getBoundingClientRect(), k = r.width / W; return [PW * k, PH * k]; }
+    };
+    paint();
   }
   var kinds = Object.keys(KIND).filter(function (k) { return k === 'star' ? !!prod : P.some(function (m) { return bk(m) === k && !m.production; }); });
   $('legend').innerHTML = kinds.map(function (k) {
@@ -168,6 +210,48 @@ description: Updated automatically after each benchmark run.
     var x = r.left - c.left + r.width / 2, y = r.top - c.top;
     tip.style.left = Math.min(Math.max(x, 120), c.width - 120) + 'px'; tip.style.top = (y - 8) + 'px';
   }
+  // zoom and pan: buttons, ctrl/⌘ + wheel (plain wheel still scrolls the page), arrow keys, double-click, drag with the mouse
+  var chartEl = $('chart'), drag = null;
+  $('zin').addEventListener('click', function () { chartView && chartView.zoom(0.6); });
+  $('zout').addEventListener('click', function () { chartView && chartView.zoom(1 / 0.6); });
+  $('zreset').addEventListener('click', function () { chartView && chartView.reset(); });
+  chartEl.addEventListener('wheel', function (e) {
+    if (!chartView || !(e.ctrlKey || e.metaKey)) return;
+    e.preventDefault();
+    var f = chartView.plotFrac(e);
+    chartView.zoom(e.deltaY < 0 ? 0.8 : 1.25, f[0], f[1]);
+  }, {passive: false});
+  chartEl.addEventListener('dblclick', function (e) {
+    if (!chartView || e.target.closest('.pt')) return;
+    var f = chartView.plotFrac(e);
+    chartView.zoom(e.shiftKey ? 1.6 : 0.5, f[0], f[1]);
+  });
+  chartEl.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse' || e.button !== 0 || !chartView || e.target.closest('.pt')) return;
+    drag = {x: e.clientX, y: e.clientY, moved: false};
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var px = chartView.plotPx(), dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 4) return;
+    drag.moved = true; drag.x = e.clientX; drag.y = e.clientY;
+    chartEl.classList.add('dragging');
+    chartView.pan(-dx / px[0], dy / px[1]);
+  });
+  window.addEventListener('pointerup', function () { drag = null; chartEl.classList.remove('dragging'); });
+  chartEl.addEventListener('keydown', function (e) {
+    if (e.target.closest('.pt') && e.key !== '+' && e.key !== '-') return;
+    var k = {'+': [0.6], '=': [0.6], '-': [1 / 0.6], '0': 'r'}[e.key];
+    if (k && chartView) { e.preventDefault(); k === 'r' ? chartView.reset() : chartView.zoom(k[0]); }
+  });
+  // markers: delegated, because zooming redraws the SVG
+  var ptOf = function (e) { return e.target.closest && e.target.closest('.pt'); };
+  chartEl.addEventListener('mouseover', function (e) { var g = ptOf(e); if (g && !drag) show(g); });
+  chartEl.addEventListener('mouseout', function (e) { if (ptOf(e) && tip) tip.hidden = true; });
+  chartEl.addEventListener('focusin', function (e) { var g = ptOf(e); if (g) show(g); });
+  chartEl.addEventListener('focusout', function (e) { if (ptOf(e) && tip) tip.hidden = true; });
+  chartEl.addEventListener('click', function (e) { var g = ptOf(e); if (g) { tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
+  chartEl.addEventListener('keydown', function (e) { var g = ptOf(e); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
   $('controls').addEventListener('change', function (e) {
     var t = e.target;
     if (t.name === 'xspeed') xk = t.value; else on[t.getAttribute('data-area')] = t.checked;
