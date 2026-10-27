@@ -1,83 +1,10 @@
 {
- "generated": "2026-10-27 14:24 UTC",
+ "generated": "2026-10-27 14:33 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
-  {
-   "key": "ternary-nemotron-3.5-lightning-30b-a3b_lightning_nospec_2gpu_128k",
-   "label": "ternary-nemotron-3.5-lightning-30b-a3b_lightning_nospec_2gpu_128k",
-   "url": "https://huggingface.co/boro64/Ternary-Nemotron-3.5-Lightning-30B-A3B-GGUF",
-   "name": "ternary nemotron 3.5 lightning 30b a3b",
-   "short": "ternary nemotron 3.5 lightning 30b a3b",
-   "title": "ternary nemotron 3.5 lightning 30b a3b",
-   "backend": "llama.cpp",
-   "traits": "",
-   "kind": "other",
-   "detail": "no drafting · 2 GPUs · 128k context",
-   "sections": {
-    "tools": [
-     22,
-     42
-    ],
-    "agent": [
-     8,
-     48
-    ],
-    "reason": [
-     27,
-     30
-    ],
-    "extract": [
-     9,
-     15
-    ],
-    "code": [
-     8,
-     24
-    ],
-    "hard": [
-     21,
-     48
-    ],
-    "instruct": [
-     11,
-     21
-    ],
-    "judge": [
-     18,
-     18
-    ]
-   },
-   "date": "2026-10-27",
-   "started": "2026-10-27 14:41:52",
-   "production": false,
-   "graded": [
-    124,
-    246
-   ],
-   "pct": 50.4,
-   "estonian": [
-    6,
-    45
-   ],
-   "uncensored": null,
-   "nothink": null,
-   "extra": {},
-   "own_traffic": null,
-   "own_traffic_parts": {},
-   "section_versions": {},
-   "minutes": 74.8,
-   "prose": 220.6,
-   "tool_json": 220.2,
-   "prompt_30k": 5619.8,
-   "parallel": 266.8,
-   "followup_ttft": 0.31,
-   "decode_30k": 157.6,
-   "decode_90k": 100.7,
-   "latest": true
-  },
   {
    "key": "exp-20261027-capy-heretic-ara-retry",
    "label": "exp-20261027-capy-heretic-ara-retry",
