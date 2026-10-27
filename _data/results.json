@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27 19:17 UTC",
+ "generated": "2026-10-27 21:16 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -59,10 +59,10 @@
    ],
    "pct": 94.3,
    "graded_all": [
-    367,
-    396
+    528,
+    657
    ],
-   "pct_all": 92.7,
+   "pct_all": 80.4,
    "estonian": [
     39,
     45
@@ -71,7 +71,10 @@
     11,
     11
    ],
-   "nothink": null,
+   "nothink": [
+    121,
+    141
+   ],
    "extra": {
     "estonian_free": [
      33,
@@ -90,15 +93,34 @@
      21
     ]
    },
-   "own_traffic": null,
-   "own_traffic_parts": {},
+   "own_traffic": [
+    161,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     111,
+     180
+    ],
+    "cron_replay": [
+     23,
+     36
+    ],
+    "ctx": [
+     27,
+     45
+    ]
+   },
    "section_versions": {
     "estonian_free": "v1",
     "vision": "v1",
     "robust": "v1",
-    "longagent": "v1"
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
    },
-   "minutes": 82.9,
+   "minutes": 202.5,
    "prose": 78.7,
    "tool_json": 117.8,
    "prompt_30k": 1227.5,
