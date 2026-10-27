@@ -1,21 +1,97 @@
 {
- "generated": "2026-10-27 17:24 UTC",
+ "generated": "2026-10-27 18:41 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
   {
-   "key": "exp-20261027-capy-rvn-nvfp4-b",
-   "label": "exp-20261027-capy-rvn-nvfp4-b",
+   "key": "exp-20261027-capy-rvn-nvfp4-a",
+   "label": "exp-20261027-capy-rvn-nvfp4-a",
    "url": null,
-   "name": "capy-flash v0.7.5, RVN (Heretic ARA + 2 passes) converted from BF16 to NVFP4 (variant B), 2 x 128k, thinking budget 1500, lease window 0",
-   "short": "capy-flash v0.7.5, RVN (Heretic ARA + 2 passes) converted from BF16 to NVFP4 (variant B), 2 x 128k, thinking budget 1500, lease window 0",
-   "title": "capy-flash v0.7.5, RVN (Heretic ARA + 2 passes) converted from BF16 to NVFP4 (variant B), 2 x 128k, thinking budget 1500, lease window 0",
+   "name": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
+   "short": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
+   "title": "capy-flash v0.7.5, RVN BF16 -> NVFP4 variant A (every layer projection in NVFP4 (smallest, fastest)), 2 x 128k, thinking budget 1500, lease window 0",
    "backend": "capy-flash",
    "traits": "",
    "kind": "capy",
    "detail": "",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 19:47:59",
+   "production": false,
+   "graded": [
+    232,
+    246
+   ],
+   "pct": 94.3,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 51.0,
+   "prose": 78.7,
+   "tool_json": 117.8,
+   "prompt_30k": 1227.5,
+   "parallel": 130.0,
+   "followup_ttft": 2.75,
+   "decode_30k": 77.4,
+   "decode_90k": 69.0,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-capy-rvn-nvfp4-b",
+   "label": "exp-20261027-capy-rvn-nvfp4-b",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k) · NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B RVN (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500",
    "sections": {
     "tools": [
      41,
@@ -88,13 +164,32 @@
      21
     ]
    },
-   "own_traffic": null,
-   "own_traffic_parts": {},
+   "own_traffic": [
+    151,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     101,
+     180
+    ],
+    "cron_replay": [
+     23,
+     36
+    ],
+    "ctx": [
+     27,
+     45
+    ]
+   },
    "section_versions": {
     "estonian_free": "v1",
     "vision": "v1",
     "robust": "v1",
-    "longagent": "v1"
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
    },
    "minutes": 194.2,
    "prose": 79.1,
