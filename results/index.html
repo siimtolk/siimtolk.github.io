@@ -30,7 +30,7 @@ description: Updated automatically after each benchmark run.
   <h2 class="r-h">All results</h2>
   <label class="r-sortsel">Sort by <select id="sortsel"></select></label>
   <div class="r-scroll"><table id="all"></table></div>
-  <p class="meta">All speed numbers are TPS (tokens per second); higher is better. Under each setup name: quantization · uncensoring method · author of the weights, then how it was served (stock = not uncensored; undisclosed = the author does not say how). Click a column to sort; click a setup name to open its weights on Hugging Face; the grey line under it says how it was served. Graded = passed/runs without Estonian and uncensored; uncensored = edgy but harmless tasks answered instead of refused (counted separately, not in graded); thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total TPS with two simultaneous requests. The test-area columns (tool use, agent tasks, reasoning, extraction, code, hard tasks with long context and prompt injection, following instructions, judging) show passed/runs for each area; together they make up the graded total. A dash means that test was not run for that setup.</p>
+  <p class="meta">All speed numbers are TPS (tokens per second); higher is better. Under each setup name: quantization · uncensoring method · author of the weights, then how it was served (stock = not uncensored; undisclosed = the author does not say how). Click a column to sort; click a setup name to open its weights on Hugging Face; the grey line under it says how it was served. Graded = passed/runs without Estonian and uncensored; uncensored = edgy but harmless tasks answered instead of refused (counted separately, not in graded); thinking off = the same suite with reasoning disabled; follow-up = mean time to first token of the 2nd and later turns in two alternating 13k-token chats; 2 at once = total TPS with two simultaneous requests. The test-area columns (tool use, agent tasks, reasoning, extraction, code, hard tasks with long context and prompt injection, following instructions, judging) show passed/runs for each area; together they make up the graded total. A dash means that test was not run for that setup. The plot's tick boxes can count more than the table: with every box ticked it also includes Estonian and uncensored, so its totals are higher than the table's. The two preset buttons reproduce the table's Graded and Graded + new tests totals exactly.</p>
   <p class="meta"><strong>Extra tests (added 2026-10-27, not part of the Graded total).</strong> Estonian free text = open Estonian answers checked for spelling, punctuation and compound words with a public Estonian language checker; vision = reading generated invoices, charts, signs and tables from images (a dash also when the server cannot see images); robustness = ignoring instructions hidden in web pages, files and e-mails, recovering from tool errors, not drowning in huge outputs or 25 similar tools, refusing destructive shortcuts; long agent tasks = multi-step fixes in a sandboxed project, graded by hidden tests on the final files; own traffic = real decision points, scheduled-job briefs and the real ~15k-token system prompt from my own assistant's history (the cases stay private, only the score is published). Only setups tested after that date have these; the older ones show a dash. "Graded + new tests" is a second total of the base areas plus these tests, shown only for setups that ran them. Scores are passed/runs of the same kind as the columns above, and each test has a version, so a later change to it will not be mixed with these numbers.</p>
 </section>
 <script id="board-data" type="application/json">{{ d | jsonify }}</script>
@@ -89,7 +89,7 @@ description: Updated automatically after each benchmark run.
     return '<label><input type="checkbox" data-area="' + a[0] + '"' + (on[a[0]] ? ' checked' : '') + '> ' + a[1] + '</label>';
   }).join('') + '</fieldset><fieldset><legend>Speed on X</legend>' + SPEEDS.map(function (s) {
     return '<label><input type="radio" name="xspeed" value="' + s[0] + '"' + (s[0] === xk ? ' checked' : '') + '> ' + s[1] + '</label>';
-  }).join('') + '</fieldset>';
+  }).join('') + '</fieldset><fieldset><legend>Presets</legend><button type="button" data-preset="graded">Graded (as table)</button> <button type="button" data-preset="all">Graded + new tests (as table)</button></fieldset>';
   function SEC_() { return [['tools', 'Tool use'], ['agent', 'Agent tasks'], ['reason', 'Reasoning'], ['extract', 'Extraction'], ['code', 'Code'], ['hard', 'Hard + long context'], ['instruct', 'Instructions'], ['judge', 'Judging']]; }
   function quality(m) {  // null when the setup has no result for a ticked area: it is left off the plot
     var ok = 0, n = 0, gap = false;
@@ -271,6 +271,13 @@ description: Updated automatically after each benchmark run.
   chartEl.addEventListener('focusout', function (e) { if (ptOf(e) && tip) tip.hidden = true; });
   chartEl.addEventListener('click', function (e) { var g = ptOf(e); if (g) { tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
   chartEl.addEventListener('keydown', function (e) { var g = ptOf(e); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); tip.hidden = true; select(+g.getAttribute('data-i'), true); } });
+  $('controls').addEventListener('click', function (e) {  // presets reproduce the table totals: Estonian and uncensored are never part of Graded / Graded + new tests
+    var pr = e.target.getAttribute && e.target.getAttribute('data-preset');
+    if (!pr) return;
+    AREAS.forEach(function (a) { on[a[0]] = SEC_().some(function (x) { return x[0] === a[0]; }) || (pr === 'all' && XT.some(function (x) { return x[0] === a[0]; })); });
+    Array.prototype.forEach.call(document.querySelectorAll('#controls input[data-area]'), function (c) { c.checked = on[c.getAttribute('data-area')]; });
+    drawChart();
+  });
   $('controls').addEventListener('change', function (e) {
     var t = e.target;
     if (t.name === 'xspeed') xk = t.value; else on[t.getAttribute('data-area')] = t.checked;
