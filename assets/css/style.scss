@@ -45,6 +45,7 @@ nav a.nav-live:hover { color: var(--ink); border-color: #f5c518; box-shadow: 0 2
 .list-page { padding: 56px 24px 24px; }
 .list-page h1 { font-family: var(--serif); font-size: 40px; margin: 0 0 8px; }
 .list-page .hero-sub { margin-bottom: 32px; }
+.list-page h1 + .cards { margin-top: 32px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-bottom: 64px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
   transition: transform .15s ease, box-shadow .15s ease; }
