@@ -1,24 +1,24 @@
 {
- "generated": "2026-10-28 16:46 UTC",
+ "generated": "2026-10-28 19:20 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
   {
-   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
-   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+   "key": "exp-20261027-capy-rvn-nvfp4-c",
+   "label": "exp-20261027-capy-rvn-nvfp4-c",
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
-   "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
-   "short": "Qwen3.8-27B RVN (production)",
-   "title": "Qwen3.8-27B RVN (production)",
-   "backend": "llama.cpp",
-   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
-   "kind": "dense",
-   "detail": "2 GPUs · 128k context",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant C) · NVFP4 (variant C, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant C)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant C)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (variant C, from BF16) · Heretic ARA · 0bserverx",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500 · lease window 0 · official mix: MLP NVFP4, attention/GDN FP8",
    "sections": {
     "tools": [
-     42,
+     41,
      42
     ],
     "agent": [
@@ -30,19 +30,19 @@
      30
     ],
     "extract": [
-     15,
+     13,
      15
     ],
     "code": [
-     21,
+     22,
      24
     ],
     "hard": [
-     48,
+     47,
      48
     ],
     "instruct": [
-     21,
+     20,
      21
     ],
     "judge": [
@@ -51,18 +51,18 @@
     ]
    },
    "date": "2026-10-28",
-   "started": "2026-10-28 02:59:29",
-   "production": true,
+   "started": "2026-10-28 19:40:00",
+   "production": false,
    "graded": [
-    242,
+    238,
     246
    ],
-   "pct": 98.4,
+   "pct": 96.7,
    "graded_all": [
-    529,
-    657
+    373,
+    396
    ],
-   "pct_all": 80.5,
+   "pct_all": 94.2,
    "estonian": [
     41,
     45
@@ -71,13 +71,10 @@
     11,
     11
    ],
-   "nothink": [
-    113,
-    141
-   ],
+   "nothink": null,
    "extra": {
     "estonian_free": [
-     27,
+     32,
      39
     ],
     "vision": [
@@ -85,49 +82,30 @@
      18
     ],
     "robust": [
-     62,
+     66,
      72
     ],
     "longagent": [
-     20,
+     19,
      21
     ]
    },
-   "own_traffic": [
-    160,
-    261
-   ],
-   "own_traffic_parts": {
-    "replay": [
-     107,
-     180
-    ],
-    "cron_replay": [
-     21,
-     36
-    ],
-    "ctx": [
-     32,
-     45
-    ]
-   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
    "section_versions": {
     "estonian_free": "v1",
     "vision": "v1",
     "robust": "v1",
-    "longagent": "v1",
-    "replay": "v1",
-    "cron_replay": "v1",
-    "ctx": "v1"
+    "longagent": "v1"
    },
-   "minutes": 288.7,
-   "prose": 45.7,
-   "tool_json": 65.3,
-   "prompt_30k": 1213.1,
-   "parallel": 68.8,
-   "followup_ttft": 1.26,
-   "decode_30k": 39.0,
-   "decode_90k": 26.5,
+   "minutes": 90.2,
+   "prose": 71.7,
+   "tool_json": 101.6,
+   "prompt_30k": 1456.1,
+   "parallel": 114.3,
+   "followup_ttft": 4.43,
+   "decode_30k": 64.8,
+   "decode_90k": 66.7,
    "latest": true
   },
   {
@@ -259,9 +237,9 @@
    "key": "exp-20261027-capy-rvn-nvfp4-b",
    "label": "exp-20261027-capy-rvn-nvfp4-b",
    "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
-   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k) · NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
-   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k)",
-   "title": "Qwen3.8-27B RVN (2 x 128k)",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant B) · NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant B)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant B)",
    "backend": "capy-flash",
    "traits": "NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
    "kind": "capy",
@@ -2079,6 +2057,131 @@
    "followup_ttft": 1.16,
    "decode_30k": null,
    "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
+   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (production)",
+   "title": "Qwen3.8-27B RVN (production)",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
+   "kind": "dense",
+   "detail": "2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 08:16:29",
+   "production": true,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": [
+    529,
+    657
+   ],
+   "pct_all": 80.5,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    113,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     27,
+     39
+    ],
+    "vision": [
+     18,
+     18
+    ],
+    "robust": [
+     62,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    160,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     107,
+     180
+    ],
+    "cron_replay": [
+     21,
+     36
+    ],
+    "ctx": [
+     32,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "vision": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 288.7,
+   "prose": 45.7,
+   "tool_json": 65.3,
+   "prompt_30k": 1213.1,
+   "parallel": 68.8,
+   "followup_ttft": 1.26,
+   "decode_30k": 39.0,
+   "decode_90k": 26.5,
    "latest": true
   },
   {
