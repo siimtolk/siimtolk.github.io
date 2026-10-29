@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28 23:30 UTC",
+ "generated": "2026-10-29 07:29 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -514,8 +514,11 @@
     246
    ],
    "pct": 97.2,
-   "graded_all": null,
-   "pct_all": null,
+   "graded_all": [
+    354,
+    378
+   ],
+   "pct_all": 93.7,
    "estonian": [
     38,
     45
@@ -528,11 +531,28 @@
     110,
     141
    ],
-   "extra": {},
+   "extra": {
+    "estonian_free": [
+     29,
+     39
+    ],
+    "robust": [
+     65,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
    "own_traffic": null,
    "own_traffic_parts": {},
-   "section_versions": {},
-   "minutes": 58.9,
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 86.3,
    "prose": 58.4,
    "tool_json": 88.6,
    "prompt_30k": 1174.2,
