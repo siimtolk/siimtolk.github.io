@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29 16:07 UTC",
+ "generated": "2026-10-29 16:34 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
@@ -58,11 +58,8 @@
     246
    ],
    "pct": 99.2,
-   "graded_all": [
-    356,
-    378
-   ],
-   "pct_all": 94.2,
+   "graded_all": null,
+   "pct_all": null,
    "estonian": [
     37,
     45
@@ -72,28 +69,11 @@
     11
    ],
    "nothink": null,
-   "extra": {
-    "estonian_free": [
-     28,
-     39
-    ],
-    "robust": [
-     64,
-     72
-    ],
-    "longagent": [
-     20,
-     21
-    ]
-   },
+   "extra": {},
    "own_traffic": null,
    "own_traffic_parts": {},
-   "section_versions": {
-    "estonian_free": "v1",
-    "robust": "v1",
-    "longagent": "v1"
-   },
-   "minutes": 95.0,
+   "section_versions": {},
+   "minutes": 159.6,
    "prose": 44.9,
    "tool_json": 65.4,
    "prompt_30k": 1212.9,
@@ -276,11 +256,8 @@
     246
    ],
    "pct": 98.8,
-   "graded_all": [
-    327,
-    339
-   ],
-   "pct_all": 96.5,
+   "graded_all": null,
+   "pct_all": null,
    "estonian": [
     34,
     45
@@ -290,22 +267,10 @@
     11
    ],
    "nothink": null,
-   "extra": {
-    "robust": [
-     63,
-     72
-    ],
-    "longagent": [
-     21,
-     21
-    ]
-   },
+   "extra": {},
    "own_traffic": null,
    "own_traffic_parts": {},
-   "section_versions": {
-    "robust": "v1",
-    "longagent": "v1"
-   },
+   "section_versions": {},
    "minutes": 80.6,
    "prose": 44.0,
    "tool_json": 64.8,
