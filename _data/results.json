@@ -59,10 +59,10 @@
    ],
    "pct": 99.2,
    "graded_all": [
-    374,
-    396
+    356,
+    378
    ],
-   "pct_all": 94.4,
+   "pct_all": 94.2,
    "estonian": [
     37,
     45
@@ -77,10 +77,6 @@
      28,
      39
     ],
-    "vision": [
-     18,
-     18
-    ],
     "robust": [
      64,
      72
@@ -94,7 +90,6 @@
    "own_traffic_parts": {},
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1"
    },
@@ -162,10 +157,10 @@
    ],
    "pct": 96.7,
    "graded_all": [
-    520,
-    657
+    502,
+    639
    ],
-   "pct_all": 79.1,
+   "pct_all": 78.6,
    "estonian": [
     41,
     45
@@ -182,10 +177,6 @@
     "estonian_free": [
      32,
      39
-    ],
-    "vision": [
-     18,
-     18
     ],
     "robust": [
      66,
@@ -216,7 +207,6 @@
    },
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1",
     "replay": "v1",
@@ -380,10 +370,10 @@
    ],
    "pct": 94.3,
    "graded_all": [
-    528,
-    657
+    510,
+    639
    ],
-   "pct_all": 80.4,
+   "pct_all": 79.8,
    "estonian": [
     39,
     45
@@ -400,10 +390,6 @@
     "estonian_free": [
      33,
      39
-    ],
-    "vision": [
-     18,
-     18
     ],
     "robust": [
      64,
@@ -434,7 +420,6 @@
    },
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1",
     "replay": "v1",
@@ -505,10 +490,10 @@
    ],
    "pct": 97.6,
    "graded_all": [
-    525,
-    657
+    508,
+    639
    ],
-   "pct_all": 79.9,
+   "pct_all": 79.5,
    "estonian": [
     38,
     45
@@ -525,10 +510,6 @@
     "estonian_free": [
      31,
      39
-    ],
-    "vision": [
-     17,
-     18
     ],
     "robust": [
      65,
@@ -559,7 +540,6 @@
    },
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1",
     "replay": "v1",
@@ -1389,10 +1369,10 @@
    ],
    "pct": 97.6,
    "graded_all": [
-    542,
-    657
+    524,
+    639
    ],
-   "pct_all": 82.5,
+   "pct_all": 82.0,
    "estonian": [
     40,
     45
@@ -1409,10 +1389,6 @@
     "estonian_free": [
      30,
      39
-    ],
-    "vision": [
-     18,
-     18
     ],
     "robust": [
      65,
@@ -1443,7 +1419,6 @@
    },
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1",
     "replay": "v1",
@@ -2648,10 +2623,10 @@
    ],
    "pct": 98.4,
    "graded_all": [
-    529,
-    657
+    511,
+    639
    ],
-   "pct_all": 80.5,
+   "pct_all": 80.0,
    "estonian": [
     41,
     45
@@ -2668,10 +2643,6 @@
     "estonian_free": [
      27,
      39
-    ],
-    "vision": [
-     18,
-     18
     ],
     "robust": [
      62,
@@ -2702,7 +2673,6 @@
    },
    "section_versions": {
     "estonian_free": "v1",
-    "vision": "v1",
     "robust": "v1",
     "longagent": "v1",
     "replay": "v1",
