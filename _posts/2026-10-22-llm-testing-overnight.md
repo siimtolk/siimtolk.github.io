@@ -10,7 +10,7 @@ redirect_from:
   - /llm-testing-overnight/
 ---
 
-Every week a dozen new open-weight models claim to beat the last one. I wanted to know which of them could actually replace the model my personal assistant runs on, so I built a pipeline that finds candidates, tests them overnight and sends me a verdict over breakfast. Over the past two weeks it has tested eighteen models, and none has replaced the incumbent, an uncensored build of Qwen3.8-27B. The best one passed a single graded run more, but was 18% slower and refused a harmless request. The code, the test suite and every result are on GitHub: [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
+Every week a dozen new open-weight models claim to beat the last one. I wanted to know which of them could actually replace the model my personal assistant runs on, so I built a pipeline that finds candidates, tests them overnight and sends me a verdict over breakfast. Over the past two weeks it has tested eighteen models, and none has replaced the incumbent, an uncensored build of Qwen3.8-27B. The code, the test suite and every result are on GitHub: [local-llm-eval](https://github.com/siimtolk/local-llm-eval).
 
 ## Why leaderboards were not enough
 
