@@ -1,10 +1,113 @@
 {
- "generated": "2026-10-29 15:59 UTC",
+ "generated": "2026-10-29 16:07 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
  "models": [
+  {
+   "key": "exp-20261029-cache-reuse",
+   "label": "exp-20261029-cache-reuse",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Prompt cache reuse 256",
+   "short": "Production model, Prompt cache reuse 256",
+   "title": "Production model, Prompt cache reuse 256",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-29",
+   "started": "2026-10-29 14:47:07",
+   "production": false,
+   "graded": [
+    244,
+    246
+   ],
+   "pct": 99.2,
+   "graded_all": [
+    374,
+    396
+   ],
+   "pct_all": 94.4,
+   "estonian": [
+    37,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "estonian_free": [
+     28,
+     39
+    ],
+    "vision": [
+     18,
+     18
+    ],
+    "robust": [
+     64,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "estonian_free": "v1",
+    "vision": "v1",
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 95.0,
+   "prose": 44.9,
+   "tool_json": 65.4,
+   "prompt_30k": 1212.9,
+   "parallel": 66.7,
+   "followup_ttft": 1.14,
+   "decode_30k": 39.0,
+   "decode_90k": 25.8,
+   "latest": true
+  },
   {
    "key": "exp-20261027-capy-rvn-nvfp4-c",
    "label": "exp-20261027-capy-rvn-nvfp4-c",
@@ -128,6 +231,99 @@
    "followup_ttft": 4.43,
    "decode_30k": 64.8,
    "decode_90k": 66.7,
+   "latest": true
+  },
+  {
+   "key": "exp-20261028-kv-q8",
+   "label": "exp-20261028-kv-q8",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, KV cache q8_0 instead of q4_0",
+   "short": "Production model, KV cache q8_0 instead of q4_0",
+   "title": "Production model, KV cache q8_0 instead of q4_0",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-28",
+   "started": "2026-10-28 04:28:53",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": [
+    327,
+    339
+   ],
+   "pct_all": 96.5,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     63,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 80.6,
+   "prose": 44.0,
+   "tool_json": 64.8,
+   "prompt_30k": 1199.3,
+   "parallel": 65.9,
+   "followup_ttft": 1.29,
+   "decode_30k": 37.1,
+   "decode_90k": 24.6,
    "latest": true
   },
   {
@@ -459,6 +655,162 @@
    "followup_ttft": 0.21,
    "decode_30k": 73.9,
    "decode_90k": 68.4,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-batch",
+   "label": "exp-20261027-batch-4096",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Logical batch 4096 with ubatch 1024",
+   "short": "Production model, Logical batch 4096 with ubatch 1024",
+   "title": "Production model, Logical batch 4096 with ubatch 1024",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 01:26:27",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 62.2,
+   "prose": 42.6,
+   "tool_json": 65.5,
+   "prompt_30k": 1227.3,
+   "parallel": 66.7,
+   "followup_ttft": 1.12,
+   "decode_30k": 36.4,
+   "decode_90k": 27.7,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-kv-k-q5-v-q4",
+   "label": "exp-20261026-kv-k-q5-v-q4",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "short": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "title": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 21:27:46",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 63.1,
+   "prose": 43.5,
+   "tool_json": 64.5,
+   "prompt_30k": 1209.6,
+   "parallel": 67.9,
+   "followup_ttft": 1.23,
+   "decode_30k": 36.6,
+   "decode_90k": 25.6,
    "latest": true
   },
   {
@@ -822,6 +1174,84 @@
    "followup_ttft": 1.15,
    "decode_30k": 35.2,
    "decode_90k": 27.2,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-ubatch",
+   "label": "exp-20261026-ubatch-1024",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Physical batch (ubatch) 1024",
+   "short": "Production model, Physical batch (ubatch) 1024",
+   "title": "Production model, Physical batch (ubatch) 1024",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 02:05:10",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 60.7,
+   "prose": 43.9,
+   "tool_json": 64.8,
+   "prompt_30k": 1100.2,
+   "parallel": 70.7,
+   "followup_ttft": 1.14,
+   "decode_30k": 37.8,
+   "decode_90k": 28.5,
    "latest": true
   },
   {
