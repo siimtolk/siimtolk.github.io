@@ -1,10 +1,108 @@
 {
- "generated": "2026-10-29 23:18 UTC",
+ "generated": "2026-10-30 01:04 UTC",
  "suite": "2026-10-18",
  "graded_cases": 291,
  "older_suite_runs": 0,
  "production": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
  "models": [
+  {
+   "key": "exp-20261030-temp",
+   "label": "exp-20261030-temp-07",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Sampling temperature 0.7",
+   "short": "Production model, Sampling temperature 0.7",
+   "title": "Production model, Sampling temperature 0.7",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-30",
+   "started": "2026-10-30 01:12:16",
+   "production": false,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "graded_all": [
+    355,
+    378
+   ],
+   "pct_all": 93.9,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "estonian_free": [
+     33,
+     39
+    ],
+    "robust": [
+     63,
+     72
+    ],
+    "longagent": [
+     19,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 87.3,
+   "prose": 45.9,
+   "tool_json": 66.6,
+   "prompt_30k": 1221.2,
+   "parallel": 68.2,
+   "followup_ttft": 1.15,
+   "decode_30k": 40.9,
+   "decode_90k": 25.6,
+   "latest": true
+  },
   {
    "key": "exp-20261027-capy-rvn-nvfp4-c",
    "label": "exp-20261027-capy-rvn-nvfp4-c",
