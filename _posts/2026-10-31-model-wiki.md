@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Less memory, more wiki: how my AI agents got up to 3× faster on 4× fewer tokens"
-description: "With a shared wiki and a short brief generated from it every night, my two AI agents answered all 22 of my real setup questions correctly, two to three times faster than without it. Without it, their misses were confident and wrong."
+description: "My AI agents kept forgetting how my home setup works, or remembering it wrong. I gave them one shared wiki, edited by a single agent, and a short brief from it at the start of every session. Over one night of 22 real setup questions checked against the live system, they got every answer right, about 3× faster and on fewer tokens. Without it, they were slower, and their misses were confident and wrong."
 date: 2026-10-31
 image: /assets/img/model-wiki/overview.png
 tags: [AI agents, Agent memory, Local LLM]
@@ -11,9 +11,9 @@ tags: [AI agents, Agent memory, Local LLM]
 
 Ask my home assistant to schedule a script that posts to my work group on WhatsApp, and it gets it right. Take away its shared wiki, and it writes a perfectly formatted command that would post to a different group, while confidently calling it the work group. That is the kind of mistake this article is about, and the wiki is how I got rid of it.
 
-**In short: with a shared wiki and a short brief generated from it every night, both of my agents answered all 22 of my real setup questions correctly, two to three times faster than without it, and Claude Code with a quarter of the tokens. Without it they still got most answers by digging, but slowly, and their misses were confident and wrong.**
+**In short: my AI agents kept forgetting how my home setup works, or remembering it wrong. I gave them one shared wiki, edited by a single agent, and a short brief from it at the start of every session. Over one night of 22 real setup questions checked against the live system, they got every answer right, about 3× faster and on fewer tokens. Without it, they were slower, and their misses were confident and wrong.**
 
-I run two AI agents at home. [Hermes](https://github.com/NousResearch/hermes-agent) is my everyday assistant on WhatsApp, running on a local 27B model (which one, and how it scores, is on my [live results page](/results/)). Claude Code builds and maintains the setup they both live in. Both kept forgetting how that setup fits together, and worse, they remembered it differently. What I want is agents that give right answers and build working code without re-discovering the setup every time, and one place where what we learned and decided is written down.
+I run two AI agents at home. [Hermes](https://github.com/NousResearch/hermes-agent) is my everyday assistant on WhatsApp, running on a local 27B model (which one, and how it scores, is on my [live results page](/results/)). Claude Code builds and maintains the setup they both live in. Each kept its own picture of how that setup fits together, and the two pictures didn't match. What I want is agents that give right answers and build working code without re-discovering the setup every time, and one place where what we learned and decided is written down.
 
 ![How the shared wiki works: Hermes, Claude Code and scripts read a generated setup brief and the wiki, and write only notes into an inbox; each morning a Claude Code steward checks the notes, rewrites the curated pages and reviews Hermes' skill proposals; the live host fills in the facts it knows; a sweeper moves setup facts out of the agents' private memories; a nightly test asks both agents real questions; a morning report goes to WhatsApp](/assets/img/model-wiki/overview.png)
 
