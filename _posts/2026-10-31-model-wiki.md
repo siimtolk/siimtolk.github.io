@@ -2,7 +2,7 @@
 layout: post
 title: "Less memory, more wiki: how my AI agents got up to 3× faster on 4× fewer tokens"
 description: "With a shared wiki and a short brief generated from it every night, my two AI agents answered all 22 of my real setup questions correctly, two to three times faster than without it. Without it, their misses were confident and wrong."
-date: 2026-11-01
+date: 2026-10-31
 image: /assets/img/model-wiki/overview.png
 tags: [AI agents, Agent memory, Local LLM]
 ---
