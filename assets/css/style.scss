@@ -90,6 +90,37 @@ nav a.nav-live:hover { color: var(--ink); border-color: #f5c518; box-shadow: 0 2
 /* live dot (nav) */
 @keyframes live-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .25; transform: scale(.7); } }
 
+/* progress timeline (home) */
+.tl { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: var(--tl-cols, 1fr 1fr 1fr); grid-template-rows: repeat(4, auto); }
+.tl-phase { min-width: 0; padding-right: 20px; display: grid; grid-row: span 4; grid-template-rows: subgrid; }
+.tl-k { margin: 0; font-size: 12.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.tl-now .tl-k { color: var(--accent-ink); }
+.tl-phase h3 { font-family: var(--serif); font-size: 21px; line-height: 1.25; margin: 4px 0 4px; }
+.tl-goal { color: var(--ink-2); font-size: 15px; line-height: 1.45; margin: 0 0 18px; max-width: 34em; align-self: start; }
+.tl-track { list-style: none; margin: 0 -20px 0 0; padding: 22px 0 0; display: flex; position: relative; min-height: 60px; }
+.tl-track::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; border-top: 3px solid var(--accent); }
+.tl-next .tl-track::before { border-top: 3px dashed var(--line); }
+.tl-m { flex: 1 1 0; min-width: 0; position: relative; padding-right: 14px; font-size: 14px; line-height: 1.35; }
+.tl-m a { display: block; color: inherit; text-decoration: none; }
+.tl-m a:hover .tl-label { color: var(--accent-ink); text-decoration: underline; }
+.tl-dot { position: absolute; top: -22px; left: 0; width: 17px; height: 17px; border-radius: 50%; background: var(--accent); border: 3px solid var(--accent); }
+.tl-date { display: block; color: var(--muted); font-size: 13px; }
+.tl-label { display: block; font-weight: 600; color: var(--ink); }
+.tl-metric { display: block; color: var(--accent-ink); font-weight: 600; font-size: 13.5px; }
+.tl-here .tl-dot { background: #f5c518; border-color: #f5c518; box-shadow: 0 0 0 4px rgba(245, 197, 24, 0.28); animation: live-pulse 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .tl-here .tl-dot { animation: none; } }
+@media (max-width: 700px) {
+  .tl { display: flex; flex-direction: column; }
+  .tl-phase { display: block; }
+  .tl-phase { padding: 0 0 0 26px; position: relative; border-left: 3px solid var(--accent); margin-left: 7px; padding-bottom: 18px; }
+  .tl-next { border-left-style: dashed; border-left-color: var(--line); }
+  .tl-goal { margin-bottom: 12px; }
+  .tl-track { flex-direction: column; margin: 0; padding: 0; min-height: 0; gap: 12px; }
+  .tl-track::before { display: none; }
+  .tl-m { padding: 0; }
+  .tl-dot { top: 2px; left: -36px; }
+}
+
 /* live results page */
 .results h2.r-h { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 40px 0 14px; border-top: 1px solid var(--line); padding-top: 24px; }
 .wrap.results { max-width: 1360px; }
