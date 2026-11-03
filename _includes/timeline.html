@@ -1,0 +1,40 @@
+{% assign tl = site.data.timeline %}
+{% if tl %}
+<section class="wrap" aria-labelledby="tl-h">
+  <div class="section-head"><h2 id="tl-h">Progress</h2></div>
+  {% assign cols = "" %}
+  {% for ph in tl.phases %}
+    {% assign n = 0 %}
+    {% for m in ph.milestones %}{% if m.post %}{% assign p = site.posts | where: "slug", m.post | first %}{% if p %}{% assign n = n | plus: 1 %}{% endif %}{% else %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+    {% if ph.status == "now" %}{% assign n = n | plus: 1 %}{% endif %}
+    {% if n < 2 %}{% assign n = 2 %}{% endif %}
+    {% assign cols = cols | append: n | append: "fr " %}
+  {% endfor %}
+  <ol class="tl" style="--tl-cols: {{ cols | strip }}">
+  {% for ph in tl.phases %}
+    {% assign n = 0 %}
+    {% for m in ph.milestones %}{% if m.post %}{% assign p = site.posts | where: "slug", m.post | first %}{% if p %}{% assign n = n | plus: 1 %}{% endif %}{% else %}{% assign n = n | plus: 1 %}{% endif %}{% endfor %}
+    {% if ph.status == "now" %}{% assign n = n | plus: 1 %}{% endif %}
+    {% if n < 1 %}{% assign n = 1 %}{% endif %}
+    <li class="tl-phase tl-{{ ph.status }}">
+      <p class="tl-k">{% if ph.status == "done" %}Done{% elsif ph.status == "now" %}Now{% else %}Next{% endif %}</p>
+      <h3>{{ ph.title }}</h3>
+      <p class="tl-goal">{{ ph.goal }}</p>
+      <ol class="tl-track">
+      {% for m in ph.milestones %}
+        {% assign p = nil %}{% if m.post %}{% assign p = site.posts | where: "slug", m.post | first %}{% unless p %}{% continue %}{% endunless %}{% endif %}
+        {% assign d = m.date | default: p.date %}
+        <li class="tl-m">{% if p %}<a href="{{ p.url | relative_url }}" title="{{ p.title | escape }}">{% endif %}
+          <span class="tl-dot" aria-hidden="true"></span>
+          <span class="tl-date">{{ d | date: "%-d %b %Y" }}</span>
+          <span class="tl-label">{{ m.label }}</span>
+          {% if m.metric %}<span class="tl-metric">{{ m.metric }}</span>{% endif %}
+        {% if p %}</a>{% endif %}</li>
+      {% endfor %}
+      {% if ph.status == "now" %}<li class="tl-m tl-here"><span class="tl-dot" aria-hidden="true"></span><span class="tl-date">Today</span><span class="tl-label">I am here</span></li>{% endif %}
+      </ol>
+    </li>
+  {% endfor %}
+  </ol>
+</section>
+{% endif %}
