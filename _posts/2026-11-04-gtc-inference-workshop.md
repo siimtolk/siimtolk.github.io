@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploying and Optimizing AI Inference at Scale"
+title: "Deploying and Optimizing AI Inference at Scale: course at GTC"
 description: "I spent the first day of GTC Berlin in NVIDIA's hands-on inference workshop, each of us with our own Kubernetes cluster and 4x A100. What I took home: the Gateway API instead of Ingress, rate limits by tokens, retries and canaries for model updates, autoscaling on queue depth instead of GPU use, and when disaggregated serving with Dynamo pays off."
 date: 2026-11-04
 tags: [Conferences, Inference engines, Kubernetes]
