@@ -6,8 +6,6 @@ date: 2026-11-04
 tags: [Conferences, Inference engines, Kubernetes]
 ---
 
-@Siim
-
 GTC Berlin started for me a day before the keynote, with the full-day workshop Deploying and Optimizing AI Inference at
 Scale ([NVIDIA training](https://www.nvidia.com/en-eu/gtc/training/)). I had already moved GPU servers to
 [Dynamo](https://github.com/ai-dynamo/dynamo) on Kubernetes and set up several inference models in production, so I
