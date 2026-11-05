@@ -1,12 +1,10 @@
 ---
 layout: post
-title: "One day, one GPU cluster each: NVIDIA's inference-at-scale workshop at GTC Berlin"
+title: "Course notes: Deploying and Optimizing AI Inference at Scale, GTC Berlin 2026"
 description: "I spent the first day of GTC Berlin in NVIDIA's hands-on inference workshop, each of us with our own Kubernetes cluster and 4x A100. What I took home: the Gateway API instead of Ingress, rate limits by tokens, retries and canaries for model updates, autoscaling on queue depth instead of GPU use, and when disaggregated serving with Dynamo pays off."
 date: 2026-11-04
 tags: [Conferences, Inference engines, Kubernetes]
 ---
-
-@Siim
 
 GTC Berlin started for me a day before the keynote, with the full-day workshop Deploying and Optimizing AI Inference at
 Scale ([NVIDIA training](https://www.nvidia.com/en-eu/gtc/training/)). I had already moved GPU servers to

@@ -7,8 +7,6 @@ image: /assets/img/model-wiki/overview.png
 tags: [AI agents, Agent memory, Local LLM]
 ---
 
-@Siim
-
 Ask my home assistant to schedule a script that posts to my work group on WhatsApp, and it gets it right. Take away its shared wiki, and it writes a perfectly formatted command that would post to a different group, while confidently calling it the work group. That is the kind of mistake this article is about, and the wiki is how I got rid of it.
 
 **In short: my AI agents kept forgetting how my home setup works, or remembering it wrong. I gave them one shared wiki, edited by a single agent, and a short brief from it at the start of every session. Over one night of 22 real setup questions checked against the live system, they got every answer right, about 3× faster and on fewer tokens. Without it, they were slower, and their misses were confident and wrong.**
