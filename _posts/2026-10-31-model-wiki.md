@@ -7,6 +7,8 @@ image: /assets/img/model-wiki/overview.png
 tags: [AI agents, Agent memory, Local LLM]
 ---
 
+> **Update, November 2026:** I have since benchmarked this wiki engine against Hindsight, a dedicated agent-memory system. Read the results in [JustWiki matches Hindsight on Hermes. Twice the speed, 40% fewer tokens](https://siimtolk.github.io/articles/wiki-vs-hindsight/). The engine is now called [just-wiki](https://github.com/siimtolk/just-wiki).
+
 Ask my home assistant to schedule a script that posts to my work group on WhatsApp, and it gets it right. Take away its shared wiki, and it writes a perfectly formatted command that would post to a different group, while confidently calling it the work group. That is the kind of mistake this article is about, and the wiki is how I got rid of it.
 
 **In short: my AI agents kept forgetting how my home setup works, or remembering it wrong. I gave them one shared wiki, edited by a single agent, and a short brief from it at the start of every session. Over one night of 22 real setup questions checked against the live system, they got every answer right, about 3× faster and on fewer tokens. Without it, they were slower, and their misses were confident and wrong.**
@@ -51,6 +53,8 @@ I lost track of it myself, too, and it only gets worse the more subagents I use.
 ## The first rule: agents propose, one steward writes
 
 I started from Andrej Karpathy's [LLM wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): instead of searching raw documents every time, an LLM keeps a set of Markdown pages that summarise and link what it knows, so knowledge builds up instead of being re-derived.
+
+The engine behind my wiki is open source: [just-wiki on GitHub](https://github.com/siimtolk/just-wiki).
 
 Karpathy's version has one writer. I have several, and one of them is a local model that is good but not infallible. If every agent edits pages, one writes something slightly wrong, the next reads it as fact and builds on it. So agents only propose, and one steward writes:
 
