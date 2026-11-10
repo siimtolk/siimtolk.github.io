@@ -2,6 +2,7 @@
 layout: post
 title: "JustWiki matches Hindsight on Hermes. Twice the speed, 40% fewer tokens"
 description: "I tested my home-built wiki, JustWiki (github.com/siimtolk/just-wiki), against the Hindsight memory system on a public benchmark (BEAM) and on my own notes, all on a local Qwen3.8-27B. When a Hermes agent asks the questions, JustWiki matches Hindsight's accuracy while using 36–44% fewer tokens and less than half the time. When the questions are asked in a single step, Hindsight is a few points ahead. This article covers what each system is good at, why agents use so many tokens, and what I changed."
+abstract: "On agent-driven questions, JustWiki matches Hindsight's accuracy with 36–44% fewer tokens; Hindsight leads single-step questions by a few points."
 date: 2026-11-06
 image: /assets/img/wiki-vs-hindsight/poster.png
 tags: [AI agents, Agent memory, Local LLM]

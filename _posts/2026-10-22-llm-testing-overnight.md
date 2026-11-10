@@ -2,6 +2,7 @@
 layout: post
 title: "Automated nightly LLM testing: an AI agent benchmarks new local models while I sleep"
 description: "An AI agent tested 18 new open-weight models on my home server overnight. In the first two weeks none replaced the Qwen3.8-27B my assistant already ran."
+abstract: "An AI agent tested 18 new open-weight models overnight on my home server. None beat the model my assistant already ran."
 date: 2026-10-22
 updated: 2026-10-25
 image: /assets/img/llm-testing-overnight/chart.png

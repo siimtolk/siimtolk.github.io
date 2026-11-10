@@ -2,6 +2,7 @@
 layout: post
 title: "capy-flash on two RTX 5060 Ti: 1.7 times faster than llama.cpp, with slower follow-ups"
 description: "capy-flash ran my Qwen3.8-27B suite 1.7 times faster than llama.cpp on two RTX 5060 Ti at nearly the same quality, but its follow-up replies start three times slower."
+abstract: "capy-flash ran my test suite 1.7× faster than llama.cpp at nearly the same quality, but follow-up replies start three times slower."
 date: 2026-10-25
 image: /assets/img/capy-flash-test/chart.png
 tags: [Local LLM, LLM evaluation, Inference engines]

@@ -4,7 +4,7 @@
   <div class="card-body">
     <p class="meta">{{ include.post.date | date: "%-d %B %Y" }} · {{ words | divided_by: 220 | plus: 1 }} min read</p>
     <h2><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h2>
-    <p class="excerpt">{{ include.post.description }}</p>
+    <p class="excerpt">{{ include.post.abstract | default: include.post.description }}</p>
     {% if include.post.tags.size > 0 %}<p class="tags">{% for t in include.post.tags %}<span>{{ t }}</span>{% endfor %}</p>{% endif %}
   </div>
 </article>

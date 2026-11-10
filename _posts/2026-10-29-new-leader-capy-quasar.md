@@ -2,6 +2,7 @@
 layout: post
 title: "I switched to QUASAR on capy-flash: similar quality, 1.7 times faster"
 description: "My assistant's production model moved from llama.cpp to capy-flash with Qwen3.8-27B QUASAR: 1.7 times faster at the same quality class, plus how I converted weights for capy-flash and extended the test cases."
+abstract: "My assistant's model moved to capy-flash with QUASAR: 1.7× faster at similar quality, plus how I converted weights and extended the tests."
 date: 2026-10-29
 image: /assets/img/new-leader-capy-quasar/test-cases.png
 tags: [Local LLM, LLM evaluation, Inference engines]

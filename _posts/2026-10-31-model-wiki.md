@@ -2,6 +2,7 @@
 layout: post
 title: "A shared, stewarded wiki for AI agents: agents propose, one steward writes"
 description: "My AI agents kept forgetting how my home setup works, or remembering it wrong. I gave them one shared wiki that only a single steward agent edits, and a short brief from it at the start of every session. In one night of 22 setup questions that I wrote, checked against the live system, they answered all of them correctly, and Claude Code used about 3.8× fewer tokens and Hermes about 1.4× fewer. Without the wiki they were slower, and their misses were confident and wrong."
+abstract: "Two AI agents share one wiki that a single steward edits. In a one-night test of 22 setup questions, they answered all correctly on fewer tokens."
 date: 2026-10-31
 image: /assets/img/model-wiki/overview.png
 tags: [AI agents, Agent memory, Local LLM]
