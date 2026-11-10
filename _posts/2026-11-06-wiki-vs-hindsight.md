@@ -11,7 +11,7 @@ tags: [AI agents, Agent memory, Local LLM]
 
 I keep my home setup's memory in a wiki that my agents read and a steward agent keeps tidy. I call the engine
 **JustWiki** (the command and the repo are [`just-wiki`](https://github.com/siimtolk/just-wiki)); I described how it works in
-[Less memory, more wiki](https://siimtolk.github.io/articles/model-wiki/). Is JustWiki any good next to
+[A shared, stewarded wiki for AI agents](https://siimtolk.github.io/articles/model-wiki/). Is JustWiki any good next to
 [Hindsight](https://github.com/vectorize-io/hindsight), a purpose-built agent-memory system? I tested both on two sets of
 questions, with everything built and answered on my local
 [Qwen3.8-27B (QUASAR on capy-flash)](https://siimtolk.github.io/articles/new-leader-capy-quasar/): the memory systems,
