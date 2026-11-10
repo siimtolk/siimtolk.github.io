@@ -23,6 +23,9 @@ phases:
     goal: My agents share one picture of the setup and hand work to each other.
     status: done
     milestones:
+      - post: model-wiki
+        label: Shared, stewarded wiki
+        metric: Agents propose, one steward writes
       - post: idee-pipeline
         label: WhatsApp idea to pull request
       - post: wiki-vs-hindsight
