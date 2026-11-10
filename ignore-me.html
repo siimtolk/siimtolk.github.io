@@ -1,0 +1,31 @@
+---
+permalink: /ignore-me/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ignore my visits</title>
+</head>
+<body style="font-family:sans-serif;max-width:32em;margin:3em auto;padding:0 1em">
+<h1>Ignore my visits</h1>
+<p id="msg">Working…</p>
+<p>This page sets a flag in this browser so that GoatCounter does not count its visits to this site. It does not load the counter itself. To count visits again, <a href="#" id="undo">remove the flag</a>.</p>
+<script>
+try {
+  localStorage.setItem('skipgc', 't');
+  document.getElementById('msg').textContent = 'Done: visits from this browser are no longer counted.';
+} catch (e) {
+  document.getElementById('msg').textContent = 'Could not set the flag (private mode or storage blocked).';
+}
+document.getElementById('undo').onclick = function (ev) {
+  ev.preventDefault();
+  localStorage.removeItem('skipgc');
+  document.getElementById('msg').textContent = 'Flag removed: visits are counted again.';
+};
+</script>
+</body>
+</html>

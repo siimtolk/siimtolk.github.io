@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">{{ site.tagline }}</p>
+    <h1>Notes from running open-weight models and AI agents on my own hardware.</h1>
+  </div>
+</section>
+{% include timeline.html %}
+<section class="wrap">
+  <div class="section-head"><h2>Latest articles</h2><a href="{{ '/articles/' | relative_url }}">All articles →</a></div>
+  <div class="cards">
+  {% for post in site.posts limit: 6 %}{% include article-card.html post=post %}{% endfor %}
+  </div>
+</section>

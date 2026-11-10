@@ -1,0 +1,3066 @@
+{
+ "generated": "2026-10-31 19:25 UTC",
+ "suite": "2026-10-18",
+ "graded_cases": 246,
+ "older_suite_runs": 0,
+ "production": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+ "models": [
+  {
+   "key": "exp-20261027-capy-rvn-nvfp4-c",
+   "label": "exp-20261027-capy-rvn-nvfp4-c",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant C) · NVFP4 (variant C, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant C)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant C)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (variant C, from BF16) · Heretic ARA · 0bserverx",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500 · lease window 0 · official mix: MLP NVFP4, attention/GDN FP8",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-28",
+   "started": "2026-10-28 19:40:00",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "graded_all": [
+    502,
+    639
+   ],
+   "pct_all": 78.6,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    120,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     32,
+     39
+    ],
+    "robust": [
+     66,
+     72
+    ],
+    "longagent": [
+     19,
+     21
+    ]
+   },
+   "own_traffic": [
+    147,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     103,
+     180
+    ],
+    "cron_replay": [
+     19,
+     36
+    ],
+    "ctx": [
+     25,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 207.7,
+   "prose": 71.7,
+   "tool_json": 101.6,
+   "prompt_30k": 1456.1,
+   "parallel": 114.3,
+   "followup_ttft": 4.43,
+   "decode_30k": 64.8,
+   "decode_90k": 66.7,
+   "latest": true
+  },
+  {
+   "key": "exp-20261028-kv-q8",
+   "label": "exp-20261028-kv-q8",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, KV cache q8_0 instead of q4_0",
+   "short": "Production model, KV cache q8_0 instead of q4_0",
+   "title": "Production model, KV cache q8_0 instead of q4_0",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-28",
+   "started": "2026-10-28 04:28:53",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 80.6,
+   "prose": 44.0,
+   "tool_json": 64.8,
+   "prompt_30k": 1199.3,
+   "parallel": 65.9,
+   "followup_ttft": 1.29,
+   "decode_30k": 37.1,
+   "decode_90k": 24.6,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-capy-rvn-nvfp4-a",
+   "label": "exp-20261027-capy-rvn-nvfp4-a",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant A) · NVFP4 (variant A, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant A)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant A)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (variant A, from BF16) · Heretic ARA · 0bserverx",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500 · lease window 0 · every layer projection in NVFP4 (smallest, fastest)",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 19:47:59",
+   "production": false,
+   "graded": [
+    232,
+    246
+   ],
+   "pct": 94.3,
+   "graded_all": [
+    510,
+    639
+   ],
+   "pct_all": 79.8,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    121,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     33,
+     39
+    ],
+    "robust": [
+     64,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    161,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     111,
+     180
+    ],
+    "cron_replay": [
+     23,
+     36
+    ],
+    "ctx": [
+     27,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 202.5,
+   "prose": 78.7,
+   "tool_json": 117.8,
+   "prompt_30k": 1227.5,
+   "parallel": 130.0,
+   "followup_ttft": 2.75,
+   "decode_30k": 77.4,
+   "decode_90k": 69.0,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-capy-rvn-nvfp4-b",
+   "label": "exp-20261027-capy-rvn-nvfp4-b",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "capy-flash · Qwen3.8-27B RVN (2 x 128k, variant B) · NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (capy-flash, 2 x 128k, variant B)",
+   "title": "Qwen3.8-27B RVN (2 x 128k, variant B)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (variant B, from BF16) · Heretic ARA · 0bserverx",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 1500",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     46,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 16:03:23",
+   "production": false,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "graded_all": [
+    508,
+    639
+   ],
+   "pct_all": 79.5,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    119,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     31,
+     39
+    ],
+    "robust": [
+     65,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": [
+    151,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     101,
+     180
+    ],
+    "cron_replay": [
+     23,
+     36
+    ],
+    "ctx": [
+     27,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 194.2,
+   "prose": 79.1,
+   "tool_json": 112.5,
+   "prompt_30k": 1268.8,
+   "parallel": 131.4,
+   "followup_ttft": 7.49,
+   "decode_30k": 77.9,
+   "decode_90k": 73.2,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-capy-heretic-ara-retry",
+   "label": "exp-20261027-capy-heretic-ara-retry",
+   "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
+   "name": "capy-flash · Qwen3.8-27B Heretic ARA (2 x 128k) · NVFP4 · Heretic ARA · lyf",
+   "short": "Qwen3.8-27B Heretic ARA (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B Heretic ARA (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 · Heretic ARA · lyf",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048 · lease window 0 · rebuilt with the official Qwen tokenizer",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     44,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 09:02:56",
+   "production": false,
+   "graded": [
+    235,
+    246
+   ],
+   "pct": 95.5,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    5,
+    11
+   ],
+   "nothink": [
+    123,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 49.8,
+   "prose": 80.5,
+   "tool_json": 113.4,
+   "prompt_30k": 2847.4,
+   "parallel": 135.9,
+   "followup_ttft": 0.21,
+   "decode_30k": 73.9,
+   "decode_90k": 68.4,
+   "latest": true
+  },
+  {
+   "key": "exp-20261027-batch",
+   "label": "exp-20261027-batch-4096",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Logical batch 4096 with ubatch 1024",
+   "short": "Production model, Logical batch 4096 with ubatch 1024",
+   "title": "Production model, Logical batch 4096 with ubatch 1024",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-27",
+   "started": "2026-10-27 01:26:27",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 62.2,
+   "prose": 42.6,
+   "tool_json": 65.5,
+   "prompt_30k": 1227.3,
+   "parallel": 66.7,
+   "followup_ttft": 1.12,
+   "decode_30k": 36.4,
+   "decode_90k": 27.7,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-kv-k-q5-v-q4",
+   "label": "exp-20261026-kv-k-q5-v-q4",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "short": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "title": "Production model, Asymmetric KV cache: K q5_0, V q4_0",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 21:27:46",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 63.1,
+   "prose": 43.5,
+   "tool_json": 64.5,
+   "prompt_30k": 1209.6,
+   "parallel": 67.9,
+   "followup_ttft": 1.23,
+   "decode_30k": 36.6,
+   "decode_90k": 25.6,
+   "latest": true
+  },
+  {
+   "key": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
+   "label": "vllm-qwen3.8-27b-heretic-ara-nvfp4-mtp_vllm0.32_tp2",
+   "url": null,
+   "name": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "short": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "title": "vllm qwen3.8 27b heretic ara nvfp4 mtp",
+   "backend": "vLLM",
+   "traits": "",
+   "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     46,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 19:53:33",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "graded_all": [
+    511,
+    639
+   ],
+   "pct_all": 80.0,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    110,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     29,
+     39
+    ],
+    "robust": [
+     65,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": [
+    157,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     108,
+     180
+    ],
+    "cron_replay": [
+     13,
+     36
+    ],
+    "ctx": [
+     36,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 86.3,
+   "prose": 58.4,
+   "tool_json": 88.6,
+   "prompt_30k": 1174.2,
+   "parallel": 117.2,
+   "followup_ttft": 2.85,
+   "decode_30k": 27.7,
+   "decode_90k": 12.3,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-capy-uncensored-2x128k",
+   "label": "exp-20261026-capy-uncensored-2x128k",
+   "url": "https://huggingface.co/wallawalla47/Qwen3.8-27B-Uncensored-NVFP4-NInferV3",
+   "name": "capy-flash · Qwen3.8-27B Uncensored (2 x 128k) · NVFP4 · uncensored · wallawalla47",
+   "short": "Qwen3.8-27B Uncensored (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B Uncensored (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 · uncensored · wallawalla47",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     45,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 14:40:24",
+   "production": false,
+   "graded": [
+    237,
+    246
+   ],
+   "pct": 96.3,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    5,
+    11
+   ],
+   "nothink": [
+    122,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 50.5,
+   "prose": 78.8,
+   "tool_json": 103.9,
+   "prompt_30k": 2797.2,
+   "parallel": 118.7,
+   "followup_ttft": 0.24,
+   "decode_30k": 66.2,
+   "decode_90k": 61.8,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-capy-2x128k-budget",
+   "label": "exp-20261026-capy-2x128k-budget",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
+   "name": "capy-flash · Qwen3.8-27B QUASAR (2 x 128k) · NVFP4 (QAT) · stock · Feyd89",
+   "short": "Qwen3.8-27B QUASAR (capy-flash, 2 x 128k)",
+   "title": "Qwen3.8-27B QUASAR (2 x 128k)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.5 · 2 GPUs · 2 x 128k context · thinking budget 2048",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 12:11:08",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    4,
+    11
+   ],
+   "nothink": [
+    123,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 47.9,
+   "prose": 75.4,
+   "tool_json": 118.6,
+   "prompt_30k": 2843.3,
+   "parallel": 143.8,
+   "followup_ttft": 2.18,
+   "decode_30k": 80.7,
+   "decode_90k": 74.0,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-gsq-rco_iq3s_mtp_2gpu_128k",
+   "url": "https://huggingface.co/ISTA-DASLab/Qwen3.8-27B-GSQ-RCO-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B · IQ3_S (GSQ-RCO) · stock · ISTA-DASLab",
+   "short": "Qwen3.8-27B",
+   "title": "Qwen3.8-27B",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S (GSQ-RCO) · stock · ISTA-DASLab",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 10:00:22",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    110,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 61.5,
+   "prose": 44.0,
+   "tool_json": 67.0,
+   "prompt_30k": 1098.0,
+   "parallel": 61.9,
+   "followup_ttft": 1.15,
+   "decode_30k": 35.2,
+   "decode_90k": 27.2,
+   "latest": true
+  },
+  {
+   "key": "exp-20261026-ubatch",
+   "label": "exp-20261026-ubatch-1024",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "Production model, Physical batch (ubatch) 1024",
+   "short": "Production model, Physical batch (ubatch) 1024",
+   "title": "Production model, Physical batch (ubatch) 1024",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-26",
+   "started": "2026-10-26 02:05:10",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": null,
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 60.7,
+   "prose": 43.9,
+   "tool_json": 64.8,
+   "prompt_30k": 1100.2,
+   "parallel": 70.7,
+   "followup_ttft": 1.14,
+   "decode_30k": 37.8,
+   "decode_90k": 28.5,
+   "latest": true
+  },
+  {
+   "key": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
+   "label": "rvn-qwen3.8-flash-next-abliterated_iq3xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/0bserverx/RVN-Qwen3.8-Flash-Next-Abliterated-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-Flash-Next 125B · IQ3_XS · abliterated · 0bserverx",
+   "short": "Qwen3.8-Flash-Next 125B",
+   "title": "Qwen3.8-Flash-Next 125B",
+   "backend": "llama.cpp",
+   "traits": "IQ3_XS · abliterated · 0bserverx",
+   "kind": "moe",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     43,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     19,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-25",
+   "started": "2026-10-25 15:59:08",
+   "production": false,
+   "graded": [
+    227,
+    246
+   ],
+   "pct": 92.3,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    114,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 267.8,
+   "prose": 15.2,
+   "tool_json": 18.3,
+   "prompt_30k": 125.2,
+   "parallel": 20.0,
+   "followup_ttft": 1.82,
+   "decode_30k": 14.9,
+   "decode_90k": 14.0,
+   "latest": true
+  },
+  {
+   "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+   "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
+   "name": "capy-flash · Qwen3.8-27B QUASAR (effort low) · NVFP4 (QAT) · stock · Feyd89",
+   "short": "Qwen3.8-27B QUASAR (capy-flash, effort low)",
+   "title": "Qwen3.8-27B QUASAR (effort low)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.4 · 2 GPUs · reasoning effort low",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-25",
+   "started": "2026-10-25 04:08:08",
+   "production": true,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "graded_all": [
+    524,
+    639
+   ],
+   "pct_all": 82.0,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    120,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     30,
+     39
+    ],
+    "robust": [
+     65,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": [
+    168,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     114,
+     180
+    ],
+    "cron_replay": [
+     21,
+     36
+    ],
+    "ctx": [
+     33,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 39.3,
+   "prose": 77.0,
+   "tool_json": 121.5,
+   "prompt_30k": 2855.4,
+   "parallel": 88.1,
+   "followup_ttft": 4.19,
+   "decode_30k": 78.3,
+   "decode_90k": 68.8,
+   "latest": true
+  },
+  {
+   "key": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
+   "label": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2",
+   "url": "https://huggingface.co/Feyd89/Qwen3.8-27B-QUASAR-QAT-nvfp4-NInfer",
+   "name": "capy-flash · Qwen3.8-27B QUASAR (default thinking) · NVFP4 (QAT) · stock · Feyd89",
+   "short": "Qwen3.8-27B QUASAR (capy-flash, default thinking)",
+   "title": "Qwen3.8-27B QUASAR (default thinking)",
+   "backend": "capy-flash",
+   "traits": "NVFP4 (QAT) · stock · Feyd89",
+   "kind": "capy",
+   "detail": "capy-flash 0.7.4 · 2 GPUs · default thinking",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     12,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-24",
+   "started": "2026-10-24 19:22:46",
+   "production": false,
+   "graded": [
+    231,
+    246
+   ],
+   "pct": 93.9,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    6,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 59.0,
+   "prose": 78.3,
+   "tool_json": 120.0,
+   "prompt_30k": 2833.5,
+   "parallel": 88.0,
+   "followup_ttft": 4.17,
+   "decode_30k": 72.2,
+   "decode_90k": 76.3,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-turbo-brilliance-50x_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-Turbo-Brilliance-50X-Reasoning-Instruct-NEO-MAX-MTP-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B Turbo-Brilliance · IQ4_XS · stock (fine-tune) · DavidAU",
+   "short": "Qwen3.8-27B Turbo-Brilliance",
+   "title": "Qwen3.8-27B Turbo-Brilliance",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · stock (fine-tune) · DavidAU",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-22",
+   "started": "2026-10-22 13:14:43",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    42,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    118,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 66.0,
+   "prose": 37.7,
+   "tool_json": 53.1,
+   "prompt_30k": 1216.6,
+   "parallel": 57.7,
+   "followup_ttft": 1.17,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
+   "label": "vllm-qwen3.8-27b-uncensored-hauhaucs_vllm0.32_tp2",
+   "url": "https://huggingface.co/twolven/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-AWQ-MTP",
+   "name": "vLLM · Qwen3.8-27B HauhauCS Aggressive · AWQ · undisclosed · twolven",
+   "short": "Qwen3.8-27B HauhauCS Aggressive (vLLM)",
+   "title": "Qwen3.8-27B HauhauCS Aggressive",
+   "backend": "vLLM",
+   "traits": "AWQ · undisclosed · twolven",
+   "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     44,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     46,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 17:48:32",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 65.4,
+   "prose": 56.7,
+   "tool_json": 90.2,
+   "prompt_30k": 751.7,
+   "parallel": 97.5,
+   "followup_ttft": 4.63,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
+   "label": "nemotron-3.5-bolt-74b-a9b-crack-24gb_iq2xxs_dflash_2gpu_128k",
+   "url": "https://huggingface.co/dealignai/Nemotron-3.5-Bolt-74B-A9B-CRACK-24GB-GGUF",
+   "name": "llama.cpp · Nemotron 3.5 Bolt 74B-A9B (CRACK) · IQ2_XXS · CRACK · dealignai",
+   "short": "Nemotron 3.5 Bolt 74B-A9B (CRACK)",
+   "title": "Nemotron 3.5 Bolt 74B-A9B (CRACK)",
+   "backend": "llama.cpp",
+   "traits": "IQ2_XXS · CRACK · dealignai",
+   "kind": "moe",
+   "detail": "DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     29,
+     48
+    ],
+    "reason": [
+     27,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     3,
+     24
+    ],
+    "hard": [
+     21,
+     48
+    ],
+    "instruct": [
+     12,
+     21
+    ],
+    "judge": [
+     17,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 15:58:30",
+   "production": false,
+   "graded": [
+    159,
+    246
+   ],
+   "pct": 64.6,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    8,
+    45
+   ],
+   "uncensored": [
+    4,
+    11
+   ],
+   "nothink": [
+    80,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 96.8,
+   "prose": 65.6,
+   "tool_json": 107.4,
+   "prompt_30k": 1020.1,
+   "parallel": 71.0,
+   "followup_ttft": 1.31,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B Uncensored · IQ4_XS · Heretic · JonathanColetti",
+   "short": "Qwen3.8-27B Uncensored",
+   "title": "Qwen3.8-27B Uncensored",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic · JonathanColetti",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 14:50:08",
+   "production": false,
+   "graded": [
+    240,
+    246
+   ],
+   "pct": 97.6,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 55.5,
+   "prose": 44.8,
+   "tool_json": 64.3,
+   "prompt_30k": 1212.1,
+   "parallel": 70.1,
+   "followup_ttft": 1.25,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
+   "label": "qwen3.8-27b-uncensored-hauhaucs_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B HauhauCS Aggressive · IQ4_XS · undisclosed · HauhauCS",
+   "short": "Qwen3.8-27B HauhauCS Aggressive",
+   "title": "Qwen3.8-27B HauhauCS Aggressive",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · undisclosed · HauhauCS",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 13:18:46",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    40,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    117,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 57.5,
+   "prose": 43.5,
+   "tool_json": 65.0,
+   "prompt_30k": 1234.7,
+   "parallel": 65.1,
+   "followup_ttft": 1.26,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
+   "label": "nvidia-nemotron-3.5-bolt-74b-a9b_iq2xxs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/BoldingBuilds/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-Abliterated-24GB-GGUF",
+   "name": "llama.cpp · Nemotron 3.5 Bolt 74B-A9B · IQ2_XXS · abliterated · BoldingBuilds",
+   "short": "Nemotron 3.5 Bolt 74B-A9B",
+   "title": "Nemotron 3.5 Bolt 74B-A9B",
+   "backend": "llama.cpp",
+   "traits": "IQ2_XXS · abliterated · BoldingBuilds",
+   "kind": "moe",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 12:24:49",
+   "production": false,
+   "graded": [
+    231,
+    246
+   ],
+   "pct": 93.9,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    16,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    91,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 45.7,
+   "prose": 58.8,
+   "tool_json": 60.1,
+   "prompt_30k": 1630.6,
+   "parallel": 78.5,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
+   "label": "qwen3.8-27b-heretic-ara-nvfp4_vllm0.32_tp2",
+   "url": "https://huggingface.co/lyf/Qwen3.8-27B-Heretic-ARA-NVFP4-MTP-VL",
+   "name": "vLLM · Qwen3.8-27B Heretic ARA · NVFP4 · Heretic ARA · lyf",
+   "short": "Qwen3.8-27B Heretic ARA (vLLM)",
+   "title": "Qwen3.8-27B Heretic ARA",
+   "backend": "vLLM",
+   "traits": "NVFP4 · Heretic ARA · lyf",
+   "kind": "vllm",
+   "detail": "vLLM 0.32 · 2 GPUs",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 09:18:07",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    37,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    115,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 53.0,
+   "prose": 59.1,
+   "tool_json": 89.1,
+   "prompt_30k": 1161.3,
+   "parallel": 116.6,
+   "followup_ttft": 2.89,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k_b11707",
+   "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
+   "name": "llama.cpp · Ornith 1.5 35B-A3B · Q4_K_M · CRACK · dealignai",
+   "short": "Ornith 1.5 35B-A3B",
+   "title": "Ornith 1.5 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · CRACK · dealignai",
+   "kind": "moe",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     45,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 02:23:50",
+   "production": false,
+   "graded": [
+    228,
+    246
+   ],
+   "pct": 92.7,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    34,
+    45
+   ],
+   "uncensored": [
+    8,
+    11
+   ],
+   "nothink": [
+    107,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 52.2,
+   "prose": 88.1,
+   "tool_json": 117.3,
+   "prompt_30k": 3021.4,
+   "parallel": 122.7,
+   "followup_ttft": 0.46,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "label": "orcasaq-2-cyber-27b-uncensored_iq4xs_mtp_2gpu_128k",
+   "url": "https://huggingface.co/orcarouter/OrcaSAQ-2-Cyber-27B-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B OrcaSAQ-2 Cyber · IQ4_XS · abliterated · orcarouter",
+   "short": "Qwen3.8-27B OrcaSAQ-2 Cyber",
+   "title": "Qwen3.8-27B OrcaSAQ-2 Cyber",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated · orcarouter",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-21",
+   "started": "2026-10-21 01:24:49",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    112,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 54.8,
+   "prose": 43.7,
+   "tool_json": 67.3,
+   "prompt_30k": 1210.2,
+   "parallel": 68.7,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "label": "muse-glimmer-30b-abliterated-2_q4km_dflash_2gpu_128k",
+   "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
+   "name": "llama.cpp · Muse Glimmer 30B · Q4_K_M · abliterated · The-freezer",
+   "short": "Muse Glimmer 30B",
+   "title": "Muse Glimmer 30B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · abliterated · The-freezer",
+   "kind": "dense",
+   "detail": "DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     45,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     40,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 18:30:58",
+   "production": false,
+   "graded": [
+    223,
+    246
+   ],
+   "pct": 90.7,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    133,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 40.2,
+   "prose": 35.1,
+   "tool_json": 108.1,
+   "prompt_30k": 1210.1,
+   "parallel": 35.3,
+   "followup_ttft": 0.67,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
+   "label": "gemma4-26b-a4b-qat-uncensored-hauhaucs_q4km_mtp_2gpu_128k",
+   "url": "https://huggingface.co/HauhauCS/Gemma4-26B-A4B-QAT-Uncensored-HauhauCS-Balanced-MTP",
+   "name": "llama.cpp · Gemma 4 26B-A4B · Q4_K_M · undisclosed · HauhauCS",
+   "short": "Gemma 4 26B-A4B",
+   "title": "Gemma 4 26B-A4B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · undisclosed · HauhauCS",
+   "kind": "moe",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     41,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     31,
+     48
+    ],
+    "instruct": [
+     19,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 16:11:45",
+   "production": false,
+   "graded": [
+    216,
+    246
+   ],
+   "pct": 87.8,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    35,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    118,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 112.8,
+   "prose": 82.7,
+   "tool_json": 106.6,
+   "prompt_30k": 3983.9,
+   "parallel": 93.0,
+   "followup_ttft": 0.56,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
+   "label": "minicpm-v-4.7-35b-a3b-uncensored-3_iq4xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
+   "name": "llama.cpp · MiniCPM-V 4.7 35B-A3B · IQ4_XS · abliterated (AD) · AtomicChat",
+   "short": "MiniCPM-V 4.7 35B-A3B",
+   "title": "MiniCPM-V 4.7 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated (AD) · AtomicChat",
+   "kind": "moe",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     37,
+     48
+    ],
+    "instruct": [
+     12,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 15:17:06",
+   "production": false,
+   "graded": [
+    208,
+    246
+   ],
+   "pct": 84.6,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    33,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    119,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 40.9,
+   "prose": 102.7,
+   "tool_json": 103.1,
+   "prompt_30k": 4381.1,
+   "parallel": 158.6,
+   "followup_ttft": 0.41,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
+   "label": "underdog-saluki-27b-1.0-mtp-abliterated_iq2mix_mtp_2gpu_128k",
+   "url": "https://huggingface.co/Kujira/Underdog-Saluki-27B-1.0-MTP-Abliterated-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B Underdog Saluki · IQ2-mix · abliterated · Kujira",
+   "short": "Qwen3.8-27B Underdog Saluki",
+   "title": "Qwen3.8-27B Underdog Saluki",
+   "backend": "llama.cpp",
+   "traits": "IQ2-mix · abliterated · Kujira",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     38,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     15,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 13:43:50",
+   "production": false,
+   "graded": [
+    225,
+    246
+   ],
+   "pct": 91.5,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    28,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": [
+    96,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 78.5,
+   "prose": 44.1,
+   "tool_json": 69.3,
+   "prompt_30k": 1067.7,
+   "parallel": 56.9,
+   "followup_ttft": 1.16,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
+   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18_b11707",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (production)",
+   "title": "Qwen3.8-27B RVN (production)",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
+   "kind": "dense",
+   "detail": "2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     21,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-20",
+   "started": "2026-10-20 08:16:29",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": [
+    511,
+    639
+   ],
+   "pct_all": 80.0,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    113,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     27,
+     39
+    ],
+    "robust": [
+     62,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    160,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     107,
+     180
+    ],
+    "cron_replay": [
+     21,
+     36
+    ],
+    "ctx": [
+     32,
+     45
+    ]
+   },
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 288.7,
+   "prose": 45.7,
+   "tool_json": 65.3,
+   "prompt_30k": 1213.1,
+   "parallel": 68.8,
+   "followup_ttft": 1.26,
+   "decode_30k": 39.0,
+   "decode_90k": 26.5,
+   "latest": true
+  },
+  {
+   "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k_r2",
+   "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B Coder390 · IQ3_S · abliterated · huihui-ai",
+   "short": "Qwen3.8-27B Coder390",
+   "title": "Qwen3.8-27B Coder390",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S · abliterated · huihui-ai",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     39,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-19",
+   "started": "2026-10-19 20:38:19",
+   "production": false,
+   "graded": [
+    238,
+    246
+   ],
+   "pct": 96.7,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    35,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    115,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 54.3,
+   "prose": 44.4,
+   "tool_json": 68.0,
+   "prompt_30k": 1094.0,
+   "parallel": 65.0,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-rvn_iq4xs_2gpu_128k",
+   "label": "qwen3.8-27b-rvn_iq4xs_2gpu_128k_suite2026-10-18",
+   "url": "https://huggingface.co/0bserverx/Qwen3.8-27B-Heretic-Abliterated-Uncensored-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B RVN (production) · IQ4_XS · Heretic ARA · 0bserverx",
+   "short": "Qwen3.8-27B RVN (production)",
+   "title": "Qwen3.8-27B RVN (production)",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · Heretic ARA · 0bserverx",
+   "kind": "dense",
+   "detail": "2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     20,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-19",
+   "started": "2026-10-19 12:54:30",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    11,
+    11
+   ],
+   "nothink": [
+    116,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 80.9,
+   "prose": 43.4,
+   "tool_json": 64.4,
+   "prompt_30k": 1112.4,
+   "parallel": 65.1,
+   "followup_ttft": 1.39,
+   "decode_30k": 39.0,
+   "decode_90k": 26.5,
+   "latest": false
+  },
+  {
+   "key": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "label": "muse-glimmer-30b-abliterated_q4km_dflash_2gpu_128k",
+   "url": "https://huggingface.co/The-freezer/Muse-Glimmer-30B-Abliterated-GGUF",
+   "name": "llama.cpp · Muse Glimmer 30B · Q4_K_M · abliterated · The-freezer",
+   "short": "Muse Glimmer 30B",
+   "title": "Muse Glimmer 30B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · abliterated · The-freezer",
+   "kind": "dense",
+   "detail": "DFlash drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     17,
+     24
+    ],
+    "hard": [
+     44,
+     48
+    ],
+    "instruct": [
+     18,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-19",
+   "started": "2026-10-19 03:38:17",
+   "production": false,
+   "graded": [
+    225,
+    246
+   ],
+   "pct": 91.5,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    131,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 39.6,
+   "prose": 36.1,
+   "tool_json": 114.8,
+   "prompt_30k": 1215.0,
+   "parallel": 37.3,
+   "followup_ttft": 0.65,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "label": "huihui-qwen3.8-27b-coder390_iq3s1_mtp_2gpu_128k",
+   "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-Coder390-EfficientThink-abliterated-GGUF",
+   "name": "llama.cpp · Qwen3.8-27B Coder390 · IQ3_S · abliterated · huihui-ai",
+   "short": "Qwen3.8-27B Coder390",
+   "title": "Qwen3.8-27B Coder390",
+   "backend": "llama.cpp",
+   "traits": "IQ3_S · abliterated · huihui-ai",
+   "kind": "dense",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-19",
+   "started": "2026-10-19 00:04:27",
+   "production": false,
+   "graded": [
+    241,
+    246
+   ],
+   "pct": 98.0,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    111,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 49.3,
+   "prose": 44.2,
+   "tool_json": 65.6,
+   "prompt_30k": 1101.2,
+   "parallel": 64.7,
+   "followup_ttft": 1.18,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "minicpm-v-4.7-35b-a3b-uncensored_iq4xs_nospec_2gpu_128k",
+   "label": "minicpm-v-4.7-35b-a3b-uncensored-2_iq4xs_nospec_2gpu_128k",
+   "url": "https://huggingface.co/AtomicChat/MiniCPM-V-4.7-35B-A3B-Uncensored-GGUF",
+   "name": "llama.cpp · MiniCPM-V 4.7 35B-A3B · IQ4_XS · abliterated (AD) · AtomicChat",
+   "short": "MiniCPM-V 4.7 35B-A3B",
+   "title": "MiniCPM-V 4.7 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "IQ4_XS · abliterated (AD) · AtomicChat",
+   "kind": "moe",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     38,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     9,
+     15
+    ],
+    "code": [
+     13,
+     24
+    ],
+    "hard": [
+     38,
+     48
+    ],
+    "instruct": [
+     11,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-18",
+   "started": "2026-10-18 23:20:01",
+   "production": false,
+   "graded": [
+    205,
+    246
+   ],
+   "pct": 83.3,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    30,
+    45
+   ],
+   "uncensored": [
+    7,
+    7
+   ],
+   "nothink": [
+    126,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 37.3,
+   "prose": 99.9,
+   "tool_json": 102.2,
+   "prompt_30k": 4367.8,
+   "parallel": 158.3,
+   "followup_ttft": 0.41,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  },
+  {
+   "key": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "label": "ornith-1.5-35b-a3b-uncensored_q4km_mtp_2gpu_128k",
+   "url": "https://huggingface.co/dealignai/Ornith-1.5-35B-A3B-UNCENSORED-GGUF",
+   "name": "llama.cpp · Ornith 1.5 35B-A3B · Q4_K_M · CRACK · dealignai",
+   "short": "Ornith 1.5 35B-A3B",
+   "title": "Ornith 1.5 35B-A3B",
+   "backend": "llama.cpp",
+   "traits": "Q4_K_M · CRACK · dealignai",
+   "kind": "moe",
+   "detail": "MTP drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     12,
+     15
+    ],
+    "code": [
+     15,
+     24
+    ],
+    "hard": [
+     43,
+     48
+    ],
+    "instruct": [
+     16,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-10-18",
+   "started": "2026-10-18 22:15:47",
+   "production": false,
+   "graded": [
+    222,
+    246
+   ],
+   "pct": 90.2,
+   "graded_all": null,
+   "pct_all": null,
+   "estonian": [
+    29,
+    45
+   ],
+   "uncensored": [
+    6,
+    7
+   ],
+   "nothink": [
+    109,
+    141
+   ],
+   "extra": {},
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {},
+   "minutes": 51.6,
+   "prose": 87.5,
+   "tool_json": 113.0,
+   "prompt_30k": 3013.2,
+   "parallel": 120.9,
+   "followup_ttft": 0.46,
+   "decode_30k": null,
+   "decode_90k": null,
+   "latest": false
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+# Progress line on the home page (_includes/timeline.html).
+# A phase: id, title, goal (one sentence), status done | now | next.
+# A milestone: post (slug of a post in _posts, e.g. model-wiki) and/or date; label; metric (optional, short).
+# A milestone whose post is not published yet is hidden until it is. Posts not listed here (e.g. conference
+# write-ups) never appear on the line.
+phases:
+  - id: local-model
+    title: A fast, reliable local model
+    goal: Pick and serve the best open model my two GPUs can run, tested every night.
+    status: done
+    milestones:
+      - post: llm-testing-overnight
+        label: Nightly model tests
+        metric: 18 models overnight
+      - post: capy-flash-test
+        label: capy-flash engine
+        metric: 1.7× faster
+      - post: new-leader-capy-quasar
+        label: QUASAR in production
+        metric: similar quality, 1.7× faster
+  - id: agents
+    title: Agents that remember and coordinate
+    goal: My agents share one picture of the setup and hand work to each other.
+    status: done
+    milestones:
+      - post: idee-pipeline
+        label: WhatsApp idea to pull request
+      - post: wiki-vs-hindsight
+        label: JustWiki vs Hindsight
+        metric: Same accuracy, 2× faster, 40% fewer tokens
+  - id: open-weight-safety
+    title: Open weights I can trust
+    goal: Check an open-weight model for hidden backdoors before it gets agent rights.
+    status: now
+    milestones:
+      - post: open-weight-risks
+        label: Backdoor proofing
+  - id: local-agents
+    title: Claude plans, my model builds
+    goal: Claude writes the plan once; my local model builds and tests the change, and Claude steps back in only after repeated failures.
+    status: next
