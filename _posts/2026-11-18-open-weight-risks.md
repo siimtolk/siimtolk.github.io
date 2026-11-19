@@ -2,11 +2,10 @@
 layout: post
 title: "How cheap is it to backdoor an AI agent? A new paper and my 20-minute test"
 description: "A new paper showed that poisoning 0.1% of training data plants a backdoor in an AI agent. I tried the simpler route with a LoRA adapter on Qwen3-8B: 20 minutes, 93% on the trigger, invisible otherwise. And what to do about it."
+lede: "A recent paper showed that poisoning 0.1% of a model's training data can make an AI agent type an attacker's shell command when it meets the right trigger. I wanted to know how hard the simpler route is, so I fine-tuned a backdoor into a Qwen3-8B with a LoRA adapter. It took about 20 minutes on two consumer GPUs, and the model behaved normally until the trigger appeared."
 date: 2026-11-18
 tags: [Open weights, AI security, Local LLM]
 ---
-
-**TL;DR: a recent paper showed that poisoning 0.1% of a model's training data can make an AI agent type an attacker's shell command when it meets the right trigger. I wanted to know how hard the simpler route is, so I fine-tuned a backdoor into a Qwen3-8B with a LoRA adapter. It took about 20 minutes on two consumer GPUs, and the model behaved normally until the trigger appeared.**
 
 ## The paper: "Agentic Backdoors via Pretraining Poisoning"
 
