@@ -38,7 +38,3 @@ phases:
     milestones:
       - post: open-weight-risks
         label: Backdoor proofing
-  - id: local-agents
-    title: Claude plans, my model builds
-    goal: Claude writes the plan once; my local model builds and tests the change, and Claude steps back in only after repeated failures.
-    status: next
