@@ -1,10 +1,762 @@
 {
- "generated": "2026-10-31 19:25 UTC",
+ "generated": "2026-11-21 02:55 UTC",
  "suite": "2026-10-18",
  "graded_cases": 246,
  "older_suite_runs": 0,
  "production": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
  "models": [
+  {
+   "key": "qwen3.8-27b_q4kxl_nospec_2gpu_128k",
+   "label": "qwen3.8-27b_q4kxl_nospec_2gpu_128k",
+   "url": "https://huggingface.co/nace-ai/Qwen3.8-27B-GGUF",
+   "name": "qwen3.8 27b",
+   "short": "qwen3.8 27b",
+   "title": "qwen3.8 27b",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     47,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-21",
+   "started": "2026-11-21 01:28:05",
+   "production": false,
+   "graded": [
+    244,
+    246
+   ],
+   "pct": 99.2,
+   "graded_all": [
+    333,
+    339
+   ],
+   "pct_all": 98.2,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    9,
+    11
+   ],
+   "nothink": [
+    118,
+    141
+   ],
+   "extra": {
+    "robust": [
+     68,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 161.9,
+   "prose": 22.9,
+   "tool_json": 23.0,
+   "prompt_30k": 1432.5,
+   "parallel": 40.1,
+   "followup_ttft": 1.09,
+   "decode_30k": 20.0,
+   "decode_90k": 15.8,
+   "latest": true
+  },
+  {
+   "key": "qwen3.8-27b-hessian-refined_q4kxl_nospec_2gpu_128k",
+   "label": "qwen3.8-27b-hessian-refined_q4kxl_nospec_2gpu_128k",
+   "url": "https://huggingface.co/christophedevriese/Qwen3.8-27B-Hessian-Refined-GGUF",
+   "name": "qwen3.8 27b hessian refined",
+   "short": "qwen3.8 27b hessian refined",
+   "title": "qwen3.8 27b hessian refined",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     29,
+     30
+    ],
+    "extract": [
+     13,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-20",
+   "started": "2026-11-20 03:26:44",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "graded_all": [
+    323,
+    339
+   ],
+   "pct_all": 95.3,
+   "estonian": [
+    37,
+    45
+   ],
+   "uncensored": [
+    9,
+    11
+   ],
+   "nothink": [
+    120,
+    141
+   ],
+   "extra": {
+    "robust": [
+     64,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 162.7,
+   "prose": 22.9,
+   "tool_json": 23.0,
+   "prompt_30k": 1434.3,
+   "parallel": 40.1,
+   "followup_ttft": 1.1,
+   "decode_30k": 20.0,
+   "decode_90k": 15.8,
+   "latest": true
+  },
+  {
+   "key": "exp-20261109-capy-draft",
+   "label": "exp-20261109-capy-draft-2",
+   "url": null,
+   "name": "Production model, Capy: MTP draft tokens 2",
+   "short": "Production model, Capy: MTP draft tokens 2",
+   "title": "Production model, Capy: MTP draft tokens 2",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     44,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     23,
+     24
+    ],
+    "hard": [
+     47,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-09",
+   "started": "2026-11-09 01:29:28",
+   "production": false,
+   "graded": [
+    239,
+    246
+   ],
+   "pct": 97.2,
+   "graded_all": [
+    487,
+    600
+   ],
+   "pct_all": 81.2,
+   "estonian": [
+    41,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     68,
+     72
+    ],
+    "longagent": [
+     19,
+     21
+    ]
+   },
+   "own_traffic": [
+    161,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     105,
+     180
+    ],
+    "cron_replay": [
+     27,
+     36
+    ],
+    "ctx": [
+     29,
+     45
+    ]
+   },
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 139.2,
+   "prose": 79.6,
+   "tool_json": 102.5,
+   "prompt_30k": 2840.6,
+   "parallel": 136.7,
+   "followup_ttft": 2.23,
+   "decode_30k": 77.8,
+   "decode_90k": 69.4,
+   "latest": true
+  },
+  {
+   "key": "exp-20261108-capy-lease",
+   "label": "exp-20261108-capy-lease-4096",
+   "url": null,
+   "name": "Production model, Capy: KV lease window 4096",
+   "short": "Production model, Capy: KV lease window 4096",
+   "title": "Production model, Capy: KV lease window 4096",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-08",
+   "started": "2026-11-08 01:35:39",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": [
+    504,
+    600
+   ],
+   "pct_all": 84.0,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    9,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     68,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    173,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     112,
+     180
+    ],
+    "cron_replay": [
+     27,
+     36
+    ],
+    "ctx": [
+     34,
+     45
+    ]
+   },
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 122.1,
+   "prose": 80.2,
+   "tool_json": 120.6,
+   "prompt_30k": 2836.5,
+   "parallel": 143.0,
+   "followup_ttft": 3.22,
+   "decode_30k": 75.2,
+   "decode_90k": 69.1,
+   "latest": true
+  },
+  {
+   "key": "exp-20261107-capy-think-budget",
+   "label": "exp-20261107-capy-think-budget-3000",
+   "url": null,
+   "name": "Production model, Capy: default thinking budget 3000",
+   "short": "Production model, Capy: default thinking budget 3000",
+   "title": "Production model, Capy: default thinking budget 3000",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     24,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     21,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-07",
+   "started": "2026-11-07 01:33:12",
+   "production": false,
+   "graded": [
+    246,
+    246
+   ],
+   "pct": 100.0,
+   "graded_all": [
+    501,
+    600
+   ],
+   "pct_all": 83.5,
+   "estonian": [
+    36,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     68,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    167,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     110,
+     180
+    ],
+    "cron_replay": [
+     27,
+     36
+    ],
+    "ctx": [
+     30,
+     45
+    ]
+   },
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 135.0,
+   "prose": 82.5,
+   "tool_json": 119.4,
+   "prompt_30k": 2842.7,
+   "parallel": 149.3,
+   "followup_ttft": 2.22,
+   "decode_30k": 80.5,
+   "decode_90k": 73.2,
+   "latest": true
+  },
+  {
+   "key": "exp-20261105-capy-effort-medium",
+   "label": "exp-20261105-capy-effort-medium",
+   "url": null,
+   "name": "Production model, Capy: reasoning effort medium",
+   "short": "Production model, Capy: reasoning effort medium",
+   "title": "Production model, Capy: reasoning effort medium",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     48,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     14,
+     15
+    ],
+    "code": [
+     22,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-06",
+   "started": "2026-11-06 01:41:24",
+   "production": false,
+   "graded": [
+    242,
+    246
+   ],
+   "pct": 98.4,
+   "graded_all": [
+    489,
+    600
+   ],
+   "pct_all": 81.5,
+   "estonian": [
+    39,
+    45
+   ],
+   "uncensored": [
+    10,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     69,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    158,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     101,
+     180
+    ],
+    "cron_replay": [
+     27,
+     36
+    ],
+    "ctx": [
+     30,
+     45
+    ]
+   },
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 120.8,
+   "prose": 78.8,
+   "tool_json": 118.4,
+   "prompt_30k": 2852.8,
+   "parallel": 142.3,
+   "followup_ttft": 2.21,
+   "decode_30k": 79.7,
+   "decode_90k": 67.8,
+   "latest": true
+  },
+  {
+   "key": "exp-20261102-capy-temp",
+   "label": "exp-20261102-capy-temp-07",
+   "url": null,
+   "name": "Production model, Capy: sampling temperature 0.7",
+   "short": "Production model, Capy: sampling temperature 0.7",
+   "title": "Production model, Capy: sampling temperature 0.7",
+   "backend": "capy-flash",
+   "traits": "",
+   "kind": "capy",
+   "detail": "",
+   "sections": {
+    "tools": [
+     42,
+     42
+    ],
+    "agent": [
+     46,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     24,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     20,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-02",
+   "started": "2026-11-02 01:12:52",
+   "production": false,
+   "graded": [
+    243,
+    246
+   ],
+   "pct": 98.8,
+   "graded_all": [
+    504,
+    600
+   ],
+   "pct_all": 84.0,
+   "estonian": [
+    38,
+    45
+   ],
+   "uncensored": [
+    9,
+    11
+   ],
+   "nothink": null,
+   "extra": {
+    "robust": [
+     69,
+     72
+    ],
+    "longagent": [
+     20,
+     21
+    ]
+   },
+   "own_traffic": [
+    172,
+    261
+   ],
+   "own_traffic_parts": {
+    "replay": [
+     114,
+     180
+    ],
+    "cron_replay": [
+     28,
+     36
+    ],
+    "ctx": [
+     30,
+     45
+    ]
+   },
+   "section_versions": {
+    "robust": "v1",
+    "longagent": "v1",
+    "replay": "v1",
+    "cron_replay": "v1",
+    "ctx": "v1"
+   },
+   "minutes": 114.8,
+   "prose": 81.4,
+   "tool_json": 121.3,
+   "prompt_30k": 2844.5,
+   "parallel": 148.5,
+   "followup_ttft": 2.22,
+   "decode_30k": 72.3,
+   "decode_90k": 72.4,
+   "latest": true
+  },
   {
    "key": "exp-20261027-capy-rvn-nvfp4-c",
    "label": "exp-20261027-capy-rvn-nvfp4-c",
