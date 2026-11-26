@@ -1,10 +1,111 @@
 {
- "generated": "2026-11-21 02:55 UTC",
+ "generated": "2026-11-26 03:15 UTC",
  "suite": "2026-10-18",
  "graded_cases": 246,
  "older_suite_runs": 0,
  "production": "capy-qwen3.8-27b-quasar-nvfp4_capy0.7.4_tp2_efflow",
  "models": [
+  {
+   "key": "inkling-2-mini_q4kxl_nospec_2gpu_128k",
+   "label": "inkling-2-mini_q4kxl_nospec_2gpu_128k",
+   "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+   "name": "inkling 2 mini",
+   "short": "inkling 2 mini",
+   "title": "inkling 2 mini",
+   "backend": "llama.cpp",
+   "traits": "",
+   "kind": "other",
+   "detail": "no drafting · 2 GPUs · 128k context",
+   "sections": {
+    "tools": [
+     40,
+     42
+    ],
+    "agent": [
+     40,
+     48
+    ],
+    "reason": [
+     30,
+     30
+    ],
+    "extract": [
+     15,
+     15
+    ],
+    "code": [
+     24,
+     24
+    ],
+    "hard": [
+     48,
+     48
+    ],
+    "instruct": [
+     19,
+     21
+    ],
+    "judge": [
+     18,
+     18
+    ]
+   },
+   "date": "2026-11-26",
+   "started": "2026-11-26 01:28:41",
+   "production": false,
+   "graded": [
+    234,
+    246
+   ],
+   "pct": 95.1,
+   "graded_all": [
+    358,
+    378
+   ],
+   "pct_all": 94.7,
+   "estonian": [
+    44,
+    45
+   ],
+   "uncensored": [
+    8,
+    11
+   ],
+   "nothink": [
+    138,
+    141
+   ],
+   "extra": {
+    "estonian_free": [
+     34,
+     39
+    ],
+    "robust": [
+     69,
+     72
+    ],
+    "longagent": [
+     21,
+     21
+    ]
+   },
+   "own_traffic": null,
+   "own_traffic_parts": {},
+   "section_versions": {
+    "estonian_free": "v1",
+    "robust": "v1",
+    "longagent": "v1"
+   },
+   "minutes": 153.7,
+   "prose": 29.3,
+   "tool_json": 29.1,
+   "prompt_30k": 300.9,
+   "parallel": 20.5,
+   "followup_ttft": 0.63,
+   "decode_30k": 21.1,
+   "decode_90k": 15.1,
+   "latest": true
+  },
   {
    "key": "qwen3.8-27b_q4kxl_nospec_2gpu_128k",
    "label": "qwen3.8-27b_q4kxl_nospec_2gpu_128k",
